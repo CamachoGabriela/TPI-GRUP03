@@ -1,11 +1,11 @@
 .regisU {
     display: flex;
     justify-content: center;
-    margin-left: 35%;
+    margin-left: 30%;
     align-items: center;
     border: 1px solid black;
-    height: 600px;
-    width: 500px;
+    height:1000px;
+    width: 900px;
     background-color: gray;
     color: white;
     border-radius: 20px;
@@ -13,6 +13,7 @@
     background-size: cover;
     background-position: center;
     overflow: hidden;
+    margin-top: -40px;
 }
 .form_r{
     
@@ -50,6 +51,7 @@
     border: none;
     margin-bottom: 20px;
     color: white;
+    width: 250px;
 }
 
 .acceder_r{
@@ -78,7 +80,7 @@
     margin-bottom: 20px;
     color: white;
     margin-top: 10px;
-    margin-left: 30px;
+    margin-left: 40px;
     width: 430px;
 }
 
@@ -96,8 +98,50 @@
     font-size: 30px;
     position: absolute; /* Posiciona el icono dentro del contenedor */
     right: 50px; /* Ajusta según sea necesario para la distancia del borde */
-    top: 77.5%; /* Centra verticalmente */
+    top: 57.8%; /* Centra verticalmente */
     transform: translateY(-50%); /* Ajusta para centrar el icono */
     cursor: pointer;
     color: black;
+}
+
+
+.labels_nom{
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding-left: 10px;
+    padding-top: 30px;
+}
+.inputs_nom{
+    background: rgba(255, 255, 255, 0.3);
+    height: 43px;
+    list-style: 40px;
+    border-radius: 20px;
+    padding: 0px 20px;
+    border: none;
+    margin-bottom: 20px;
+    color: white;
+    width: 250px;
+}
+
+.labels_ape{
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding-left: 10px;
+    padding-top: 30px;
+    margin-top: -105px;
+    margin-left: 400px;
+}
+.inputs_ape{
+    background: rgba(255, 255, 255, 0.3);
+    height: 43px;
+    list-style: 40px;
+    border-radius: 20px;
+    padding: 0px 20px;
+    border: none;
+    margin-bottom: 20px;
+    color: white;
+    width: 250px;
+    margin-left: 400px;
 }

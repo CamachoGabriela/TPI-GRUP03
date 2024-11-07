@@ -3,7 +3,7 @@ body {
     background-size: cover;  
     background-repeat: no-repeat; 
     background-position: 0px 10px ; 
-    margin: 0px;
+    margin: 100px;
     font-family: 'Courier New', Courier, monospace;  
 }
 
@@ -49,7 +49,7 @@ body {
 
 
 .contenido {
-    padding: 30px 30px;
+    padding: 50px 30px;
     font-weight: bold;
     transition: margin-left 0.3s; 
     color: #FFFF;
@@ -65,11 +65,11 @@ body {
     color: #f0f0f0;
     transition: left 0.3s ease;
 }
-
 .sidebar.active {
     left: 0; 
     padding: 20px 10px;
 }
+
 
 .sidebar h2 {
     color: #FFFF;
@@ -102,20 +102,19 @@ body {
     color: #b9b6b6;
 }
 
-/* Mueve el contenido a la derecha cuando el menú está activo */
-.sidebar.active + .contenido {
-    margin-left: 400px; 
-}
 .cine{
+
     background-color: #20262b;
-    width: 400px;
+    width: 350px;
     height: 500px;
     border: 2px solid #ffd900; 
+    margin-left: 400px;
+    margin-top: 125px;
 }
 
 .cine h1{
     background-color: #282f35;
-    padding: 10px 100px;
+    padding: 10px 80px;
     font-size: 45px;
     margin: 0px;
 }
@@ -126,7 +125,9 @@ body {
     font-size: 20px;
 }
 .group {
-    padding: 0px;
+
+    margin-left: 900px;
+    margin-top: -400px;
     background-color: #20262b; 
     width: 550px; 
     height: 250px; 
@@ -135,7 +136,7 @@ body {
 
 .group h2 {
     background-color: #282f35; 
-    padding: 10px 150px; 
+    padding: 0px 150px; 
     font-size: 35px; 
     margin: 0; 
     margin: 0px 0px;
@@ -147,8 +148,6 @@ body {
     list-style: none; 
     font-size: 20px; 
 }
-
-
 
 
 

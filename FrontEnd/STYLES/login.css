@@ -14,6 +14,7 @@
     background-size: cover;
     background-position: center;
     overflow: hidden;
+    margin-top: -40px;
 }
 form{
     
@@ -42,6 +43,9 @@ form{
     padding-left: 10px;
     padding-top: 30px;
 }
+
+
+
 
 .inputs{
     background: rgba(255, 255, 255, 0.3);
@@ -76,12 +80,12 @@ form{
     background: rgba(255, 255, 255, 0.3);
     border-radius: 20px; 
     border: none;
-    padding: 15px 20px; /* Aumentar el padding para más espacio interno */
+    padding: 5px 10px;
     margin-bottom: 20px;
     color: white;
     margin-top: 10px;
-    margin-left: 30px;
-    width: 410px;
+    margin-left: 20px;
+    width: 420px;
 }
 
 
@@ -98,7 +102,7 @@ form{
     font-size: 30px;
     position: absolute; /* Posiciona el icono dentro del contenedor */
     right: 50px; /* Ajusta según sea necesario para la distancia del borde */
-    top: 42.5%; /* Centra verticalmente */
+    top: 41%; /* Centra verticalmente */
     transform: translateY(-50%); /* Ajusta para centrar el icono */
     cursor: pointer;
     color: black;

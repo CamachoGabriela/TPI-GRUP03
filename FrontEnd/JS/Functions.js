@@ -9,7 +9,7 @@ function updateContentMargin() {
     const contenido = document.querySelector('.contenido');
 
     if (sidebar.classList.contains('active')) {
-        contenido.style.marginLeft = '350px'; // Ajusta según el ancho de tu sidebar
+        contenido.style.marginLeft = '100px'; // Ajusta según el ancho de tu sidebar
     } else {
         contenido.style.marginLeft = '0';
     }
@@ -25,6 +25,60 @@ document.addEventListener('click', function(event) {
         updateContentMargin();
     }
 });
+
+function ValidarLogin(){
+    const login={
+        usu: 'PEpe',
+        clave: 'clave123'
+    }
+    const $usuario = document.getElementById('Usu')
+    const $clave = document.getElementById('i-con')
+
+    if($usuario.value === ''){
+        alert('¡Debe ingresar un Usuario!')
+        return false
+    }
+    if($clave.value === ''){
+        alert('¡Debe ingresar un contraseña!')
+        return false
+    }
+    if($usuario.value != login.usu || $clave.value != login.clave){
+        alert('¡Usuario o contraseña incorrectas!')
+        return false
+    }
+
+    
+}
+
+
+
+function ValidarRegister(){
+    const $nomApe = document.getElementById("nom");
+    const $email = document.getElementById('emailInput');
+    const $clave = document.getElementById('i-con');
+
+
+    if($nomApe.value === ''){
+        alert('¡Debe ingresar un Nombre y Apellido!');
+        return false;
+    }
+
+
+
+    if($email.value === ''){
+        alert('¡Debe ingresar un email!');
+        return false;
+    }
+
+    if($clave.value === ''){
+        alert('¡Debe ingresar un contraseña!');
+        return false;
+    }
+    
+    redireccionar();
+}
+
+
 
 function MostrarContra(){
     const $pass = document.getElementById("i-con");
