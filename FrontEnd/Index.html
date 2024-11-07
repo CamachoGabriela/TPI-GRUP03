@@ -1,64 +1,94 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/STYLES/styles.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>CineMax</title>
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/STYLES/styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>TPI</title>
-</head>
-
-<body>
+  <body>
     <header>
-        <div class="barra">
-            <button class="boton-menu" onclick="toggleMenu()">☰</button>
-            <nav class="menu" id="menu">
-                <ul>
-                    <li><a href="/Index.html">Inicio</a></li>
-                    <li><a href="/PAGES/login.html">Login</a></li>
-                    <li><a href="">Otros</a></li>
-                </ul>
-            </nav>
-        </div>
+      <div class="barra d-flex align-items-center  bg-dark text-light">
+        <button class="boton-menu" type="button" onclick="toggleMenu()">
+            <i class="bi bi-list"></i>
+        </button>
+        <nav class="menu me-auto " id="menu">
+          <ul class="nav">
+            <li class="nav-item">
+              <a href="/Index.html" class="nav-link text-light">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="/PAGES/login.html" class="nav-link text-light">Login</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
-
-    <div class="contenido" >
-        <div class="cine">
-            <h1>CineMax</h1>
-            <p>Dónde la ficción cobra vida.</p>
-            <p>Contamos en nuestras salas con tecnología audiovisual de punta, junto con la comodidad y el confort, para
-                que puedas vivir la experiencia de disfrutar los últimos filmes de la pantalla grande de una manera
-                increíble e inolvidable.</p>
-            <p>¡Ven a vivir la magia de CineMax!</p>
-        </div>
-        <ul class="group">
-            <h2>Grupo N°3</h2>
-            <li>• 412070 - Belatti García, Mariano</li>
-            <li>• 412016 - Camacho Luengo, Gabriela Anahí</li>
-            <li>• 412145 - Ceballos, Ismael Gastón</li>
-            <li>• 412109 - Sanchez, Gonzalo</li>
-        </ul>
-    </div>
-
-    <div class="sidebar" id="sidebar">
-        <span onclick="toggleMenu()" class="cerrar-btn">✘</span>
-
-        <ul>
-            <li><a href="/Index.html">Inicio</a></li>
-            <li class="login-register">
-                <a href="/PAGES/Login.html" class="login">Iniciar Sesión</a>
-                <span class="separador"> | </span>
-                <a href="/PAGES/register.html" class="register">Registrarse</a>
+    <main class="wrapper">
+        <div id="sidebar" class="sidebar position-fixed " >
+            <button onclick="toggleMenu()" class="cerrar-btn d-flex"><i class="bi bi-x"></i></button>
+      
+            <ul class="sidebar-nav">
+              <li class="sidebar-item">
+                <a href="/Index.html" class="sidebar-link "><i class="bi bi-house"></i><span>Home</span></a>
             </li>
-        </ul>
-    </div>
-    <script src="/JS/Functions.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-</body>
+              <li class="sidebar-item">
+                <a href="/PAGES/Login.html" class="login sidebar-link"><i class="bi bi-person"></i><span>Iniciar Sesión</span></a>
+              </li>
+              <li class="sidebar-item">
+                <a href="/PAGES/register.html" class="register sidebar-link"><i class="bi bi-person-plus"></i><span>Registrarse</span></a>
+            </li>
+            </ul>
+          </div>
+          <div class="contenido-wrapper">
+            <div class="contenido container">
+              <div class="cine row justify-content-center text-start">
+                <div class="col-md-9">
+                  <h1 class="titulo">Sistema de Gestión de Butacas</h1>
+                  <p class="pe-3">
+                    Bienvenido al sistema de gestión de CineMax, una plataforma que
+                    permite reservar, consultar y gestionar butacas de manera eficiente
+                    en nuestras salas de cine.
+                    A través de esta aplicación, los clientes pueden ver la
+                    disponibilidad en tiempo real, seleccionar sus asientos preferidos,
+                    y asegurar su lugar para las películas más esperadas.
+                    ¡Descubre una nueva forma de organizar y disfrutar de tu experiencia
+                    cinematográfica en CineMax!
+                  </p>
+                </div>
+              </div>
+              <div class="group row flex-column justify-content-center text-center">
+                <div  class="col-md-12 text-light">
+                    <h3>Grupo N°3</h3>
+                <ul class="list-unstyled">
+                  <li>412070 - Belatti García, Mariano</li>
+                  <li>412016 - Camacho Luengo, Gabriela Anahí</li>
+                  <li>412145 - Ceballos, Ismael Gastón</li>
+                  <li>412109 - Sanchez, Gonzalo</li>
+                </ul>
+                </div>
+              </div>
+            </div>  
+          </div>
+          
+    </main>
+    
 
+    
+    <script src="/JS/Functions.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

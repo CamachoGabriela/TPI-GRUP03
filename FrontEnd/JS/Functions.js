@@ -1,18 +1,13 @@
 function toggleMenu() {
-    const sidebar = document.getElementById('sidebar');
-    sidebar.classList.toggle('active');
-    updateContentMargin();
+    const $sidebar = document.getElementById('sidebar');
+    $sidebar.classList.toggle('active');
+    updateContentWidth();
 }
 
-function updateContentMargin() {
-    const sidebar = document.getElementById('sidebar');
-    const contenido = document.querySelector('.contenido');
-
-    if (sidebar.classList.contains('active')) {
-        contenido.style.marginLeft = '100px'; // Ajusta según el ancho de tu sidebar
-    } else {
-        contenido.style.marginLeft = '0';
-    }
+function updateContentWidth() {
+    const $sidebar = document.getElementById('sidebar');
+    const $contenido = document.querySelector('.contenido');
+    $contenido.style.width = $sidebar.classList.contains('active')? 'calc(100% - 240px)' : '100%'; // Ajusta según el ancho del sidebar
 }
 
 document.addEventListener('click', function(event) {
@@ -22,7 +17,7 @@ document.addEventListener('click', function(event) {
     // Verifica si el clic fue fuera del menú y el botón
     if (!sidebar.contains(event.target) && !botonMenu.contains(event.target)) {
         sidebar.classList.remove('active');
-        updateContentMargin();
+        updateContentWidth();
     }
 });
 
