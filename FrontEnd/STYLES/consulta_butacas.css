@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+body{
+    background-image: none;
+    overflow: hidden;
+}
+.contenido{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background:  #1C1C1C;
+    height: 100vh;
+}
+.form-label{
+    color: #ffd700;
+    font-weight: 500;
+}
+.form-select {
+    max-width: 100%;
+    min-width: 150px;
+    flex-grow: 1;
+}
+#carga_dinamica {
+    gap: 1.5rem;
+}
+#datos_butaca, .consultar{
+    border-radius: 8px;
+    padding: 1.5rem;
+    width: 100vw;
+    color: #ffd700;
+    text-align: center;
+    font-family: 'monserrat', sans-serif;
+    margin: 0 -20px;
+}
+#boton_consultar{
+    color: #ffd700;
+    border: #ffd700 1px solid;
+}
+#butacas_cargadas {
+    display: none;
+    position: absolute;
+    top: 37%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 20px;
+    background-color: #ffffffd6;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    max-width: 60%;
+    margin: 20px auto;
+    height: max-content;
+}
+.butaca {
+    width: 25px;
+    height: 35px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.butaca_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.2s ease-in-out;
+}
+.butaca p {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    font-size: 0.8em;
+    color: #151200;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+}
+.butaca:hover {
+    transform: scale(1.1);
+}
+.butaca.selected {
+    background-color: #0f8e0b; /* Color azul para butaca seleccionada */
+    border-radius: 5px;
+    transform: scale(1.05);
+}

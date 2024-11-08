@@ -22,7 +22,8 @@ body{
     color:  #FFD700;
     font-weight: bold;
     font-size: 1.8em;
-    
+    font-family: 'Roboto', sans-serif; 
+    text-align: center;
 }
 
 .labels{
@@ -44,16 +45,12 @@ body{
     color: #FFD700;
 }
 .acceder{
-    background: #1E90FF;
-    border: none;
     padding: 15px;
     border-radius: 20px;
     font-weight: bold;
+    font-family: 'Roboto', sans-serif; 
     letter-spacing: 1px;
     margin-top: 30px;
-}
-.acceder:hover{
-    background: #007bff;
 }
 .contenido{
     display: flex;
@@ -63,6 +60,8 @@ body{
     padding: 20px;
     background:  #1C1C1C;
 }
-
-
+.btn, .acceder.btn{
+    color: #ffd700;
+    border: #ffd700 1px solid;
+}
 

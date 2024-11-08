@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/STYLES/styles.css">
+    <link rel="stylesheet" href="/STYLES/consulta_butacas.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+   
+    <title>Reservar Butacas</title>
+</head>
+
+<body>
+    <header>
+        <div class="barra d-flex align-items-center  bg-dark text-light">
+          <button class="boton-menu" type="button" onclick="toggleMenu()">
+              <i class="bi bi-list"></i>
+          </button>
+          <nav class="menu me-auto " id="menu">
+            <ul class="nav">
+              <li class="nav-item">
+                <a href="/Index.html" class="nav-link text-light">Home</a>
+              </li>
+              <li class="nav-item">
+                <a href="/PAGES/login.html" class="nav-link text-light">Login</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link text-light">Reservar</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+
+    <main class="contenido">
+        <div id="hide" class="text-center mb-4">
+            <h3 class="consultar mb-3  bg-dark rounded-3 ">CONSULTAR BUTACAS DISPONIBLES</h3>
+            <div id="carga_dinamica" class="d-flex align-items-center justify-content-center gap-3">
+                <div class="d-flex align-items-center me-3">
+                    <label for="funcion_select" class="form-label me-2">Función:</label>
+                    <select name="funcion" id="funcion_select" class="form-select"></select>
+                </div>
+                <div class="d-flex align-items-center">
+                    <label for="sala_select" class="form-label me-2">Sala:</label>
+                    <select name="sala" id="sala_select" class="form-select me-3"></select>
+                </div>
+                <input id="boton_consultar" type="button" class="btn btn-dark mt-4 ms-5 mt-md-0" value="Consultar">
+            </div>
+        </div>
+        <div id="butacas_cargadas" class="mt-3" style="display: none;"></div>
+        <div id="datos_butaca" class="p-4 mt-4 bg-dark rounded-3">
+            <h3 class="mb-3">DATOS DE LA BUTACA</h3>
+        </div>
+    </main>
+
+    <div id="sidebar" class="sidebar position-fixed" >
+        <button onclick="toggleMenu()" class="cerrar-btn d-flex"><i class="bi bi-x"></i></button>
+  
+        <ul class="sidebar-nav">
+          <li class="sidebar-item">
+            <a href="/Index.html" class="sidebar-link "><i class="bi bi-house"></i><span>Home</span></a>
+          </li>
+          <li class="sidebar-item">
+            <a href="/PAGES/Login.html" class="login sidebar-link"><i class="bi bi-person"></i><span>Iniciar Sesión</span></a>
+          </li>
+          <li class="sidebar-item">
+            <a href="/PAGES/register.html" class="register sidebar-link"><i class="bi bi-person-plus"></i><span>Registrarse</span></a>
+          </li>
+          <li class="sidebar-item">
+            <a href="#" class="sidebar-link "><i class="bi bi-camera-reels"></i><span>Reservar</span></a>
+          </li>
+        </ul>
+      </div>
+    <script src="/JS/Functions.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"crossorigin="anonymous"></script>
+    <script src="/JS/consultaButaca.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => { 
+            try {
+                await cargar_peli();
+            }catch(error) {
+                console.error('Ha ocurrido un error al cargar los datos:', error);
+            }
+        });
+        async function cargar_peli() {
+            const $sala = document.getElementById('sala_select')
+            const $funcion = document.getElementById('funcion_select')
+            
+            try
+            {
+                await fetch('https://localhost:7170/api/Butaca/Salas')
+                .then(response => {
+                    if (!response.ok)
+                        {
+                            throw new Error('Ha ocurrido un error al cargar las salas: ' + response.statusText);
+                        }
+                    return response.json();
+                })
+                .then(data => {
+                    data.forEach(e => {
+                        const sala =  document.createElement('option')
+                        sala.value = e.idSala
+                        sala.text = e.descripcion
+                        $sala.appendChild(sala);
+                    });
+                })
+            }catch (error){
+                console.error('Ha ocurrido un error al cargar las salas:', error);
+            }
+
+            try {
+        // Obtener películas
+        const responsePeliculas = await fetch('https://localhost:7170/api/Pelicula');
+        if (!responsePeliculas.ok) {
+            throw new Error('Error al cargar las películas: ' + responsePeliculas.statusText);
+        }
+        const peliculasData = await responsePeliculas.json();
+
+        // Obtener funciones
+        const responseFunciones = await fetch('https://localhost:7170/api/Funcion');
+        if (!responseFunciones.ok) {
+            throw new Error('Error al cargar las funciones: ' + responseFunciones.statusText);
+        }
+        const funcionesData = await responseFunciones.json();
+
+        // Vincular funciones con su respectiva película usando el idPelicula
+        funcionesData.forEach(funcion => {
+            const pelicula = peliculasData.find(p => p.idPelicula === funcion.idPelicula);
+            const tituloPelicula = pelicula ? pelicula.titulo : 'Título no disponible';
+
+            // Formateo de fecha de la función (YYYY-MM-DD a DD/MM/YYYY)
+            const partes = funcion.fechaFuncion.split('-');
+            const fechaFormateada = `${partes[2].substring(0, 2)}/${partes[1]}/${partes[0]}`;
+
+            // Crear y agregar la opción al select
+            const option = document.createElement('option');
+            option.value = funcion.idFuncion;
+            option.text = `${tituloPelicula} - ${funcion.hsInicio.substring(0, 5)} - ${fechaFormateada}`;
+            $funcion.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Ha ocurrido un error al cargar las películas y funciones:', error);
+    }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,11 +1,9 @@
 function toggleMenu() {
     const $sidebar = document.getElementById('sidebar');
-    const $wrapper = document.querySelector('.wrapper');
     const $container =document.querySelector('.container');
     
     $sidebar.classList.toggle('active');
     $container.classList.toggle('active');
-    wrapper.classList.toggle('sidebar-collapsed');
 }
 
 function updateContentWidth() {
