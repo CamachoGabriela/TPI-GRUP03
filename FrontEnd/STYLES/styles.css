@@ -9,16 +9,17 @@
 }
 body {
     background-image: url('/IMAGES/fondo.png');
-    background-size: 100%;  
+    background-size: cover;  
     background-repeat: no-repeat; 
     background-position: center ; 
     font-family: 'Poppins', sans-serif;  
     color: #fff;
-    height: 75.5vh;
+    height: 90vh;
 }
 .wrapper {
     display: flex;
     min-height: 88vh; 
+    width: 100%;
 }
 .barra .nav-link {
     color: #fff;
@@ -28,19 +29,28 @@ body {
     color: #ffd700 !important; 
 }
 .container{
+    flex: 1;
     min-height: 88vh;
-    width: 100%;
-    margin-left: 80px !important;
+    margin-left: 0;
     overflow: hidden;
     transition: all 0.3s ease-in-out;
     display: flex;
     flex-direction: column; 
-    align-items: flex-start;
 }
 .container.active{
-    width: calc(100% - 240px);
-    margin-left: 240px;
-    min-height: 280vh;
+    margin-left: 120px;
+}
+
+.container.active .titulo {
+    font-size: 2.1em; 
+    text-align: center;
+    margin: 40px 18% 30px 25px;
+}
+
+.container.active p,
+.container.active ul li {
+    font-size: 0.9em;
+    margin-left: -1em;
 }
 .contenido-wrapper { 
     display: flex; 
@@ -50,8 +60,7 @@ body {
 }
 .cine{
     margin-bottom: 10px;
-    margin-right: 20%;
-    margin-left: auto;
+    margin: 0 20% 0 auto;
 }
 .titulo { 
     font-family: 'Roboto', sans-serif; 
@@ -59,7 +68,7 @@ body {
     font-weight: 500; 
     text-align: center;
     color: #ffd700;
-    text-shadow: 2px 3px rgba(32, 38, 43, 0.8);; 
+    text-shadow: 1px 1px rgba(32, 38, 43, 0.8);; 
  }
 p{
     font-family: 'Roboto', sans-serif; 
@@ -75,8 +84,6 @@ p{
     height: 100vh;
     background-color: #20262b;
     transition: all 0.25s ease-in-out;
-    display: flex;
-    flex-direction: column;
     padding: 1rem;
 }
 #sidebar.active {
@@ -124,19 +131,26 @@ i{
 }
 .group{
     margin: 10px auto 0 !important; 
-    transform: translateY(-12px);
     background-color: rgba(32, 38, 43, 0.8);
     border-radius: 8px;
     border: 2px solid   #ffd700;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 .group h3{
     text-align: center;
     margin-bottom: 8px;
     color: #FFD700;
 }
-
-
+.container.active .group ul li {
+    font-size: 0.8em; 
+    margin: auto;
+}
+.container.active .group h3 {
+    font-size: 1.3em; /* Más pequeño en móviles */
+}
+.container.active .group{
+    display: block;
+    margin: 1% 40% 0 34% !important;
+}
 
 
 
@@ -156,10 +170,6 @@ i{
     border: 2px solid #FFD700; 
 }
 
-.separador {
-    color: #FFD700; 
-    margin: 0 10px; 
-}
 
 
 
@@ -167,6 +177,17 @@ i{
 @media (max-width: 768px) {
     body {
         background-size: contain;
-        background-position: top;
     }
+    .container.active .group h3 {
+        font-size: 1.3em; 
+    }
+    .container.active .group ul li {
+        font-size: 0.7em;
+    }
+    
+.container.active .group{
+    display: block;
+    width: 80%;
+    margin: 1% 40% 0 34% !important;
+}
 }
