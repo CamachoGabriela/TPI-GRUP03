@@ -1,22 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\gabri\\Desktop\\UTN\\2-Cuatrimestre\\ProgramacionII\\Git-ProgII-2024\\TPI-Grupo3\\BackCine\\",
+  "WorkspaceRootPath": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9727F002-3CC3-465E-9544-306944ADB4E6}|BackCine\\BackCine.csproj|c:\\users\\gabri\\desktop\\utn\\2-cuatrimestre\\programacionii\\git-progii-2024\\tpi-grupo3\\backcine\\backcine\\data\\repositories\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9727F002-3CC3-465E-9544-306944ADB4E6}|BackCine\\BackCine.csproj|solutionrelative:backcine\\data\\repositories\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|c:\\users\\gabri\\desktop\\utn\\2-cuatrimestre\\programacionii\\git-progii-2024\\tpi-grupo3\\backcine\\cinewebapi\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|solutionrelative:cinewebapi\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9727F002-3CC3-465E-9544-306944ADB4E6}|BackCine\\BackCine.csproj|c:\\users\\gabri\\desktop\\utn\\2-cuatrimestre\\programacionii\\git-progii-2024\\tpi-grupo3\\backcine\\backcine\\data\\repositories\\butacarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9727F002-3CC3-465E-9544-306944ADB4E6}|BackCine\\BackCine.csproj|solutionrelative:backcine\\data\\repositories\\butacarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9727F002-3CC3-465E-9544-306944ADB4E6}|BackCine\\BackCine.csproj|c:\\users\\gabri\\desktop\\utn\\2-cuatrimestre\\programacionii\\git-progii-2024\\tpi-grupo3\\backcine\\backcine\\data\\entities\\cinemaxcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9727F002-3CC3-465E-9544-306944ADB4E6}|BackCine\\BackCine.csproj|solutionrelative:backcine\\data\\entities\\cinemaxcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|c:\\users\\gabri\\desktop\\tpi-grupo3\\backcine\\cinewebapi\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|solutionrelative:cinewebapi\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -43,53 +31,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UsuarioRepository.cs",
-              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\UTN\\2-Cuatrimestre\\ProgramacionII\\Git-ProgII-2024\\TPI-Grupo3\\BackCine\\BackCine\\Data\\Repositories\\UsuarioRepository.cs",
-              "RelativeDocumentMoniker": "BackCine\\Data\\Repositories\\UsuarioRepository.cs",
-              "ToolTip": "C:\\Users\\gabri\\Desktop\\UTN\\2-Cuatrimestre\\ProgramacionII\\Git-ProgII-2024\\TPI-Grupo3\\BackCine\\BackCine\\Data\\Repositories\\UsuarioRepository.cs",
-              "RelativeToolTip": "BackCine\\Data\\Repositories\\UsuarioRepository.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABgAAAAzAAAAAAAAAA==",
+              "Title": "ClienteController.cs",
+              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\ClienteController.cs",
+              "RelativeDocumentMoniker": "CineWebApi\\Controllers\\ClienteController.cs",
+              "ToolTip": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\ClienteController.cs",
+              "RelativeToolTip": "CineWebApi\\Controllers\\ClienteController.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAkwEAAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T01:58:21.084Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UsuarioController.cs",
-              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\UTN\\2-Cuatrimestre\\ProgramacionII\\Git-ProgII-2024\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\UsuarioController.cs",
-              "RelativeDocumentMoniker": "CineWebApi\\Controllers\\UsuarioController.cs",
-              "ToolTip": "C:\\Users\\gabri\\Desktop\\UTN\\2-Cuatrimestre\\ProgramacionII\\Git-ProgII-2024\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\UsuarioController.cs",
-              "RelativeToolTip": "CineWebApi\\Controllers\\UsuarioController.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAADwvzgAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T01:23:12.223Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CineMaxContext.cs",
-              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\UTN\\2-Cuatrimestre\\ProgramacionII\\Git-ProgII-2024\\TPI-Grupo3\\BackCine\\BackCine\\Data\\Entities\\CineMaxContext.cs",
-              "RelativeDocumentMoniker": "BackCine\\Data\\Entities\\CineMaxContext.cs",
-              "ToolTip": "C:\\Users\\gabri\\Desktop\\UTN\\2-Cuatrimestre\\ProgramacionII\\Git-ProgII-2024\\TPI-Grupo3\\BackCine\\BackCine\\Data\\Entities\\CineMaxContext.cs",
-              "RelativeToolTip": "BackCine\\Data\\Entities\\CineMaxContext.cs",
-              "ViewState": "AgIAADwAAAAAAAAAAAAuwFMAAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T01:20:31.14Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ButacaRepository.cs",
-              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\UTN\\2-Cuatrimestre\\ProgramacionII\\Git-ProgII-2024\\TPI-Grupo3\\BackCine\\BackCine\\Data\\Repositories\\ButacaRepository.cs",
-              "RelativeDocumentMoniker": "BackCine\\Data\\Repositories\\ButacaRepository.cs",
-              "ToolTip": "C:\\Users\\gabri\\Desktop\\UTN\\2-Cuatrimestre\\ProgramacionII\\Git-ProgII-2024\\TPI-Grupo3\\BackCine\\BackCine\\Data\\Repositories\\ButacaRepository.cs",
-              "RelativeToolTip": "BackCine\\Data\\Repositories\\ButacaRepository.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAYwDUAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T01:16:19.542Z",
+              "WhenOpened": "2024-11-08T11:44:06.097Z",
               "EditorCaption": ""
             }
           ]

@@ -59,7 +59,7 @@ namespace CineWebApi.Controllers
 
         // POST api/<ReservaController>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] ReservaRequest request)
+        public async Task<IActionResult> Post([FromBody] ReservaRequestDTO request)
         {
             try
             {

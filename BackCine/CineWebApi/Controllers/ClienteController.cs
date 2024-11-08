@@ -57,6 +57,19 @@ namespace CineWebApi.Controllers
             }
         }
 
+        [HttpGet("TipoDoc/{id}")]
+        public async Task<IActionResult> GetTipoDoc(int id)
+        {
+            try
+            {
+                return Ok(await _service.GetTiposDocumento(id));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Ha ocurrido un error interno: {ex.Message}");
+            }
+        }
+
 
         // POST api/<ClienteController>
         [HttpPost]

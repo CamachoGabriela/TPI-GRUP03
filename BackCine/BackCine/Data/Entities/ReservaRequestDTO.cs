@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BackCine.Data.Entities
 {
-    public class ReservaRequest
+    public class ReservaRequestDTO
     {
         public Reserva Reserva { get; set; }
         public List<int> ButacasIds { get; set; }

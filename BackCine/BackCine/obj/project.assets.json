@@ -4163,11 +4163,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gabri\\Desktop\\UTN\\2-Cuatrimestre\\ProgramacionII\\Git-ProgII-2024\\TPI-Grupo3\\BackCine\\BackCine\\BackCine.csproj",
+      "projectUniqueName": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\BackCine\\BackCine.csproj",
       "projectName": "BackCine",
-      "projectPath": "C:\\Users\\gabri\\Desktop\\UTN\\2-Cuatrimestre\\ProgramacionII\\Git-ProgII-2024\\TPI-Grupo3\\BackCine\\BackCine\\BackCine.csproj",
+      "projectPath": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\BackCine\\BackCine.csproj",
       "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gabri\\Desktop\\UTN\\2-Cuatrimestre\\ProgramacionII\\Git-ProgII-2024\\TPI-Grupo3\\BackCine\\BackCine\\obj\\",
+      "outputPath": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\BackCine\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config",

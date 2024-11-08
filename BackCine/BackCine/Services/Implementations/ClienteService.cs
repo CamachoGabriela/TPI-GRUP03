@@ -43,6 +43,11 @@ namespace BackCine.Services.Implementations
             return await _repository.GetAll();
         }
 
+        public async Task<List<TiposDocumento>> GetTiposDocumento(int id)
+        {
+            return await _repository.GetTiposDocumento(id);
+        }
+
         public async Task<bool> RegistrarCliente(Cliente cliente)
         {
             return await _repository.Create(cliente);

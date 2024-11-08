@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "akgf8fue5a4=",
+  "dgSpecHash": "3n6SIY5A2Zo=",
   "success": true,
-  "projectFilePath": "C:\\Users\\gabri\\Desktop\\UTN\\2-Cuatrimestre\\ProgramacionII\\Git-ProgII-2024\\TPI-Grupo3\\BackCine\\CineWebApi\\CineWebApi.csproj",
+  "projectFilePath": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\CineWebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gabri\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\gabri\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

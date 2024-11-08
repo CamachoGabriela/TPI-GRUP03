@@ -36,6 +36,8 @@ public partial class CineMaxContext : DbContext
 
     public virtual DbSet<Sala> Salas { get; set; }
 
+    public virtual DbSet<TiposDocumento> TiposDocumentos { get; set; }
+
     public virtual DbSet<TiposPelicula> TiposPeliculas { get; set; }
 
     public virtual DbSet<TiposSala> TiposSalas { get; set; }
@@ -43,7 +45,6 @@ public partial class CineMaxContext : DbContext
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
     public virtual DbSet<VisDetallesCompra> VisDetallesCompras { get; set; }
-
     public async Task<int> VerificarDisponibilidad(string pelicula, DateTime fecha)
     {
         var butacasDisponiblesParam = new SqlParameter
@@ -69,6 +70,7 @@ public partial class CineMaxContext : DbContext
 
         return butacasDisponibles;
     }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -147,6 +149,11 @@ public partial class CineMaxContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("NRO_DOC");
+
+            entity.HasOne(d => d.IdTipoDocNavigation).WithMany(p => p.Clientes)
+                .HasForeignKey(d => d.IdTipoDoc)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_CLIENTES_TIPOS_DOCUMENTO");
         });
 
         modelBuilder.Entity<Compra>(entity =>
@@ -376,6 +383,20 @@ public partial class CineMaxContext : DbContext
                 .HasForeignKey(d => d.IdTipoSala)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_SALAS_TIPOS_SALA");
+        });
+
+        modelBuilder.Entity<TiposDocumento>(entity =>
+        {
+            entity.HasKey(e => e.IdTipoDoc).HasName("PK_TIPOS_DOCUMENTOS");
+
+            entity.ToTable("TIPOS_DOCUMENTO");
+
+            entity.Property(e => e.IdTipoDoc).HasColumnName("ID_TIPO_DOC");
+            entity.Property(e => e.TipoDoc)
+                .IsRequired()
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("TIPO_DOC");
         });
 
         modelBuilder.Entity<TiposPelicula>(entity =>

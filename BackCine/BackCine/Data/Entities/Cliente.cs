@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace BackCine.Data.Entities;
 
@@ -28,6 +29,8 @@ public partial class Cliente
     public bool? Estado { get; set; }
 
     public virtual ICollection<Compra> Compras { get; set; } = new List<Compra>();
+    [JsonIgnore]
+    public virtual TiposDocumento IdTipoDocNavigation { get; set; }
 
     public virtual ICollection<Reserva> Reservas { get; set; } = new List<Reserva>();
 
