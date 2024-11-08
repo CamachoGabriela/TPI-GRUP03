@@ -96,5 +96,17 @@ namespace CineWebApi.Controllers
                 return StatusCode(500, $"Ha ocurrido un error interno: {ex.Message}");
             }
         }
+        [HttpGet("Salas")]
+        public async Task<IActionResult> GetSalas()
+        {
+            try
+            {
+                return Ok(await _service.GetSalas());
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Ha ocurrido un error interno: {ex.Message}");
+            }
+        }
     }
 }

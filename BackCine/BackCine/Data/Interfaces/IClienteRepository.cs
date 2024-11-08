@@ -12,7 +12,7 @@ namespace BackCine.Data.Interfaces
         Task<List<Cliente>> GetAll();
         Task<Cliente?> GetById(int id);
         Task<Cliente?> GetByName(string nombre, string apellido);
-        Task<List<TiposDocumento>> GetTiposDocumento(int id);
+        Task<List<TiposDocumento>> GetTiposDocumento();
         Task<bool> Create(Cliente cliente);
         Task<bool> Update(int id, Cliente cliente);
         Task<bool> Delete(int id);

@@ -42,5 +42,9 @@ namespace BackCine.Services.Implementations
         {
             return await _repository.VerificarDisponibilidad(tituloPelicula, fecha);
         }
+        public async Task<List<Sala>> GetSalas()
+        {
+            return await _repository.GetSalas();
+        }
     }
 }

@@ -126,6 +126,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "CineWebApi.Controllers.ButacaController",
+    "Method": "GetSalas",
+    "RelativePath": "api/Butaca/Salas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "CineWebApi.Controllers.ClienteController",
     "Method": "Get",
     "RelativePath": "api/Cliente",
@@ -228,17 +238,11 @@
   {
     "ContainingType": "CineWebApi.Controllers.ClienteController",
     "Method": "GetTipoDoc",
-    "RelativePath": "api/Cliente/TipoDoc/{id}",
+    "RelativePath": "api/Cliente/TipoDoc",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

@@ -50,5 +50,9 @@ namespace BackCine.Data.Repositories
         {
             return await _context.VerificarDisponibilidad(tituloPelicula, fecha);
         }
+        public async Task<List<Sala>> GetSalas()
+        {
+            return await _context.Salas.ToListAsync();
+        }
     }
 }

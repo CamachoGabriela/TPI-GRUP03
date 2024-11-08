@@ -14,6 +14,6 @@ namespace BackCine.Data.Interfaces
         Task<List<Butaca>> GetAvailableByFuncion(int idFuncion); //Devuelve butacas disponibles por función
         Task<int> VerificarDisponibilidad(string tituloPelicula, DateTime fecha); //Devuelve cantidad de butacas disponibles en un día y película específico
         Task<bool> IsAvailable(int idSala, int idFuncion, int idButaca); //Verifica si una butaca está libre u ocupada
-
+        Task<List<Sala>> GetSalas(); //Devolver todas las salas
     }
 }

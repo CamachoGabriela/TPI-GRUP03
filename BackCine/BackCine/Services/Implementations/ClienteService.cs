@@ -43,9 +43,9 @@ namespace BackCine.Services.Implementations
             return await _repository.GetAll();
         }
 
-        public async Task<List<TiposDocumento>> GetTiposDocumento(int id)
+        public async Task<List<TiposDocumento>> GetTiposDocumento()
         {
-            return await _repository.GetTiposDocumento(id);
+            return await _repository.GetTiposDocumento();
         }
 
         public async Task<bool> RegistrarCliente(Cliente cliente)

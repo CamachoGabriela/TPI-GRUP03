@@ -57,12 +57,12 @@ namespace CineWebApi.Controllers
             }
         }
 
-        [HttpGet("TipoDoc/{id}")]
-        public async Task<IActionResult> GetTipoDoc(int id)
+        [HttpGet("TipoDoc")]
+        public async Task<IActionResult> GetTipoDoc()
         {
             try
             {
-                return Ok(await _service.GetTiposDocumento(id));
+                return Ok(await _service.GetTiposDocumento());
             }
             catch (Exception ex)
             {

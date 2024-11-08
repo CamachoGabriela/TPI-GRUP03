@@ -65,9 +65,9 @@ namespace BackCine.Data.Repositories
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<List<TiposDocumento>> GetTiposDocumento(int id)
+        public async Task<List<TiposDocumento>> GetTiposDocumento()
         {
-            return await _context.TiposDocumentos.Where(x => x.IdTipoDoc == id).ToListAsync();
+            return await _context.TiposDocumentos.ToListAsync();
         }
     }
 }

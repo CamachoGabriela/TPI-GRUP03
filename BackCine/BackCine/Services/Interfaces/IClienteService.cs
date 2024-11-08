@@ -13,7 +13,7 @@ namespace BackCine.Services.Interfaces
         Task<List<Cliente>> GetClientes();
         Task<Cliente?> GetClienteById(int id);
         Task<Cliente?> FiltrarClientePorNombre(string nombre, string apellido);
-        Task<List<TiposDocumento>> GetTiposDocumento(int id);
+        Task<List<TiposDocumento>> GetTiposDocumento();
         Task<bool> RegistrarCliente(Cliente cliente);
         Task<bool> EditarCliente(int id, Cliente cliente);
         Task<bool> Eliminar(int id);
