@@ -32,25 +32,22 @@
         </div>
       </header>
 
-    <div class="contenido">
-        <h1 class="log_in">Iniciar Sesión</h1>
-        <div class="loginU">
-            <form class="form">
-                <label class="labels" for="Usuario" >Usuario</label>
-                <input class="inputs" type="text"id="Usu">
-                <label class="labels" for="Contraseña" id="">Contraseña</label>
-                <div class="container">
-                    <input class="pass" type="password" id="i-con">
-                    <i onclick="MostrarContra();" class="bx bx-show-alt"></i>
-                </div>
-
-                <button class="acceder" type="button" onclick="ValidarLogin();">Acceder</button>
-    
-    
-            </form>
-        
+    <div class="contenido d-flex justify-content-center align-items-center">
+      <div class="loginU p-4 rounded-4">
+          <h1 class="log_in texte-center mb-4">INICIAR SESIÓN</h1>
+            <form class="form rounded-2">
+              <div class="mb-3">
+                <label class="labels form-label" for="Usu" >USUARIO</label>
+                <input class="inputs form-control" type="text" id="Usu" placeholder="Ingrese su usuario">
+              </div>
+              <div class="mb-3 position-relative">
+                <label class="labels form-label" for="i-con" id="">CONTRASEÑA</label>
+                <input class="pass form-control" type="password" id="i-con" placeholder="Ingrese su contraseña">
+                <i onclick="MostrarContra();" class="bx bx-show-alt position-absolute me-3 top-50 end-0"></i>
+              </div>
+                <button class="acceder btn btn-primary w-100" type="button" onclick="ValidarLogin();">LOG IN</button>
+            </form>        
         </div>
-
     </div>
 
     <div id="sidebar" class="sidebar position-fixed " >

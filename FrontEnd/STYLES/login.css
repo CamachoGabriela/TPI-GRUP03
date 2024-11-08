@@ -1,110 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
 /*CSS LOGIN*/
-.loginU {
-    display: flex;
-    justify-content: center;
-    margin-left: 35%;
-    align-items: center;
-    border: 1px solid black;
-    height: 600px;
-    width: 500px;
-    background-color: gray;
-    color: white;
-    border-radius: 20px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.75);
-    background-size: cover;
-    background-position: center;
+body{
+    background-image: none;
+    min-height: 100vh;
     overflow: hidden;
-    margin-top: -40px;
 }
-form{
-    
-    display: block;
-    box-sizing: border-box;
-    padding: 40px;
+.loginU {
+    background: rgba(32, 32, 32, 0.85);
     width: 100%;
-    height: 100%;
-    backdrop-filter: brightness(40%);
-    flex-direction: column;
-    display: flex;
-    gap: 5px;
+    max-width: 420px;
+    position: absolute;
+    top: 28%;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0px  8px 16px rgba(0, 0, 0, 0.5);
 }
+
 .log_in{
-    color: #FFFF;
+    color:  #FFD700;
     font-weight: bold;
-    font-size: 24px;
-    margin-bottom: 90px;
-    padding: 0px 30px;
+    font-size: 1.8em;
+    
 }
 
 .labels{
-    color: rgba(255, 255, 255, 0.8);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    padding-left: 10px;
-    padding-top: 30px;
+    color:  #FFD700;
+    font-size: 0.9em;
+    letter-spacing: 0.5px;
 }
-
-
-
-
-.inputs{
-    background: rgba(255, 255, 255, 0.3);
-    height: 40px;
-    list-style: 40px;
-    border-radius: 20px;
-    padding: 0px 20px;
-    border: none;
-    margin-bottom: 20px;
-    color: white;
+.inputs, .pass{
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 10px 20px;
+    outline: none;
 }
-
-.acceder{
-    background: rgb(45, 126, 231);
-
-    height: 40px;
-    line-height: 40px;
-    border-radius: 40px;
-    border: none;
-    margin: 90px 0px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
-    color: white;
-
-}
-
-.container{
-    margin-left: -35px;
-    margin-top: -6px;
-}
-
-.pass{
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 20px; 
-    border: none;
-    padding: 5px 10px;
-    margin-bottom: 20px;
-    color: white;
-    margin-top: 10px;
-    margin-left: 20px;
-    width: 420px;
-}
-
-
-.bx{
-    font-size: 30px;
-    transform: translateX(400px);
-    cursor: pointer;
-    color: black;
-}
-
-
-
 .bx {
-    font-size: 30px;
-    position: absolute; /* Posiciona el icono dentro del contenedor */
-    right: 50px; /* Ajusta según sea necesario para la distancia del borde */
-    top: 41%; /* Centra verticalmente */
-    transform: translateY(-50%); /* Ajusta para centrar el icono */
+    font-size: 1.9em;
     cursor: pointer;
-    color: black;
+    color: #FFD700;
 }
+.acceder{
+    background: #1E90FF;
+    border: none;
+    padding: 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-top: 30px;
+}
+.acceder:hover{
+    background: #007bff;
+}
+.contenido{
+    display: flex;
+    justify-content: center;
+    height: 90vh;
+    min-height: 100vh;
+    padding: 20px;
+    background:  #1C1C1C;
+}
+
+
 
