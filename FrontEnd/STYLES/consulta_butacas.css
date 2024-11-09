@@ -23,11 +23,24 @@ body{
     min-width: 150px;
     flex-grow: 1;
 }
-#carga_dinamica {
-    gap: 1.5rem;
+#datos_butaca{
+    flex: 1;
 }
-#datos_butaca p{
-    color: rgb(234, 255, 47);
+#datos_butaca div p{
+    color: #ffd700;
+    text-align: start;
+    padding-left: 20%;
+}
+.contenedor-btn{
+    width: 80%;
+    margin-left: 5%;
+}
+#datos_butaca div div input{
+    flex-direction: row;
+    margin-right: 4%;
+    width: 22%; 
+    font-size: 17px;
+    padding: 10px;
 }
 #datos_butaca, .consultar{
     border-radius: 8px;
@@ -42,24 +55,28 @@ body{
     color: #ffd700;
     border: #ffd700 1px solid;
 }
+.contenedor-butacas {
+    margin: 0 10% 0 16%;
+}
 #butacas_cargadas {
    /*  display: none;
     position: absolute;
     top: 37%; */
     flex-wrap: wrap;
+    flex: 2;
     justify-content: center;
     align-items: flex-start;
-    gap: 10px;
-    padding: 20px;
+    gap: 1px;
+    padding: 10px;
     background-color: #ffffffd6;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-    max-width: 60%;
-    margin: 20px auto;
+    max-width: 55%;
+    margin: 20px auto ;
     height: max-content;
 }
 .butaca {
-    width: 35px;
+    width: 28px;
     height: 45px;
     position: relative;
     cursor: pointer;
