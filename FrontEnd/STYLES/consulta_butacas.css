@@ -12,6 +12,7 @@ body{
     padding: 20px;
     background:  #1C1C1C;
     height: 100vh;
+    overflow-y: auto;
 }
 .form-label{
     color: #ffd700;
@@ -24,6 +25,9 @@ body{
 }
 #carga_dinamica {
     gap: 1.5rem;
+}
+#datos_butaca p{
+    color: rgb(234, 255, 47);
 }
 #datos_butaca, .consultar{
     border-radius: 8px;
@@ -39,9 +43,9 @@ body{
     border: #ffd700 1px solid;
 }
 #butacas_cargadas {
-    display: none;
+   /*  display: none;
     position: absolute;
-    top: 37%;
+    top: 37%; */
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
@@ -55,8 +59,8 @@ body{
     height: max-content;
 }
 .butaca {
-    width: 25px;
-    height: 35px;
+    width: 35px;
+    height: 45px;
     position: relative;
     cursor: pointer;
     transition: transform 0.3s ease, background-color 0.3s ease;
@@ -69,8 +73,8 @@ body{
 }
 .butaca p {
     position: absolute;
-    bottom: 4px;
-    right: 4px;
+    bottom: 9px;
+    right: 9px;
     font-size: 0.8em;
     color: #151200;
     font-weight: bold;
@@ -81,7 +85,21 @@ body{
     transform: scale(1.1);
 }
 .butaca.selected {
-    background-color: #0f8e0b; /* Color azul para butaca seleccionada */
     border-radius: 5px;
     transform: scale(1.05);
+}
+.butaca_ocupada {
+    width: 35px; /**/
+    height: 45px; /**/
+    position: relative;
+}
+.butaca_ocupada p {
+    position: absolute;
+    bottom: 9px; /**/
+    right: 9px; /**/
+    font-size: 0.8em;
+    color: #000000;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
 }
