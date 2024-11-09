@@ -20,19 +20,27 @@ namespace BackCine.Data.Repositories
 
         public async Task<List<ButacaConEstado>> GetAllbySalaFuncion(int idSala, int idFuncion)
         {
-            var query = (from b in _context.Butacas
-                         join br in _context.ButacasReservadas on b.IdButaca equals br.IdButaca
-                         join r in _context.Reservas on br.IdReserva equals r.IdReserva
-                         where b.IdSala == idSala && (_context.DetalleButacas.Any(db => db.IdFuncion == idFuncion && db.IdButaca == b.IdButaca) ||
-                                                       _context.ButacasReservadas.Any(br => br.IdFuncion == idFuncion && br.IdButaca == b.IdButaca))
-                         select new ButacaConEstado
-                         {
-                             IdButaca = b.IdButaca,
-                             NroButaca = b.NroButaca,
-                             Estado = r.IdEstado,
-                         });
-            return await query.ToListAsync();
+            var butacas = await _context.Butacas.Where(b => b.IdSala == idSala).ToListAsync(); 
+            var detalleButacas = await _context.DetalleButacas.Where(db => db.IdFuncion == idFuncion).Select(db => db.IdButaca).ToListAsync(); 
+            var butacasReservadas = await _context.ButacasReservadas.Where(br => br.IdFuncion == idFuncion).ToListAsync(); 
+            var reservas = await _context.Reservas.ToListAsync(); var result = (from b in butacas
+                                                                                join br in butacasReservadas on b.IdButaca equals br?.IdButaca into brGroup
+                                                                                from br in brGroup.DefaultIfEmpty()
+                                                                                join r in reservas on br?.IdReserva equals r?.IdReserva into rGroup
+                                                                                from r in rGroup.DefaultIfEmpty()
+                                                                                select new ButacaConEstado
+                                                                                {
+                                                                                    IdButaca = b.IdButaca,
+                                                                                    NroButaca = b.NroButaca,
+                                                                                    Estado = (r != null) ? r.IdEstado : 0
+                                                                                }).ToList();
+
+            return result;
+
         }
+
+
+
         public async Task<List<Butaca>> GetAvailableByFuncion(int idFuncion) //EXISTS  Devuelve las butacas disponibles en una función
         {
             return await _context.Butacas.Where(b => !_context.ButacasReservadas.Any(br => br.IdFuncion == idFuncion && br.IdButaca == b.IdButaca) &&
