@@ -9,7 +9,7 @@ namespace BackCine.Services.Interfaces
 {
     public interface IButacaService
     {
-        Task<List<Butaca>> ButacasPorSala(int idSala);
+        Task<List<ButacaConEstado>> ButacasPorSalaFuncion(int idSala, int idFuncion);
         Task<Butaca?> ButacasById(int idButaca, int idSala, int idFuncion);
         Task<List<Butaca>> ButacasDisponiblesPorFuncion(int idFuncion);
         Task<bool> VerDisponibilidad(int idSala, int idFuncion, int idButaca);

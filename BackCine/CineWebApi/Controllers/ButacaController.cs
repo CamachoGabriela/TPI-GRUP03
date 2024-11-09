@@ -17,12 +17,12 @@ namespace CineWebApi.Controllers
         }
 
         // GET api/<ButacaController>/5
-        [HttpGet("Sala/{id}")]
-        public async Task<IActionResult> GetSala(int id)
+        [HttpGet("SalaFuncion")]
+        public async Task<IActionResult> GetSalaFuncion([FromQuery]int idSala, [FromQuery]int idFuncion)
         {
             try
             {
-                return Ok(await _service.ButacasPorSala(id));
+                return Ok(await _service.ButacasPorSalaFuncion(idSala, idFuncion));
             }
             catch (Exception ex)
             {

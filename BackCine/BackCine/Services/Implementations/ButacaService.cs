@@ -28,11 +28,6 @@ namespace BackCine.Services.Implementations
             return await _repository.GetAvailableByFuncion(idFuncion);
         }
 
-        public async Task<List<Butaca>> ButacasPorSala(int idSala)
-        {
-            return await _repository.GetAllbySala(idSala);
-        }
-
         public async Task<bool> VerDisponibilidad(int idSala, int idFuncion, int idButaca)
         {
             return await _repository.IsAvailable(idSala, idFuncion, idButaca);
@@ -45,6 +40,11 @@ namespace BackCine.Services.Implementations
         public async Task<List<Sala>> GetSalas()
         {
             return await _repository.GetSalas();
+        }
+
+        public async Task<List<ButacaConEstado>> ButacasPorSalaFuncion(int idSala, int idFuncion)
+        {
+            return await _repository.GetAllbySalaFuncion(idSala, idFuncion);
         }
     }
 }

@@ -16,6 +16,8 @@ public partial class CineMaxContext : DbContext
 
     public virtual DbSet<Butaca> Butacas { get; set; }
 
+    public virtual DbSet<ButacaConEstado> ButacaConEstados{ get; set; }
+
     public virtual DbSet<ButacasReservada> ButacasReservadas { get; set; }
 
     public virtual DbSet<Cliente> Clientes { get; set; }
@@ -74,6 +76,7 @@ public partial class CineMaxContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<ButacaConEstado>().HasNoKey();
         modelBuilder.Entity<AnalisisOcupacionResult>().HasNoKey();
         base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<Butaca>(entity =>

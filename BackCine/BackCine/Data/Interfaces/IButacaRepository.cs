@@ -9,7 +9,7 @@ namespace BackCine.Data.Interfaces
 {
     public interface IButacaRepository
     {
-        Task<List<Butaca>> GetAllbySala(int idSala);
+        Task<List<ButacaConEstado>> GetAllbySalaFuncion(int idSala, int idFuncion);
         Task<Butaca?> GetById(int idButaca, int idSala, int idFuncion);
         Task<List<Butaca>> GetAvailableByFuncion(int idFuncion); //Devuelve butacas disponibles por función
         Task<int> VerificarDisponibilidad(string tituloPelicula, DateTime fecha); //Devuelve cantidad de butacas disponibles en un día y película específico

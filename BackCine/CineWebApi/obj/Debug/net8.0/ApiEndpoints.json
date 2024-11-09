@@ -111,16 +111,21 @@
   },
   {
     "ContainingType": "CineWebApi.Controllers.ButacaController",
-    "Method": "GetSala",
-    "RelativePath": "api/Butaca/Sala/{id}",
+    "Method": "GetSalaFuncion",
+    "RelativePath": "api/Butaca/SalaFuncion",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "idSala",
         "Type": "System.Int32",
-        "IsRequired": true
+        "IsRequired": false
+      },
+      {
+        "Name": "idFuncion",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
