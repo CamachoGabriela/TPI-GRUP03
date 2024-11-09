@@ -74,7 +74,7 @@ function handleButacaClick(element) {
     }
 }
 
-
+document.getElementById('funcion_select').addEventListener('change', cargar_butacas); //cargar butacas al elegir una funcion
 document.getElementById('pelicula_select').addEventListener('change', cargar_funciones); //escucha de cambio del select de peliculas
 async function cargar_funciones(){
     // Obtener funciones
@@ -103,9 +103,7 @@ async function cargar_funciones(){
 
         //desactivar boton cuando el select no tenga ningún option
         if($selectF.childElementCount == 0) {
-            document.getElementById('boton_consultar').disabled = true;
-        }else if(document.getElementById('boton_consultar').disabled == true){
-            document.getElementById('boton_consultar').disabled = false;
+            cargar_butacas(); //cargar butacas si hay funciones
         }
     }
     catch (error) {console.error('Ha ocurrido un error al cargar las funciones: ', error);}
@@ -126,19 +124,49 @@ async function datos_butaca(datos = null){ //opcion de ser nulo para que si no s
         $div.innerHTML = 
         `
             <div>
-            <p>N° de la butaca: <span style="color: white;">${bpartes[0]}</span></p>        <!--el span es para poner los datos en color blanco-->
-            <p>Sala de la butaca: <span style="color: white;">${sala.descripcion}</span></p>
-            <p>Pelicula: <span style="color: white;">${bpartes[2]}</span></p>
+            <p>N° Butaca: <span style="color: white;">${bpartes[0]}</span></p>        <!--el span es para poner los datos en color blanco-->
+            <p>Película: <span style="color: white;">${bpartes[2]}</span></p>
+            <p>Sala: <span style="color: white;">${sala.descripcion}</span></p>
             <p>Precio: <span style="color: white;">$${precio}</span></p>
             <div class="contenedor-btn d-flex justify-content-center">
-            <input id="boton_reservar" type="button" class="btn btn-primary button" value="Reservar">
-            <input id="boton_cancelar" type="button" class="btn btn-danger button" value="Cancelar">
+            <input id="boton_reservar" type="button" class="btn btn-secondary button" value="Reservar">
+            <input id="boton_cancelar" type="button" class="btn btn-dark button" value="Cancelar">
             </div>
-            <br><br><br><br><br><br><br>                <!--espacio para ver bien los datos, arreglar en css <3-->
             </div>
-            `
+            `;
+            $div.addEventListener('click', function (event) {
+                if (event.target.id === 'boton_cancelar') {
+                    const confirmCancelToastElement = document.getElementById('confirmCancelToast');
+                    const confirmCancelToast = new bootstrap.Toast(confirmCancelToastElement);
+                    confirmCancelToast.show();
+                } 
+                else if (event.target.id === 'boton_reservar') {
+                    // agregar la lógica
+                    console.log('Reserva confirmada');
+                }
+            });
+        
+            // Delegación de eventos para los botones del toast
+            document.body.addEventListener('click', function (event) {
+                if (event.target.id === 'confirmYes') {
+                    const confirmCancelToastElement = document.getElementById('confirmCancelToast');
+                    const confirmCancelToast = new bootstrap.Toast(confirmCancelToastElement);
+                    confirmCancelToast.hide();
+        
+                    const cancelToastElement = document.getElementById('cancelToast');
+                    const cancelToast = new bootstrap.Toast(cancelToastElement);
+                    cancelToast.show();
+                    
+                } 
+                else if (event.target.id === 'confirmNo') {
+                    const confirmCancelToastElement = document.getElementById('confirmCancelToast');
+                    const confirmCancelToast = new bootstrap.Toast(confirmCancelToastElement);
+                    confirmCancelToast.hide();
+                }
+            });
     }
     else {
         $div.innerHTML = '';
     }
 }
+

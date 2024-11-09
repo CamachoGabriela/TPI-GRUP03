@@ -6,10 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/STYLES/styles.css">
     <link rel="stylesheet" href="/STYLES/consulta_butacas.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-   
     <title>Reservar Butacas</title>
 </head>
 
@@ -28,7 +31,7 @@
                 <a href="/PAGES/login.html" class="nav-link text-light">Login</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link text-light">Reservar</a>
+                <a href="/PAGES/consulta_butacas.html" class="nav-link text-light">Reservar</a>
               </li>
             </ul>
           </nav>
@@ -53,8 +56,31 @@
         </div>
         <div class="contenedor-butacas d-flex">
           <div id="butacas_cargadas" class="mt-3" style="display: none;"></div>
-          <div id="datos_butaca" class="p-4 mt-4" style="display: none;"></div>
+          <div id="datos_butaca" class="p-4" style="display: none;"></div>
         </div>
+        <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11;">
+          <!-- Toast de Confirmación -->
+          <div id="confirmCancelToast" class="toast align-items-center text-white bg-secondary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="d-flex">
+                  <div class="toast-body">
+                      ¿Está seguro de que desea cancelar la reserva?
+                      <button id="confirmYes" type="button" class="btn btn-dark ms-2">Sí</button>
+                      <button id="confirmNo" type="button" class="btn btn-secondary ms-2">No</button>
+                  </div>
+              </div>
+          </div>
+          <!-- Toast de Cancelación Exitosa -->
+          <div id="cancelToast" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="d-flex">
+                  <div class="toast-body">
+                      Reserva cancelada correctamente.
+                  </div>
+                  <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+          </div>
+      </div>
+      
+      
     </main>
 
     <div id="sidebar" class="sidebar position-fixed" >
@@ -71,12 +97,16 @@
             <a href="/PAGES/register.html" class="register sidebar-link"><i class="bi bi-person-plus"></i><span>Registrarse</span></a>
           </li>
           <li class="sidebar-item">
-            <a href="#" class="sidebar-link "><i class="bi bi-camera-reels"></i><span>Reservar</span></a>
+            <a href="/PAGES/consulta_butacas.html" class="sidebar-link "><i class="bi bi-camera-reels"></i><span>Reservar</span></a>
           </li>
         </ul>
       </div>
     <script src="/JS/Functions.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"crossorigin="anonymous"></script>
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous">
+    </script>
     <script src="/JS/consultaButaca.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', async () => { 
