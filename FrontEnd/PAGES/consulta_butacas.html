@@ -51,7 +51,7 @@
                   <label for="funcion_select" class="form-label me-2">Función:</label>
                   <select name="funcion" id="funcion_select" class="form-select"></select>
               </div>
-                <input id="boton_consultar" type="button" class="btn btn-dark mt-4 ms-5 mt-md-0" value="Consultar">
+               <!--  <input id="boton_consultar" type="button" class="btn btn-dark mt-4 ms-5 mt-md-0" value="Consultar"> -->
             </div>
         </div>
         <div class="contenedor-butacas d-flex">
@@ -121,6 +121,12 @@
             
             try
             {
+              // Añadir una opción en blanco al principio 
+                const emptyOption = document.createElement('option'); 
+                emptyOption.value = ''; 
+                emptyOption.text = 'Seleccione una película'; 
+                $pelicula.appendChild(emptyOption);
+                
                 // Obtener películas
                 const responsePeliculas = await fetch('https://localhost:7170/api/Pelicula');
                 if (!responsePeliculas.ok) {
@@ -133,7 +139,20 @@
                     peli.text = e.titulo
                     $pelicula.appendChild(peli);
                 });
-                await cargar_funciones();
+                // Ocultar butacas si la opción vacía está seleccionada 
+                const $contenedor = document.getElementById('butacas_cargadas'); 
+                if ($pelicula.value === '') { 
+                  $contenedor.style.display = 'none'; 
+                } 
+                // Añadir un event listener para gestionar el cambio de la selección 
+                $pelicula.addEventListener('change', function() { 
+                  if ($pelicula.value === '') { 
+                    $contenedor.style.display = 'none'; 
+                    $contenedor.innerHTML = ''; // Limpiar el contenido del contenedor 
+                  } else { 
+                    cargar_funciones(); // Cargar funciones si se selecciona una película 
+                  } 
+                  });
             }catch (error){
                 console.error('Ha ocurrido un error al cargar las salas:', error);
             }

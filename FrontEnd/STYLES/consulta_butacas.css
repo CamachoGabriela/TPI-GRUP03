@@ -90,7 +90,7 @@ body{
 }
 .butaca p {
     position: absolute;
-    bottom: 9px;
+    bottom: 3px; 
     right: 9px;
     font-size: 0.8em;
     color: #151200;
@@ -106,14 +106,14 @@ body{
     transform: scale(1.05);
 }
 .butaca_ocupada {
-    width: 35px; /**/
-    height: 45px; /**/
+    width: 28px;
+    height: 45px; 
     position: relative;
 }
 .butaca_ocupada p {
     position: absolute;
-    bottom: 9px; /**/
-    right: 9px; /**/
+    bottom: 3px; 
+    right: 9px; 
     font-size: 0.8em;
     color: #000000;
     font-weight: bold;

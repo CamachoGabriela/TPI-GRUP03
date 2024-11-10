@@ -1,4 +1,4 @@
-document.getElementById('boton_consultar').addEventListener('click', async function() {
+async function cargar_butacas() { 
     datos_butaca(null); //limpiar datos de la butaca
     const $div = document.getElementById('butacas_cargadas');
     const $selectP = document.getElementById('pelicula_select');
@@ -25,13 +25,22 @@ document.getElementById('boton_consultar').addEventListener('click', async funct
             for (let j = 0; j < 10; j++) {
                 let butaca_img =  'Libre.png'
                 let clase = 'butaca' //cambia el comportamiento del css
+                let onclick = 'handleButacaClick(this)' //evita que se iplemente la funcion de seleccionar
                 //valida si es una butaca reservable
-                if(data[cont].estado == 1 ){butaca_img =  'Ocupado.png';clase = 'butaca_ocupada';}
+                if(data[cont].estado == 1 ){butaca_img =  'Ocupado.png';clase = 'butaca_ocupada';onclick = ''}
                 //si es una butaca pendiente le pone la imagen correspondiente
-                if(data[cont].estado == 2){butaca_img = 'reservado.png';clase = 'butaca_ocupada';}
+                if(data[cont].estado == 2){butaca_img = 'reservado.png';clase = 'butaca_ocupada';onclick = ''}
                 images += //creando las butacas
                 `
-                <div class="butaca" data-id="${data[cont].idButaca}" data-sala="${fpartes[0]}" data-pelicula="${$selectP.options[$selectP.selectedIndex].textContent}" data-funcion="${fpartes[2]}" data-precio="${fpartes[3]}" onclick="handleButacaClick(this)">
+                <div 
+                    class="${clase}" 
+                    data-id="${data[cont].idButaca}" 
+                    data-sala="${fpartes[0]}" 
+                    data-pelicula="${$selectP.options[$selectP.selectedIndex].textContent}" 
+                    data-funcion="${fpartes[2]}" 
+                    data-precio="${fpartes[3]}" 
+                    onclick="${onclick}"
+                >
                     <img class="butaca_img" src="/IMAGES/${butaca_img}" alt="butaca">
                     <p class="align-middle mb-2" id="" style="font-size: 0.6em;">${data[cont].nroButaca}</p>
                 </div>
@@ -43,7 +52,7 @@ document.getElementById('boton_consultar').addEventListener('click', async funct
     }catch(error){
         alert('error al cargar las butacas');
     }
-})
+}
 
 function toggleSelected(element) {
     const img = element.querySelector('.butaca_img');
@@ -74,15 +83,21 @@ function handleButacaClick(element) {
     }
 }
 
-document.getElementById('funcion_select').addEventListener('change', cargar_butacas); //cargar butacas al elegir una funcion
-document.getElementById('pelicula_select').addEventListener('change', cargar_funciones); //escucha de cambio del select de peliculas
 async function cargar_funciones(){
     // Obtener funciones
     const $selectP = document.getElementById('pelicula_select');
     const $selectF =  document.getElementById('funcion_select');
+    const $contenedor = document.getElementById('butacas_cargadas');
     try
-    {
-        $selectF.innerHTML = ''
+    {        
+        $selectF.innerHTML = '';
+
+        // Añadir una opción en blanco al principio 
+        const emptyOption = document.createElement('option'); 
+        emptyOption.value = ''; 
+        emptyOption.text = 'Seleccione una función'; 
+        $selectF.appendChild(emptyOption);
+
         const responseFunciones = await fetch(`https://localhost:7170/api/Funcion/Film/${$selectP.options[$selectP.selectedIndex].value}`);
         if (!responseFunciones.ok) {
             throw new Error('Error al cargar las funciones: ' + responseFunciones.statusText);
@@ -100,13 +115,26 @@ async function cargar_funciones(){
             option.value = `${funcion.idSala},${funcion.idFuncion},${funcion.precioBase},${option.text}`; // {idSala,idFuncion,precioBase,funcion}; //{idSala,idFuncion,funcion} datos para pasar a las butacas
             $selectF.appendChild(option);
         });
-
-        //desactivar boton cuando el select no tenga ningún option
-        if($selectF.childElementCount == 0) {
-            cargar_butacas(); //cargar butacas si hay funciones
+        // Ocultar el contenedor de butacas si la opción vacía está seleccionada 
+        if ($selectF.value === '') { 
+            $contenedor.style.display = 'none'; 
+        } else { 
+            $contenedor.style.display = 'flex'; 
+            cargar_butacas(); 
         }
+        $selectF.addEventListener('change', function() { 
+            if ($selectF.value === '') { 
+                $contenedor.style.display = 'none'; 
+                $contenedor.innerHTML = ''; // Limpiar el contenido del contenedor 
+            } else { 
+                $contenedor.style.display = 'flex'; 
+                cargar_butacas(); // Cargar butacas si se selecciona una función 
+            } 
+        }); 
+        
+    } catch (error) { 
+        console.error('Ha ocurrido un error al cargar las funciones: ', error);
     }
-    catch (error) {console.error('Ha ocurrido un error al cargar las funciones: ', error);}
 }
 
 async function datos_butaca(datos = null){ //opcion de ser nulo para que si no se le pasa ningún parametro limpie los datos
