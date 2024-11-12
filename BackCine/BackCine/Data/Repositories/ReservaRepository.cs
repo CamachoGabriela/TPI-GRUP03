@@ -108,7 +108,7 @@ namespace BackCine.Data.Repositories
 
         public async Task<List<Reserva>> GetAll()
         {
-            return await _context.Reservas.Where(x=>x.IdEstado==3).ToListAsync();
+            return await _context.Reservas.Where(x=>x.IdEstado!=3).ToListAsync();
         }
 
         public async Task<List<Reserva>> GetByCliente(int id)
@@ -204,14 +204,14 @@ namespace BackCine.Data.Repositories
         }
     }
 }
-
+//QUE LA CANTIDAD DE BUTACAS SEA IGUAL A LA CANTIDAD BUTACASIDS
 //      POST
 //{
 //    "reserva": {
 //        "idCliente": 1,
 //    "idFuncion": 15,
 //    "fechaReserva": "2024-11-04T23:25:09.805Z",
-//    "cantidadEntradas": 1,                                QUE LA CANTIDAD DE BUTACAS SEA IGUAL A LA CANTIDAD BUTACASIDS
+//    "cantidadEntradas": 1,                                
 //    "idEstado": 1,
 //    "idCompra": 1
 //    },

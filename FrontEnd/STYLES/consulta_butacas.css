@@ -120,3 +120,60 @@ body{
     text-align: center;
     margin: 0;
 }
+.ticktets-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1C1C1C;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.ticket {
+    width: 300px;
+    padding: 20px;
+    background-color: #fff;
+    border: 2px dashed #000;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.ticket::before, 
+.ticket::after { 
+    content: ''; 
+    position: absolute; 
+    width: 10px; 
+    height: 10px; 
+    background-color: #fff; 
+    border: 2px dashed #000; 
+    border-radius: 50%; 
+} 
+.ticket::before { 
+    top: -12px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+} 
+.ticket::after { 
+    bottom: -12px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+} 
+.ticket h3 { 
+    font-weight: 600;
+    color: #000; 
+    margin-bottom: 15px; 
+    font-family: 'Courier New', Courier, monospace; 
+} 
+.ticket p { 
+    margin: 5px 0; 
+    font-size: 1.1em; 
+    font-family: 'Courier New', Courier, monospace; 
+} 
+.ticket .barcode { 
+    margin-top: 15px; 
+    border-top: 1px solid #000; 
+    padding-top: 10px; 
+    font-family: 'Courier New', Courier, monospace; 
+}

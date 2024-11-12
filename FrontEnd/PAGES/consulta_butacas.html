@@ -39,7 +39,7 @@
       </header>
 
 
-    <main class="contenido">
+    <main class="contenido" id="main-content">
         <div id="hide" class="content text-center mb-4">
             <h3 class="consultar mb-3 ">CONSULTAR BUTACAS DISPONIBLES</h3>
             <div id="carga_dinamica" class="d-flex align-items-center justify-content-center gap-3">
@@ -58,31 +58,48 @@
           <div id="butacas_cargadas" class="mt-3" style="display: none;"></div>
           <div id="datos_butaca" class="p-4" style="display: none;"></div>
         </div>
-        <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11;">
-          <!-- Toast de Confirmación -->
-          <div id="confirmCancelToast" class="toast align-items-center text-white bg-secondary border-0" role="alert" aria-live="assertive" aria-atomic="true">
-              <div class="d-flex">
-                  <div class="toast-body">
-                      ¿Está seguro de que desea cancelar la reserva?
-                      <button id="confirmYes" type="button" class="btn btn-dark ms-2">Sí</button>
-                      <button id="confirmNo" type="button" class="btn btn-secondary ms-2">No</button>
-                  </div>
-              </div>
+      </main>
+      
+      <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11;">
+        <!-- Toast de Confirmación -->
+        <div id="confirmCancelToast" class="toast align-items-center text-white bg-secondary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    ¿Está seguro de que desea cancelar la reserva?
+                    <button id="confirmYes" type="button" class="btn btn-dark ms-2">Sí</button>
+                    <button id="confirmNo" type="button" class="btn btn-secondary ms-2">No</button>
+                </div>
+            </div>
+        </div>
+        <!-- Toast de Cancelación Exitosa -->
+        <div id="cancelToast" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    Reserva cancelada correctamente.
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+        <!-- Toast de Reserva Exitosa -->
+    <div id="successToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+          <div class="toast-body">
+              ¡Reserva realizada con éxito!
           </div>
-          <!-- Toast de Cancelación Exitosa -->
-          <div id="cancelToast" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
-              <div class="d-flex">
-                  <div class="toast-body">
-                      Reserva cancelada correctamente.
-                  </div>
-                  <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-              </div>
-          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
-      
-      
-    </main>
-
+  </div>
+  <!-- Toast de Error al Reservar -->
+  <div id="errorToast" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+          <div class="toast-body">
+              No se pudo realizar la reserva. Intente nuevamente.
+          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+  </div>
+  
+      </div> 
     <div id="sidebar" class="sidebar position-fixed" >
         <button onclick="toggleMenu()" class="cerrar-btn d-flex"><i class="bi bi-x"></i></button>
   
@@ -119,6 +136,7 @@
         async function cargar_peli() {
             const $pelicula = document.getElementById('pelicula_select')
             const $funcion = document.getElementById('funcion_select')
+            const $contenedor = document.getElementById('butacas_cargadas'); 
             $funcion.value = '';
             try
             {
@@ -134,14 +152,13 @@
                     throw new Error('Error al cargar las películas: ' + responsePeliculas.statusText);
                 }
                 const peliculasData = await responsePeliculas.json();
-                await peliculasData.forEach(e => {
+                peliculasData.forEach(e => {
                     const peli =  document.createElement('option')
                     peli.value = e.idPelicula
                     peli.text = e.titulo
                     $pelicula.appendChild(peli);
                 });
                 // Ocultar butacas si la opción vacía está seleccionada 
-                const $contenedor = document.getElementById('butacas_cargadas'); 
                 if ($pelicula.value === '') { 
                   $contenedor.style.display = 'none'; 
                 } 
@@ -150,6 +167,7 @@
                   if ($pelicula.value === '') { 
                     $contenedor.style.display = 'none'; 
                     $contenedor.innerHTML = ''; // Limpiar el contenido del contenedor 
+                    $funcion.innerHTML = '';
                   } else { 
                     cargar_funciones(); // Cargar funciones si se selecciona una película 
                   } 

@@ -10,6 +10,6 @@ namespace BackCine.Data.Entities
     {
         public int IdButaca { get; set; }
         public int NroButaca { get; set; }
-        public int Estado { get; set; }
+        public int? Estado { get; set; }
     }
 }

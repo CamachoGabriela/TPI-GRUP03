@@ -23,18 +23,18 @@ namespace BackCine.Data.Repositories
             var butacas = await _context.Butacas.Where(b => b.IdSala == idSala).ToListAsync(); 
             var detalleButacas = await _context.DetalleButacas.Where(db => db.IdFuncion == idFuncion).Select(db => db.IdButaca).ToListAsync(); 
             var butacasReservadas = await _context.ButacasReservadas.Where(br => br.IdFuncion == idFuncion).ToListAsync(); 
-            var reservas = await _context.Reservas.ToListAsync(); var result = (from b in butacas
-                                                                                join br in butacasReservadas on b.IdButaca equals br?.IdButaca into brGroup
-                                                                                from br in brGroup.DefaultIfEmpty()
-                                                                                join r in reservas on br?.IdReserva equals r?.IdReserva into rGroup
-                                                                                from r in rGroup.DefaultIfEmpty()
-                                                                                select new ButacaConEstado
-                                                                                {
-                                                                                    IdButaca = b.IdButaca,
-                                                                                    NroButaca = b.NroButaca,
-                                                                                    Estado = (r != null) ? r.IdEstado : 0
-                                                                                }).ToList();
-
+            var reservas = await _context.Reservas.Where(r => r.IdFuncion == idFuncion).ToListAsync();
+            var result = (from b in butacas
+                          join br in butacasReservadas on b.IdButaca equals br?.IdButaca into brGroup
+                          from br in brGroup.DefaultIfEmpty()
+                          join r in reservas on br?.IdReserva equals r?.IdReserva into rGroup
+                          from r in rGroup.DefaultIfEmpty()
+                          select new ButacaConEstado
+                          {
+                              IdButaca = b.IdButaca,
+                              NroButaca = b.NroButaca,
+                              Estado = (r != null) ? r.IdEstado : null,
+                          }).ToList();
             return result;
 
         }

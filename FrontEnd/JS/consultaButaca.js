@@ -1,5 +1,5 @@
 async function cargar_butacas() { 
-    datos_butaca(null); //limpiar datos de la butaca
+    datos_butaca([]); //limpiar datos de la butaca
     const $div = document.getElementById('butacas_cargadas');
     const $selectP = document.getElementById('pelicula_select');
     const $selectF =  document.getElementById('funcion_select');
@@ -30,6 +30,11 @@ async function cargar_butacas() {
                 if(data[cont].estado == 1 ){butaca_img =  'Ocupado.png';clase = 'butaca_ocupada';onclick = ''}
                 //si es una butaca pendiente le pone la imagen correspondiente
                 if(data[cont].estado == 2){butaca_img = 'reservado.png';clase = 'butaca_ocupada';onclick = ''}
+                if (data[cont].estado === null) {
+                    butaca_img = 'Libre.png'; 
+                    clase = 'butaca'; 
+                    onclick = `actualizarEstadoButaca(${data[cont].idButaca})`; 
+                }
                 images += //creando las butacas
                 `
                 <div 
@@ -39,6 +44,7 @@ async function cargar_butacas() {
                     data-pelicula="${$selectP.options[$selectP.selectedIndex].textContent}" 
                     data-funcion="${fpartes[2]}" 
                     data-precio="${fpartes[3]}" 
+                    data-estado="${data[cont].estado}"
                     onclick="${onclick}"
                 >
                     <img class="butaca_img" src="/IMAGES/${butaca_img}" alt="butaca">
@@ -50,9 +56,29 @@ async function cargar_butacas() {
         }
         $div.innerHTML = images
     }catch(error){
-        alert('error al cargar las butacas');
+        console.error('error al cargar las butacas',error);
     }
 }
+// Función para actualizar el estado de una butaca 
+async function actualizarEstadoButaca(idButaca) { 
+    try { 
+
+        const response = await fetch(`https://localhost:7170/api/Reserva/actualizar-estado/${idButaca}`, { 
+            method: 'PUT', 
+            headers: { 
+                'Content-Type': 'application/json' 
+            }, 
+            body: JSON.stringify({ estado: 2}) // Estado 2 para pendiente 
+            }); 
+            if (!response.ok) { 
+                throw new Error(`No se pudo actualizar el estado de la butaca ${idButaca}`); 
+            } 
+            // Recargar butacas después de actualizar el estado 
+            cargar_butacas(); 
+        } catch (error) { 
+            console.error('Error al actualizar el estado de la butaca', error); 
+        } 
+    }
 
 function toggleSelected(element) {
     const img = element.querySelector('.butaca_img');
@@ -96,6 +122,11 @@ async function cargar_funciones(){
     const $contenedor = document.getElementById('butacas_cargadas');
     try
     {        
+        if (!$selectP || !$selectF || !$contenedor) { 
+            console.error('Uno o más elementos no se encontraron en el DOM.'); 
+            return;
+        }
+
         $selectF.innerHTML = '';
 
         // Añadir una opción en blanco al principio 
@@ -122,12 +153,6 @@ async function cargar_funciones(){
             $selectF.appendChild(option);
         });
         // Ocultar el contenedor de butacas si la opción vacía está seleccionada 
-        if ($selectF.value === '') { 
-            $contenedor.style.display = 'none'; 
-        } else { 
-            $contenedor.style.display = 'flex'; 
-            cargar_butacas(); 
-        }
         $selectF.addEventListener('change', function() { 
             if ($selectF.value === '') { 
                 $contenedor.style.display = 'none'; 
@@ -137,6 +162,9 @@ async function cargar_funciones(){
                 cargar_butacas(); // Cargar butacas si se selecciona una función 
             } 
         }); 
+        if ($selectF.value === '') { 
+            $contenedor.style.display = 'none';
+        }
         
     } catch (error) { 
         console.error('Ha ocurrido un error al cargar las funciones: ', error);
@@ -145,9 +173,14 @@ async function cargar_funciones(){
 
 async function datos_butaca(datosArray = []){ //opcion de ser nulo para que si no se le pasa ningún parametro limpie los datos
     const $div = document.getElementById('datos_butaca')
+    if (!$div) { 
+        console.error('No se encontró el elemento "datos_butaca" en el DOM.'); 
+        return; 
+    }
+
     $div.innerHTML = '';
 
-    if(datosArray.length > 0) {
+    if(Array.isArray(datosArray) && datosArray.length > 0) {
         try {
             //const bpartes = datosArray.split(','); //separando los datos recibidos desde un string
             const res = await fetch('https://localhost:7170/api/Butaca/Salas')
@@ -190,8 +223,38 @@ async function datos_butaca(datosArray = []){ //opcion de ser nulo para que si n
                     confirmCancelToast.show();
                 } 
                 else if (event.target.id === 'boton_reservar') {
-                    // agregar la lógica
-                    console.log('Reserva confirmada');
+                    const idCliente = 1  //document.getElementById('clienteId').value  agregar idCliente
+                    const idFuncion = document.getElementById('funcion_select').value.split(',')[0];
+                    const fechaReserva = new Date().toISOString();
+                    const butacasSeleccionadas = document.querySelectorAll('.butaca.selected');
+                    const cantidadEntradas =butacasSeleccionadas.length;
+                    const idEstado = 2;
+                    const idCompra = null;
+                    let nombreSala = '';
+                    let Precio = '';
+
+                    datosArray.forEach((datos) => {
+                        const bpartes = datos.split(','); // Separar los datos de la butaca
+                        nombreSala = data.find(s => s.idSala == bpartes[1]); // Encontrar la sala correspondiente
+                        Precio = bpartes[3];
+                    });
+
+                    const reservarData = {
+                        idCliente: idCliente,
+                        idFuncion: idFuncion,
+                        fechaReserva: fechaReserva,
+                        cantidadEntradas: cantidadEntradas,
+                        idEstado: idEstado,
+                        idCompra: idCompra,
+                        pelicula: document.getElementById('pelicula_select').selectedOptions[0]?.text,
+                        sala: nombreSala.descripcion,
+                        funcion: document.getElementById('funcion_select').selectedOptions[0]?.text,
+                        precio: Precio,  // Ajusta según la lógica de cálculo de precios
+                    };
+                    //obtener ids butacas seleccionadas
+                    const butacasIds = Array.from(butacasSeleccionadas).map(b => b.getAttribute('data-id'));
+                    //reservar
+                    realizarReserva(butacasIds, reservarData);
                 }
             });
         
@@ -205,6 +268,8 @@ async function datos_butaca(datosArray = []){ //opcion de ser nulo para que si n
                     const cancelToastElement = document.getElementById('cancelToast');
                     const cancelToast = new bootstrap.Toast(cancelToastElement);
                     cancelToast.show();
+
+                    document.getElementById('main-content').style.display = 'none';
                     
                 } 
                 else if (event.target.id === 'confirmNo') {
@@ -217,5 +282,76 @@ async function datos_butaca(datosArray = []){ //opcion de ser nulo para que si n
             console.error("Error al cargar los datos:", error);
         }
     }           
+}
+
+async function realizarReserva(butacasIds, reservaData) {
+    try {
+        
+        const bodyData = {
+            reserva: {
+                idCliente: reservaData.idCliente,
+                idFuncion: reservaData.idFuncion,
+                fechaReserva: reservaData.fechaReserva,
+                cantidadEntradas: reservaData.cantidadEntradas,
+                idEstado: reservaData.idEstado,
+                idCompra: reservaData.idCompra
+            },
+            butacasIds: butacasIds
+        };
+
+        const response = await fetch('https://localhost:7170/api/Reserva', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(bodyData),
+        });
+
+        if (response.ok) {
+            const successToastElement = document.getElementById('successToast');
+            if (successToastElement) {
+                const successToast = new bootstrap.Toast(successToastElement);
+                successToast.show();
+            }
+
+            mostrarTickets(butacasIds, reservaData);
+        }   else {
+                throw new Error('No se pudo realizar la reserva');
+        }
+    } catch (error) {
+        console.error('Error al realizar la reserva:', error);
+        const errorToastElement = document.getElementById('errorToast');
+        if (errorToastElement) {
+            const errorToast = new bootstrap.Toast(errorToastElement);
+            errorToast.show();
+        }
+    }
+}
+function mostrarTickets(butacasIds, reservaData) {
+    const mainContent = document.getElementById('main-content');
+    const $hideDiv = document.getElementById('hide');
+    const $contenedor = document.getElementById('contenedor-butacas');
+    $hideDiv.style.display = 'none';
+    $contenedor.style.display = 'none';
+     
+
+    const ticktetsContainer = document.createElement('div');
+    ticktetsContainer.className = 'ticktets-container p-4 rounded mb-4';
+
+    butacasIds.forEach((id) => {
+        const ticket = document.createElement('div');
+        ticket.className = 'ticket bg-light text-dark p-4 rounded mb-3 shadow-sm';
+        ticket.innerHTML = `
+            <h3 class="text-center mb-3">Ticket de Reserva</h3>
+            <p><strong>N° Butaca:</strong> ${id}</p>
+            <p><strong>Película:</strong> ${reservaData.pelicula}</p>
+            <p><strong>Sala:</strong> ${reservaData.sala}</p>
+            <p><strong>Función:</strong> ${reservaData.funcion}</p>
+            <p><strong>Precio:</strong> $${reservaData.precio}</p>
+            <p class="barcode">|||||||||||||||||||||||||||||||||||||||</p>
+        `;
+        ticktetsContainer.appendChild(ticket);
+    });
+    mainContent.appendChild(ticktetsContainer);
 }
 
