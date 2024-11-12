@@ -32,7 +32,7 @@
         </div>
       </header>
 
-    <div class="contenido">
+   <!--  <div class="contenido">
         <h1 class="regis">Registrarse</h1>
         <div class="regisU">
             <form class="form_r">          
@@ -85,7 +85,81 @@
             
         </div>
 
-    </div>
+    </div> -->
+
+    <div class="contenido d-flex justify-content-center">
+      <div class="regisU p-4 rounded-4">
+          <h1 class="regis text-center mb-2">Crear Cuenta</h1>
+          <form class="form rounded-2">
+              <div class="row">
+                  <!-- Columna izquierda -->
+                  <div class="col-md-6">
+                      <div class="mb-2">
+                          <label class="labels form-label" for="nombre">Nombre</label>
+                          <input class="inputs form-control" type="text" id="nombre" placeholder="Ingrese su nombre" required>
+                      </div>
+                      <div class="mb-2">
+                          <label class="labels form-label" for="tipoDni">Tipo de DNI</label>
+                          <select class="inputs form-select" id="tipoDni" required>
+                              <option value="" disabled selected>Seleccione el tipo de DNI</option>
+                              <option value="dni">DNI</option>
+                              <option value="pasaporte">Pasaporte</option>
+                              <option value="cedula">Cédula</option>
+                          </select>
+                      </div>
+                      <div class="mb-2">
+                          <label class="labels form-label" for="correo">Correo</label>
+                          <input class="inputs form-control" type="email" id="correo" placeholder="Ingrese su correo" required>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4 mb-2">
+                            <label class="labels form-label" for="numero">Altura</label>
+                            <input class="inputs form-control" type="text" id="numero" placeholder="Altura" required>
+                        </div>
+                        <div class="col-md-8 mb-2">
+                            <label class="labels form-label" for="barrio">Barrio</label>
+                            <select class="inputs form-select" id="barrio" required>
+                              <option value="" disabled selected>Seleccione su Barrio</option>
+                              <option value="NuevaCba">Nueva Córdoba</option>
+                              <option value="GeneralPaz">General Paz</option>
+                              <option value="Recoleta">Recoleta</option>
+                              <option value="Centro">Centro</option>
+                          </select>
+                        </div>
+                    </div>
+                      <div class="mb-2">
+                          <label class="labels form-label" for="contraseña">Contraseña</label>
+                          <input class="inputs form-control" type="password" id="contraseña" placeholder="Ingrese su contraseña" required>
+                      </div>
+                  </div>
+                  <!-- Columna derecha -->
+                  <div class="col-md-6">
+                      <div class="mb-2">
+                          <label class="labels form-label" for="apellido">Apellido</label>
+                          <input class="inputs form-control" type="text" id="apellido" placeholder="Ingrese su apellido" required>
+                      </div>
+                      <div class="mb-2">
+                          <label class="labels form-label" for="dni">DNI</label>
+                          <input class="inputs form-control" type="text" id="dni" placeholder="Ingrese su DNI" required>
+                      </div>
+                      <div class="mb-2">
+                          <label class="labels form-label" for="fechaNacimiento">Fecha de Nacimiento</label>
+                          <input class="inputs form-control" type="date" id="fechaNacimiento" required>
+                      </div>
+                      <div class="mb-2">
+                          <label class="labels form-label" for="calle">Calle</label>
+                          <input class="inputs form-control" type="text" id="calle" placeholder="Ingrese su calle" required>
+                      </div>
+                      <div class="mb-2">
+                          <label class="labels form-label" for="confirmarContraseña">Confirmar Contraseña</label>
+                          <input class="inputs form-control" type="password" id="confirmarContraseña" placeholder="Confirme su contraseña" required>
+                      </div>
+                  </div>
+              </div>
+              <button class="acceder btn btn-dark w-100" type="submit">Confirmar</button>
+          </form>        
+      </div>
+  </div>
 
     <div id="sidebar" class="sidebar position-fixed " >
         <button onclick="toggleMenu()" class="cerrar-btn d-flex"><i class="bi bi-x"></i></button>
