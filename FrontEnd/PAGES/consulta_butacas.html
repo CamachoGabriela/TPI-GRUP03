@@ -118,7 +118,8 @@
         });
         async function cargar_peli() {
             const $pelicula = document.getElementById('pelicula_select')
-            
+            const $funcion = document.getElementById('funcion_select')
+            $funcion.value = '';
             try
             {
               // Añadir una opción en blanco al principio 

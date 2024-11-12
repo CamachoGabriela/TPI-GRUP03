@@ -65,21 +65,27 @@ function toggleSelected(element) {
     }
 }
 function handleButacaClick(element) {
-    const id = element.getAttribute('data-id');
-    const sala = element.getAttribute('data-sala');
-    const pelicula = element.getAttribute('data-pelicula');
-    const funcion = element.getAttribute('data-funcion');
-    const precio = element.getAttribute('data-precio');
-
     // Llamar a toggleSelected para manejar la selección
     toggleSelected(element);
 
-    // Si la butaca está seleccionada, mostrar sus datos
-    if (element.classList.contains('selected')) {
-        datos_butaca(`${id},${sala},${pelicula},${funcion},${precio}`);
-        document.getElementById('datos_butaca').style.display = 'block'; // Mostrar datos_butaca
+    const selectedButacas = document.querySelectorAll('.butaca.selected');
+
+     // Construir un array con los datos de cada butaca seleccionada
+     const datosArray = Array.from(selectedButacas).map(butaca => {
+        const id = butaca.getAttribute('data-id');
+        const sala = butaca.getAttribute('data-sala');
+        const pelicula = butaca.getAttribute('data-pelicula');
+        const funcion = butaca.getAttribute('data-funcion');
+        const precio = butaca.getAttribute('data-precio');
+        return `${id},${sala},${pelicula},${funcion},${precio}`;
+    });
+
+    if (datosArray.length > 0) {
+        datos_butaca(datosArray); // Mostrar los datos de las butacas seleccionadas
+        document.getElementById('datos_butaca').style.display = 'block'; // Mostrar el contenedor de datos
     } else {
         datos_butaca(null); // Limpiar los datos si se deselecciona
+        document.getElementById('datos_butaca').style.display = 'none'; // Ocultar el contenedor de datos
     }
 }
 
@@ -137,31 +143,46 @@ async function cargar_funciones(){
     }
 }
 
-async function datos_butaca(datos = null){ //opcion de ser nulo para que si no se le pasa ningún parametro limpie los datos
+async function datos_butaca(datosArray = []){ //opcion de ser nulo para que si no se le pasa ningún parametro limpie los datos
     const $div = document.getElementById('datos_butaca')
-    if(datos != null) {
-        const bpartes = datos.split(','); //separando los datos recibidos desde un string
-        const res = await fetch('https://localhost:7170/api/Butaca/Salas')
-        if(!res.ok) {
-            alert('error al cargar las salas');
-            return
-        }
-        const data = await res.json();
-        let sala = data.find(s => s.idSala == bpartes[1]) //obteniendo el nombre de las salas
-        let precio = bpartes[3];
-        $div.innerHTML = 
-        `
-            <div>
-            <p>N° Butaca: <span style="color: white;">${bpartes[0]}</span></p>        <!--el span es para poner los datos en color blanco-->
-            <p>Película: <span style="color: white;">${bpartes[2]}</span></p>
-            <p>Sala: <span style="color: white;">${sala.descripcion}</span></p>
-            <p>Precio: <span style="color: white;">$${precio}</span></p>
-            <div class="contenedor-btn d-flex justify-content-center">
-            <input id="boton_reservar" type="button" class="btn btn-secondary button" value="Reservar">
-            <input id="boton_cancelar" type="button" class="btn btn-dark button" value="Cancelar">
-            </div>
-            </div>
+    $div.innerHTML = '';
+
+    if(datosArray.length > 0) {
+        try {
+            //const bpartes = datosArray.split(','); //separando los datos recibidos desde un string
+            const res = await fetch('https://localhost:7170/api/Butaca/Salas')
+            if(!res.ok) {
+                alert('error al cargar las salas');
+                return
+            }
+            const data = await res.json();
+            //let sala = data.find(s => s.idSala == bpartes[1]) //obteniendo el nombre de las salas
+            datosArray.forEach((datos) => {
+                const bpartes = datos.split(','); // Separar los datos de la butaca
+                const sala = data.find(s => s.idSala == bpartes[1]); // Encontrar la sala correspondiente
+                const precio = bpartes[3];
+                const numeroButaca = bpartes[0];
+                const pelicula = bpartes[2];
+    
+                $div.innerHTML += 
+                `
+                    <div>
+                    <p>N° Butaca: <span style="color: white;">${numeroButaca}</span></p>        <!--el span es para poner los datos en color blanco-->
+                    <p>Película: <span style="color: white;">${pelicula}</span></p>
+                    <p>Sala: <span style="color: white;">${sala.descripcion}</span></p>
+                    <p>Precio: <span style="color: white;">$${precio}</span></p>
+                    </div>
+                    `;
+            })
+            $div.innerHTML += 
+            `
+                <div class="contenedor-btn d-flex justify-content-center">
+                    <input id="boton_reservar" type="button" class="btn btn-secondary button" value="Reservar">
+                    <input id="boton_cancelar" type="button" class="btn btn-dark button" value="Cancelar">
+                </div>
             `;
+            //let precio = bpartes[3];
+
             $div.addEventListener('click', function (event) {
                 if (event.target.id === 'boton_cancelar') {
                     const confirmCancelToastElement = document.getElementById('confirmCancelToast');
@@ -192,9 +213,9 @@ async function datos_butaca(datos = null){ //opcion de ser nulo para que si no s
                     confirmCancelToast.hide();
                 }
             });
-    }
-    else {
-        $div.innerHTML = '';
-    }
+        } catch (error) {
+            console.error("Error al cargar los datos:", error);
+        }
+    }           
 }
 
