@@ -13,7 +13,7 @@ namespace BackCine.Data.Interfaces
         Task<Reserva?> GetById(int id);
         Task<List<Reserva>> GetByCliente(int id);
         Task<bool> CreateReserve(Reserva reserva, List<int> butacasIds);
-        Task<bool> UpdateStatus(int id, int nuevoEstado);
+        Task<bool> UpdateStatus(int idButaca, int nuevoEstado, int idFuncion);
         Task<bool> UpdateButacas(int idReserva, List<int> nuevasButacasIds);
         Task<bool> CheckAvailability(int idFuncion, int idButaca, int idSala);
         Task<bool> Cancel(int id);

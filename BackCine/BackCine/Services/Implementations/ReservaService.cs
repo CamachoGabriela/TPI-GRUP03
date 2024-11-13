@@ -22,13 +22,13 @@ namespace BackCine.Services.Implementations
             return await _repository.UpdateButacas(id, nuevasButacasIds);
         }
 
-        public async Task<bool> ActualizarEstado(int id, int nuevoEstado)
+        public async Task<bool> ActualizarEstado(int idButaca, int nuevoEstado, int idFuncion)
         {
             if (nuevoEstado != 1 && nuevoEstado != 2)
             {
                 throw new ArgumentException("El estado solo puede ser actualizado a Pendiente o Confirmado.");
             } 
-            return await _repository.UpdateStatus(id,nuevoEstado);
+            return await _repository.UpdateStatus(idButaca,nuevoEstado, idFuncion);
         }
 
         public async Task<bool> CancelarReserva(int id)

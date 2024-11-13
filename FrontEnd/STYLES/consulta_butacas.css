@@ -12,7 +12,7 @@ body{
     padding: 20px;
     background:  #1C1C1C;
     height: 100vh;
-    overflow-y: auto;
+    /* overflow-y: auto; */
 }
 .form-label{
     color: #ffd700;
@@ -25,13 +25,23 @@ body{
 }
 #datos_butaca{
     flex: 1;
+/*     height: 270px;
+    overflow-y: auto;
+    background-color: rgb(53, 53, 53); */
 }
 #datos_butaca div p{
     color: #ffd700;
     text-align: start;
     padding-left: 20%;
 }
+/* .datos-div {
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+    padding-top: 10px;
+} */
 .contenedor-btn{
+    /* direction: flex;
+    justify-content: center; */
     width: 80%;
     margin-left: 5%;
 }
@@ -59,9 +69,6 @@ body{
     margin: 0 10% 0 16%;
 }
 #butacas_cargadas {
-   /*  display: none;
-    position: absolute;
-    top: 37%; */
     flex-wrap: wrap;
     flex: 2;
     justify-content: center;

@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|c:\\users\\gabri\\desktop\\tpi-grupo3\\backcine\\cinewebapi\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|solutionrelative:cinewebapi\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9727F002-3CC3-465E-9544-306944ADB4E6}|BackCine\\BackCine.csproj|c:\\users\\gabri\\desktop\\tpi-grupo3\\backcine\\backcine\\data\\repositories\\reservarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9727F002-3CC3-465E-9544-306944ADB4E6}|BackCine\\BackCine.csproj|solutionrelative:backcine\\data\\repositories\\reservarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9727F002-3CC3-465E-9544-306944ADB4E6}|BackCine\\BackCine.csproj|c:\\users\\gabri\\desktop\\tpi-grupo3\\backcine\\backcine\\services\\implementations\\reservaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9727F002-3CC3-465E-9544-306944ADB4E6}|BackCine\\BackCine.csproj|solutionrelative:backcine\\services\\implementations\\reservaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|c:\\users\\gabri\\desktop\\tpi-grupo3\\backcine\\cinewebapi\\controllers\\reservacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|solutionrelative:cinewebapi\\controllers\\reservacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9727F002-3CC3-465E-9544-306944ADB4E6}|BackCine\\BackCine.csproj|c:\\users\\gabri\\desktop\\tpi-grupo3\\backcine\\backcine\\data\\repositories\\butacarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9727F002-3CC3-465E-9544-306944ADB4E6}|BackCine\\BackCine.csproj|solutionrelative:backcine\\data\\repositories\\butacarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,15 +42,54 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UsuarioController.cs",
-              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\UsuarioController.cs",
-              "RelativeDocumentMoniker": "CineWebApi\\Controllers\\UsuarioController.cs",
-              "ToolTip": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\UsuarioController.cs",
-              "RelativeToolTip": "CineWebApi\\Controllers\\UsuarioController.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAA5wAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "ReservaController.cs",
+              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\ReservaController.cs",
+              "RelativeDocumentMoniker": "CineWebApi\\Controllers\\ReservaController.cs",
+              "ToolTip": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\ReservaController.cs",
+              "RelativeToolTip": "CineWebApi\\Controllers\\ReservaController.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAADgv1AAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-13T13:53:42.739Z",
+              "WhenOpened": "2024-11-13T18:42:25.539Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ReservaRepository.cs",
+              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\BackCine\\Data\\Repositories\\ReservaRepository.cs",
+              "RelativeDocumentMoniker": "BackCine\\Data\\Repositories\\ReservaRepository.cs",
+              "ToolTip": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\BackCine\\Data\\Repositories\\ReservaRepository.cs*",
+              "RelativeToolTip": "BackCine\\Data\\Repositories\\ReservaRepository.cs*",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAEwGEAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-13T18:43:35.766Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ReservaService.cs",
+              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\BackCine\\Services\\Implementations\\ReservaService.cs",
+              "RelativeDocumentMoniker": "BackCine\\Services\\Implementations\\ReservaService.cs",
+              "ToolTip": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\BackCine\\Services\\Implementations\\ReservaService.cs",
+              "RelativeToolTip": "BackCine\\Services\\Implementations\\ReservaService.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAArwDgAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-13T18:43:31.054Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ButacaRepository.cs",
+              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\BackCine\\Data\\Repositories\\ButacaRepository.cs",
+              "RelativeDocumentMoniker": "BackCine\\Data\\Repositories\\ButacaRepository.cs",
+              "ToolTip": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\BackCine\\Data\\Repositories\\ButacaRepository.cs",
+              "RelativeToolTip": "BackCine\\Data\\Repositories\\ButacaRepository.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwB8AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-13T15:37:28.925Z",
               "EditorCaption": ""
             }
           ]

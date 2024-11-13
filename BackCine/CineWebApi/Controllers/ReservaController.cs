@@ -89,17 +89,17 @@ namespace CineWebApi.Controllers
         }
 
         // PUT api/<ReservaController>/5
-        [HttpPut("actualizar-estado/{id}")]
+        [HttpPut("actualizar-estado/{idButaca}")]
         //[Authorize(Roles = "User,Admin")]
-        public async Task<IActionResult> PutState(int id, [FromBody] int estado)
+        public async Task<IActionResult> PutState(int idButaca, [FromQuery] int estado, [FromQuery] int idFuncion)
         {
             try
             {
                 if (estado == null)
                     return BadRequest("Debe ingresar los datos de la reserva");
-                if (id == 0 || id == null)
+                if (idButaca == 0 || idButaca == null )
                     return NotFound("Reserva no encontrada!");
-                if(await _service.ActualizarEstado(id, estado))
+                if(await _service.ActualizarEstado(idButaca, estado, idFuncion))
                 {
                     return Ok("Estado de la reserva actualizada exitosamente");
                 }

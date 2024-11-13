@@ -2,6 +2,7 @@
 using BackCine.Data.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using Org.BouncyCastle.Crypto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,18 +39,19 @@ namespace BackCine.Data.Repositories
 
         public async Task<bool> CreateReserve(Reserva reserva, List<int> butacasIds)
         {
+            using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {
                 var funcion = await _context.Funciones
                                    .Where(f => f.IdFuncion == reserva.IdFuncion)
                                    .Select(f => new { f.IdSala })
                                    .FirstOrDefaultAsync();
-                int idSala = funcion.IdSala;
-
-                if (!await _context.Funciones.AnyAsync(f => f.IdFuncion == reserva.IdFuncion))
+                if (funcion == null)
                 {
                     throw new Exception("La función especificada no existe.");
                 }
+                int idSala = funcion.IdSala;
+
                 //Verificar la disponibilidad de cada butaca
                 foreach (var idButaca in butacasIds)
                 {
@@ -93,14 +95,17 @@ namespace BackCine.Data.Repositories
                     bool butacasGuardadas = await _context.SaveChangesAsync() > 0;
                     if (butacasGuardadas)
                     {
+                        await transaction.CommitAsync();
                         Console.WriteLine($"Reserva {reserva.IdReserva} registrada exitosamente con butacas.");
                         return true;
                     }
                 }
+                await transaction.RollbackAsync();
                 return false;
             }
             catch (Exception ex)
             {
+                await transaction.RollbackAsync();
                 Console.WriteLine($"Error: {ex.Message}");
                 throw;
             }
@@ -108,7 +113,7 @@ namespace BackCine.Data.Repositories
 
         public async Task<List<Reserva>> GetAll()
         {
-            return await _context.Reservas.Where(x=>x.IdEstado!=3).ToListAsync();
+            return await _context.Reservas.Where(x => x.IdEstado != 3).ToListAsync();
         }
 
         public async Task<List<Reserva>> GetByCliente(int id)
@@ -194,13 +199,27 @@ namespace BackCine.Data.Repositories
             }
         }
 
-        public async Task<bool> UpdateStatus(int id, int nuevoEstado)
+        public async Task<bool> UpdateStatus(int idButaca, int nuevoEstado, int idFuncion)
         {
-            var reserva = await _context.Reservas.FindAsync(id);
-            if (reserva == null) return false;
-            
-            reserva.IdEstado = nuevoEstado;
-            return await _context.SaveChangesAsync() > 0;
+            bool aux = false;
+            var butacaReservada = await _context.ButacasReservadas
+                                        .Include(br=>br.IdReservaNavigation)
+                                        .FirstOrDefaultAsync(br => br.IdButaca == idButaca && br.IdFuncion == idFuncion);
+            var reserva = butacaReservada.IdReservaNavigation;
+            if (butacaReservada != null)
+            {
+                reserva = butacaReservada.IdReservaNavigation;
+                if (reserva == null) { return false; }
+                reserva.IdEstado = nuevoEstado;
+                _context.Reservas.Update(reserva);
+                await  _context.SaveChangesAsync();
+                aux = true;
+            }
+            else
+            {
+                Console.WriteLine("Butaca reservada no encontrada");
+            }
+            return aux;
         }
     }
 }

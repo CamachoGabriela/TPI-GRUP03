@@ -12,6 +12,7 @@ async function cargar_butacas() {
     try
     {
         const fpartes = await funcion.split(','); //al recibir un string y luego separarlo, se pueden asignar más de un id en el value de un option
+        console.log(fpartes)
         let res = await fetch(`https://localhost:7170/api/Butaca/SalaFuncion?idSala=${fpartes[0]}&idFuncion=${fpartes[1]}`);
         if (!res.ok)
             {
@@ -25,33 +26,42 @@ async function cargar_butacas() {
             for (let j = 0; j < 10; j++) {
                 let butaca_img =  'Libre.png'
                 let clase = 'butaca' //cambia el comportamiento del css
-                let onclick = 'handleButacaClick(this)' //evita que se iplemente la funcion de seleccionar
+                let onclick = 'handleButacaClick(this)' //evita que se implemente la funcion de seleccionar
                 //valida si es una butaca reservable
-                if(data[cont].estado == 1 ){butaca_img =  'Ocupado.png';clase = 'butaca_ocupada';onclick = ''}
-                //si es una butaca pendiente le pone la imagen correspondiente
-                if(data[cont].estado == 2){butaca_img = 'reservado.png';clase = 'butaca_ocupada';onclick = ''}
-                if (data[cont].estado === null) {
-                    butaca_img = 'Libre.png'; 
-                    clase = 'butaca'; 
-                    onclick = `actualizarEstadoButaca(${data[cont].idButaca})`; 
+                if (data[cont]) { 
+                    const estadoButaca = data[cont].estado;
+                    switch (estadoButaca) { 
+                        case 1: 
+                            butaca_img = 'Ocupado.png'; clase = 'butaca_ocupada'; onclick = ''; 
+                            break; 
+                        case 2: 
+                            butaca_img = 'Reservado.png'; clase = 'butaca_ocupada'; onclick = ''; 
+                            break; 
+                        case 3: 
+                            butaca_img = 'Libre.png'; clase = 'butaca'; onclick = `actualizarEstadoButaca(${data[cont].idButaca}, ${fpartes[1]}, 2)`;
+                            break; 
+                        default: butaca_img = 'Libre.png'; clase = 'butaca'; onclick = 'handleButacaClick(this)'; 
+                    } 
                 }
+                console.log(`Butaca ${data[cont]?.idButaca}: Estado ${data[cont]?.estado}, Imagen ${butaca_img}, Clase ${clase}`);
+
                 images += //creando las butacas
                 `
                 <div 
                     class="${clase}" 
-                    data-id="${data[cont].idButaca}" 
+                    data-id="${data[cont]?.idButaca}" 
                     data-sala="${fpartes[0]}" 
                     data-pelicula="${$selectP.options[$selectP.selectedIndex].textContent}" 
-                    data-funcion="${fpartes[2]}" 
-                    data-precio="${fpartes[3]}" 
-                    data-estado="${data[cont].estado}"
+                    data-funcion="${fpartes[1]}" 
+                    data-precio="${fpartes[2]}"
+                    data-estado="${data[cont]?.estado}" 
                     onclick="${onclick}"
                 >
                     <img class="butaca_img" src="/IMAGES/${butaca_img}" alt="butaca">
-                    <p class="align-middle mb-2" id="" style="font-size: 0.6em;">${data[cont].nroButaca}</p>
+                    <p class="align-middle mb-2" id="" style="font-size: 0.6em;">${data[cont]?.nroButaca}</p>
                 </div>
                 `
-                cont ++;
+                cont++;
             }
         }
         $div.innerHTML = images
@@ -60,21 +70,20 @@ async function cargar_butacas() {
     }
 }
 // Función para actualizar el estado de una butaca 
-async function actualizarEstadoButaca(idButaca) { 
+async function actualizarEstadoButaca(idButaca, idFuncion, estado) { 
     try { 
 
-        const response = await fetch(`https://localhost:7170/api/Reserva/actualizar-estado/${idButaca}`, { 
+        const response = await fetch(`https://localhost:7170/api/Reserva/actualizar-estado/${idButaca}?estado=${estado}&idFuncion=${idFuncion}`, {
             method: 'PUT', 
             headers: { 
                 'Content-Type': 'application/json' 
-            }, 
-            body: JSON.stringify({ estado: 2}) // Estado 2 para pendiente 
+            }
             }); 
             if (!response.ok) { 
                 throw new Error(`No se pudo actualizar el estado de la butaca ${idButaca}`); 
             } 
             // Recargar butacas después de actualizar el estado 
-            cargar_butacas(); 
+            await cargar_butacas(); 
         } catch (error) { 
             console.error('Error al actualizar el estado de la butaca', error); 
         } 
@@ -193,7 +202,7 @@ async function datos_butaca(datosArray = []){ //opcion de ser nulo para que si n
             datosArray.forEach((datos) => {
                 const bpartes = datos.split(','); // Separar los datos de la butaca
                 const sala = data.find(s => s.idSala == bpartes[1]); // Encontrar la sala correspondiente
-                const precio = bpartes[3];
+                const precio = bpartes[4];
                 const numeroButaca = bpartes[0];
                 const pelicula = bpartes[2];
     
@@ -214,7 +223,6 @@ async function datos_butaca(datosArray = []){ //opcion de ser nulo para que si n
                     <input id="boton_cancelar" type="button" class="btn btn-dark button" value="Cancelar">
                 </div>
             `;
-            //let precio = bpartes[3];
 
             $div.addEventListener('click', function (event) {
                 if (event.target.id === 'boton_cancelar') {
@@ -306,7 +314,7 @@ async function realizarReserva(butacasIds, reservaData) {
             },
             body: JSON.stringify(bodyData),
         });
-
+        console.log(response.body)
         if (response.ok) {
             const successToastElement = document.getElementById('successToast');
             if (successToastElement) {
@@ -331,27 +339,39 @@ function mostrarTickets(butacasIds, reservaData) {
     const mainContent = document.getElementById('main-content');
     const $hideDiv = document.getElementById('hide');
     const $contenedor = document.getElementById('contenedor-butacas');
-    $hideDiv.style.display = 'none';
-    $contenedor.style.display = 'none';
+    if ($hideDiv) {
+        $hideDiv.style.display = 'none';
+    } else {
+        console.warn("Elemento 'hide' no encontrado");
+    }
+
+    if ($contenedor) {
+        $contenedor.style.display = 'none';
+    } else {
+        console.warn("Elemento 'contenedor-butacas' no encontrado");
+    }
      
+    if (mainContent) {
+        const ticktetsContainer = document.createElement('div');
+        ticktetsContainer.className = 'ticktets-container p-4 rounded mb-4';
 
-    const ticktetsContainer = document.createElement('div');
-    ticktetsContainer.className = 'ticktets-container p-4 rounded mb-4';
-
-    butacasIds.forEach((id) => {
-        const ticket = document.createElement('div');
-        ticket.className = 'ticket bg-light text-dark p-4 rounded mb-3 shadow-sm';
-        ticket.innerHTML = `
-            <h3 class="text-center mb-3">Ticket de Reserva</h3>
-            <p><strong>N° Butaca:</strong> ${id}</p>
-            <p><strong>Película:</strong> ${reservaData.pelicula}</p>
-            <p><strong>Sala:</strong> ${reservaData.sala}</p>
-            <p><strong>Función:</strong> ${reservaData.funcion}</p>
-            <p><strong>Precio:</strong> $${reservaData.precio}</p>
-            <p class="barcode">|||||||||||||||||||||||||||||||||||||||</p>
-        `;
-        ticktetsContainer.appendChild(ticket);
-    });
-    mainContent.appendChild(ticktetsContainer);
+        butacasIds.forEach((id) => {
+            const ticket = document.createElement('div');
+            ticket.className = 'ticket bg-light text-dark p-4 rounded mb-3 shadow-sm';
+            ticket.innerHTML = `
+                <h3 class="text-center mb-3">Ticket de Reserva</h3>
+                <p><strong>N° Butaca:</strong> ${id}</p>
+                <p><strong>Película:</strong> ${reservaData.pelicula}</p>
+                <p><strong>Sala:</strong> ${reservaData.sala}</p>
+                <p><strong>Función:</strong> ${reservaData.funcion}</p>
+                <p><strong>Precio:</strong> $${reservaData.precio}</p>
+                <p class="barcode">|||||||||||||||||||||||||||||||||||||||</p>
+            `;
+            ticktetsContainer.appendChild(ticket);
+        });
+        mainContent.appendChild(ticktetsContainer);
+    } else {
+        console.error("Elemento 'main-content' no encontrado en el DOM");
+    }
 }
 
