@@ -152,6 +152,10 @@ i{
     margin: 1% 40% 0 34% !important;
 }
 
+.dropdown-menu .dropdown-item:hover {
+    color: #ffcc00 !important; 
+}
+
 
 
 /* BOTONES LOGIN/REGISTER */
