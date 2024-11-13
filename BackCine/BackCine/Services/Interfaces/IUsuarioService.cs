@@ -15,5 +15,9 @@ namespace BackCine.Services.Interfaces
         Task<bool> CheckPassword(string email, string password);
 
         Task<bool> DeleteUser(int id);
+
+        Task<Usuario?> ValidarLogin(string email, string contrasena);
+
+        string GenerarToken(Usuario usuario);
     }
 }

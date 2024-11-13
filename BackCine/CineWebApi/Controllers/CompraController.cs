@@ -1,5 +1,6 @@
 ﻿using BackCine.Data.Entities;
 using BackCine.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,7 @@ namespace CineWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize(Roles = "Admin")]
     public class CompraController : ControllerBase
     {
         private ICompraService _service;

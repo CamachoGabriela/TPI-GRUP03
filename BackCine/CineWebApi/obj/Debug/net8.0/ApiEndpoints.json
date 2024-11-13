@@ -904,8 +904,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "usuario",
-        "Type": "BackCine.Data.Entities.Usuario",
+        "Name": "request",
+        "Type": "BackCine.Data.Entities.LogRequest",
         "IsRequired": true
       }
     ],

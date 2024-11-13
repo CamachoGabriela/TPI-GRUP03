@@ -439,3 +439,4 @@ C:\Users\gabri\Desktop\TPI-Grupo3\BackCine\CineWebApi\obj\Debug\net8.0\refint\Ci
 C:\Users\gabri\Desktop\TPI-Grupo3\BackCine\CineWebApi\obj\Debug\net8.0\CineWebApi.pdb
 C:\Users\gabri\Desktop\TPI-Grupo3\BackCine\CineWebApi\obj\Debug\net8.0\CineWebApi.genruntimeconfig.cache
 C:\Users\gabri\Desktop\TPI-Grupo3\BackCine\CineWebApi\obj\Debug\net8.0\ref\CineWebApi.dll
+C:\Users\gabri\Desktop\TPI-Grupo3\BackCine\CineWebApi\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

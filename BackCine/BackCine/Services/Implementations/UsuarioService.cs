@@ -31,6 +31,11 @@ namespace BackCine.Services.Implementations
             return await _repository.DeleteUser(id);
         }
 
+        public string GenerarToken(Usuario usuario)
+        {
+            return _repository.GenerarToken(usuario);
+        }
+
         public async Task<Usuario?> GetByEmail(string email)
         {
             return await _repository.GetByEmail(email);
@@ -39,6 +44,11 @@ namespace BackCine.Services.Implementations
         public async Task<Usuario?> GetById(int id)
         {
             return await _repository.GetById(id);
+        }
+
+        public Task<Usuario?> ValidarLogin(string email, string contrasena)
+        {
+            return _repository.ValidarLogin(email, contrasena);
         }
     }
 }

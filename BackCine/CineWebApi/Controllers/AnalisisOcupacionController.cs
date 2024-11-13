@@ -1,4 +1,5 @@
 ﻿using BackCine.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,6 +7,7 @@ namespace CineWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize(Roles = "Admin")]
     public class AnalisisOcupacionController : ControllerBase
     {
         private readonly IAnalisisOcupacionService _service;

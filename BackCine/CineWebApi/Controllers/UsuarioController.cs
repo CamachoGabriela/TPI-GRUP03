@@ -1,5 +1,7 @@
 ﻿using BackCine.Data.Entities;
 using BackCine.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -17,6 +19,7 @@ namespace CineWebApi.Controllers
         }
 
         [HttpGet("{id}")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetById(int id)
         {
             try
@@ -30,6 +33,7 @@ namespace CineWebApi.Controllers
         }
 
         [HttpGet("email/{id}")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetByEmail(string email)
         {
             try
@@ -43,16 +47,27 @@ namespace CineWebApi.Controllers
         }
 
         [HttpPost("login")] 
-        public async Task<IActionResult> Login([FromBody] Usuario usuario) 
+        public async Task<IActionResult> Login([FromBody] LogRequest request) 
         {
             try
             {
-                var isValid = await _service.CheckPassword(usuario.Email, usuario.Contrasenha);
-                if (isValid)
+                if (request == null || !ModelState.IsValid)
                 {
-                    return Ok("Login exitoso.");
+                    return BadRequest("Credenciales no válidas.");
                 }
-                return Unauthorized("Email o contraseña inválidas.");
+
+                var usuario = await _service.ValidarLogin(request.Email, request.Contrasenha);
+
+                if (usuario == null)
+                {
+                    return Unauthorized("Credenciales incorrectas.");
+                }
+
+
+                var token = _service.GenerarToken(usuario);
+
+                return Ok(new { token });
+
             }
             catch (Exception ex)
             {
@@ -87,6 +102,7 @@ namespace CineWebApi.Controllers
 
 
         [HttpDelete("{id}")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             try
