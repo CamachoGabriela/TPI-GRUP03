@@ -69,5 +69,6 @@ namespace BackCine.Data.Repositories
         {
             return await _context.TiposDocumentos.ToListAsync();
         }
+
     }
 }
