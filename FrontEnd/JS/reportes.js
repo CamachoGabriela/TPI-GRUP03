@@ -20,9 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
 async function buscarDetallesCompras() {
     const fechaInicio = document.getElementById('fechaInicioCompra').value;
     const fechaFin = document.getElementById('fechaFinCompra').value;
+    const token = localStorage.getItem('jwt');
     try {
-        const response = await fetch(`https://localhost:7170/api/VistaDetallesCompra/detalles-por-fecha?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`);
-        if (!response.ok) {
+        const response = await fetch(`https://localhost:7170/api/VistaDetallesCompra/detalles-por-fecha?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`,{
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            if (!response.ok) {
             throw new Error('Error al consultar los reportes de venta');
         }
         const data = await response.json();
@@ -55,7 +61,12 @@ async function buscarAnalisisOcupacion() {
     const fechaFin = document.getElementById('fechaFinOcupacion').value;
     
     try {
-        const response = await fetch(`https://localhost:7170/api/AnalisisOcupacion/ocupacion?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`);
+        const response = await fetch(`https://localhost:7170/api/AnalisisOcupacion/ocupacion?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`,{
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
         if (!response.ok) {
             throw new Error('Error al consultar el análisis de ocupación');
         }

@@ -119,14 +119,17 @@ function showError(message) {
 // Asociar la función al evento de submit del formulario
 document.addEventListener("DOMContentLoaded", function() {
     const form = document.getElementById("login-form");
-    if (form) {
-        form.addEventListener("submit", realizarLogin);
-    } else {
-        console.error("No se encontró el formulario con id 'login-form'");
-    }
+    form.addEventListener("submit", realizarLogin);
+})
 
-    const errorMessageElement = document.getElementById("error-message");
-    if (!errorMessageElement) {
-        console.error("No se encontró el elemento con id 'error-message'");
+function MostrarContra(){
+    const $pass = document.getElementById("i-con");
+    $icon = document.querySelector(".bx");
+    $icon.addEventListener("click", e => {
+    if($pass.type === "password"){
+    $pass.type = "text";
+    }else{
+    $pass.type = "password";
     }
-});
+    })
+}

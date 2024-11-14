@@ -76,7 +76,7 @@ namespace CineWebApi.Controllers
         }
 
         [HttpGet("Film/{id}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "User,Admin")]
         public async Task<IActionResult> GetByFilm(int id)
         {
             try

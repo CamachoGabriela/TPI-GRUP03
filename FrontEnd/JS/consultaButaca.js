@@ -4,6 +4,8 @@ async function cargar_butacas() {
     const $selectP = document.getElementById('pelicula_select');
     const $selectF =  document.getElementById('funcion_select');
     const funcion =  $selectF.options[$selectF.selectedIndex].value;
+    const token = localStorage.getItem('jwt');
+
     
     $div.innerHTML = '';
     let images = '';
@@ -13,7 +15,12 @@ async function cargar_butacas() {
     {
         const fpartes = await funcion.split(','); //al recibir un string y luego separarlo, se pueden asignar más de un id en el value de un option
         console.log(fpartes)
-        let res = await fetch(`https://localhost:7170/api/Butaca/SalaFuncion?idSala=${fpartes[0]}&idFuncion=${fpartes[1]}`);
+        let res = await fetch(`https://localhost:7170/api/Butaca/SalaFuncion?idSala=${fpartes[0]}&idFuncion=${fpartes[1]}`,{
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }); 
         if (!res.ok)
             {
                 console.error('Ha ocurrido un error al cargar los datos: ' + res.statusText);
@@ -71,14 +78,16 @@ async function cargar_butacas() {
 }
 // Función para actualizar el estado de una butaca 
 async function actualizarEstadoButaca(idButaca, idFuncion, estado) { 
+    const token = localStorage.getItem('jwt');
     try { 
 
         const response = await fetch(`https://localhost:7170/api/Reserva/actualizar-estado/${idButaca}?estado=${estado}&idFuncion=${idFuncion}`, {
             method: 'PUT', 
             headers: { 
-                'Content-Type': 'application/json' 
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             }
-            }); 
+        });
             if (!response.ok) { 
                 throw new Error(`No se pudo actualizar el estado de la butaca ${idButaca}`); 
             } 
@@ -128,6 +137,7 @@ async function cargar_funciones(){
     const $selectP = document.getElementById('pelicula_select');
     const $selectF =  document.getElementById('funcion_select');
     const $contenedor = document.getElementById('butacas_cargadas');
+    const token = localStorage.getItem('jwt');
     try
     {        
         if (!$selectP || !$selectF || !$contenedor) { 
@@ -143,8 +153,12 @@ async function cargar_funciones(){
         emptyOption.text = 'Seleccione una función'; 
         $selectF.appendChild(emptyOption);
 
-        const responseFunciones = await fetch(`https://localhost:7170/api/Funcion/Film/${$selectP.options[$selectP.selectedIndex].value}`);
-        if (!responseFunciones.ok) {
+        const responseFunciones = await fetch(`https://localhost:7170/api/Funcion/Film/${$selectP.options[$selectP.selectedIndex].value}`,{
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });if (!responseFunciones.ok) {
             throw new Error('Error al cargar las funciones: ' + responseFunciones.statusText);
         }
         const funcionesData = await responseFunciones.json();
@@ -182,6 +196,7 @@ async function cargar_funciones(){
     async function datos_butaca(datosArray = []) {
         // Se obtiene el div que podría contener datos, pero en este caso ya no se usará para mostrar información
         const $div = document.getElementById('datos_butaca');
+        const token = localStorage.getItem('jwt');
         if (!$div) { 
             console.error('No se encontró el elemento "datos_butaca" en el DOM.'); 
             return; 
@@ -193,7 +208,12 @@ async function cargar_funciones(){
         // Si hay datos en datosArray, procederemos con la lógica de reserva
         if (Array.isArray(datosArray) && datosArray.length > 0) {
             try {
-                const res = await fetch('https://localhost:7170/api/Butaca/Salas');
+                const res = await fetch('https://localhost:7170/api/Butaca/Salas',{
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
                 if (!res.ok) {
                     alert('Error al cargar las salas');
                     return;
@@ -251,8 +271,24 @@ async function cargar_funciones(){
     }
 
 async function realizarReserva(butacasIds, reservaData) {
+    const token = localStorage.getItem('jwt');
     try {
-        
+        console.log(butacasIds.length);
+        // Validación: máximo 6 butacas por reserva
+        if (butacasIds.length > 6) {
+            console.error('No se puede reservar más de 6 butacas por persona');
+            
+            const errorToastElement = document.getElementById('errorToast');
+            if (errorToastElement) {
+                errorToastElement.classList.add('toast-error');
+                errorToastElement.innerText = 'No se puede reservar más de 6 butacas por persona';
+                const errorToast = new bootstrap.Toast(errorToastElement);
+                errorToast.show();
+            }
+            return; 
+        } else {
+            console.log("Número de butacas reservadas:", butacasIds.length);
+        }
         const bodyData = {
             reserva: {
                 idCliente: reservaData.idCliente,
@@ -268,7 +304,8 @@ async function realizarReserva(butacasIds, reservaData) {
         const response = await fetch('https://localhost:7170/api/Reserva', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(bodyData),
         });
@@ -293,12 +330,25 @@ async function realizarReserva(butacasIds, reservaData) {
                 }
             }
         }   else {
+            const errorData = await response.json(); // Captura el cuerpo de la respuesta de error
+            console.error('Error en la respuesta:', errorData);
+
+            // Muestra el mensaje de error en el toast
+            const errorToastElement = document.getElementById('errorToast');
+            if (errorToastElement) {
+                errorToastElement.classList.add('toast-error');
+                errorToastElement.innerText = `Error al realizar la reserva: ${errorData.message || 'Error desconocido'}`;
+                const errorToast = new bootstrap.Toast(errorToastElement);
+                errorToast.show();
+            }
                 throw new Error('No se pudo realizar la reserva');
         }
     } catch (error) {
         console.error('Error al realizar la reserva:', error);
         const errorToastElement = document.getElementById('errorToast');
         if (errorToastElement) {
+            errorToastElement.classList.add('toast-error');
+            errorToastElement.innerText = `Error al realizar la reserva: ${error.message}`;
             const errorToast = new bootstrap.Toast(errorToastElement);
             errorToast.show();
         }
@@ -322,7 +372,7 @@ function mostrarTickets(butacasIds, reservaData) {
                 <p><strong>Sala:</strong> ${reservaData.sala}</p>
                 <p><strong>Función:</strong> ${reservaData.funcion}</p>
                 <p><strong>Precio:</strong> $${reservaData.precio}</p>
-                <p class="barcode">|||||||||||||||||||||||||||||||||||</p>
+                <p class="barcode">|||||||||||||||||||||||</p>
                 `;
             mainContent.appendChild(ticket);
         });

@@ -31,6 +31,12 @@
             <li class="nav-item">
               <a href="/Index.html" class="nav-link text-light">Home</a>
             </li>
+            <li class="nav-item" id="login-link" >
+              <a  href="/PAGES/login.html" class="nav-link text-light">Login</a>
+            </li>
+            <li class="nav-item" id="register-link">
+              <a  href="/PAGES/register.html" class="nav-link text-light">Registrar</a>
+            </li>
             <li class="nav-item">
               <a href="/PAGES/consulta_butacas.html" class="nav-link text-light">Reservar</a>
             </li>
@@ -52,22 +58,31 @@
         <div id="sidebar" class="sidebar position-fixed" >
             <button onclick="toggleMenu()" class="cerrar-btn d-flex"><i class="bi bi-x"></i></button>
       
-            <ul class="sidebar-nav">
-              <li class="sidebar-item">
+            < <ul class="sidebar-nav">
+              <li class="sidebar-item" id="index-sidebar-link">
                 <a href="/Index.html" class="sidebar-link "><i class="bi bi-house"></i><span>Home</span></a>
-            </li>
-            <li class="sidebar-item dropdown">
-                <a href="#" class="reportes sidebar-link"><i class="bi bi-book"></i><span>Reportes</span></a>
+              </li>
+              <li id="login-sidebar-link" class="sidebar-item">
+                <a href="/PAGES/login.html" class="sidebar-link"><i class="bi bi-person"></i><span>Iniciar Sesión</span></a>
+              </li>
+              <li id="register-sidebar-link" class="sidebar-item">
+                <a href="/PAGES/register.html" class="sidebar-link"><i class="bi bi-person-plus"></i><span>Registrarse</span></a>
+              </li>
+              <li class="sidebar-item" id="reserva-sidebar-link">
+                <a href="/PAGES/consulta_butacas.html" class="sidebar-link "><i class="bi bi-camera-reels"></i><span>Reservar</span></a>
+              </li>
+              <li class="sidebar-item dropdown" id="report-sidebar-link">
+                <a href="/PAGES/reporte_venta.html" class="reportes sidebar-link"><i class="bi bi-book"></i><span>Reportes</span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="/PAGES/reporte_venta.html" class="dropdown-item text-light bg-dark"></a>Reporte de Ventas</li>
-                  <li><a href="/PAGES/analisis_ocupacion.html" class="dropdown-item text-light bg-dark"></a>Análisis de Ocupación</li>
+                  <li id="reportv-sidebar-link"><a href="/PAGES/reporte_venta.html" class="dropdown-item text-light bg-dark"></a>Reporte de Ventas</li>
+                  <li id="analisis-sidebar-link"><a href="/PAGES/analisis_ocupacion.html" class="dropdown-item text-light bg-dark"></a>Análisis de Ocupación</li>
                 </ul>
-            </li>
-            <li class="sidebar-item" id="logout-item">
-              <button id="logout-button" class="text-light">
-                  <i class="bi bi-box-arrow-left"></i><span>Cerrar sesión
-                </span> 
-              </button>
+              </li>
+              <li class="sidebar-item" id="logout-item">
+                <button id="logout-button" class="nav-link text-light">
+                    <i class="bi bi-box-arrow-left"></i><span>Cerrar sesión
+                  </span> 
+                </button>
             </li>
             </ul>
           </div>
@@ -110,7 +125,6 @@
                         <div class="chart-container"> 
                             <canvas id="ocupacionChart"></canvas>
                     </div>
-                    
     </main>
     
     <script src="/JS/Functions.js"></script>
@@ -120,6 +134,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="/JS/reportes.js"></script>
-    <script src="/JS/login.js"></script>
+    <script src="/JS/optionsForRole.js"></script>
   </body>
 </html>

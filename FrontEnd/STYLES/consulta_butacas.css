@@ -10,7 +10,7 @@ body{
     align-items: center;
     padding: 20px;
     background:  #1C1C1C;
-    height: 110vh;;
+    height: 130vh;;
 }
 .form-label{
     color: #ffd700;
@@ -37,11 +37,28 @@ body{
     font-size: 17px;
     padding: 10px;
 }
-#contenedor_butacas{
-    flex-direction: row;
+#contenedor_reserva {
+    display: flex;
+    justify-content: flex-start; /* Alinea los elementos del contenedor de reserva hacia la izquierda */
+    gap: 20px; /* Espacio entre el área de butacas y los tickets */
+    width: 100%;
 }
-#contenedor_reserva { display: flex; justify-content: space-between; width: 70%;}
-#contenedor_tickets {  width: 45%; }
+
+#contenedor-butacas {
+    display: flex;
+    flex-direction: column;
+    width: 50%; /* Ocupa el 50% del espacio para las butacas */
+}
+
+#contenedor_tickets {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+    width: 80%; 
+    padding-top: 17px;
+}
 #datos_butaca div div input{
     flex-direction: row;
     margin-right: 4%;
@@ -133,57 +150,42 @@ body{
 }
 
 .ticket {
-    margin-top: 4%;
-    width: 99%;
-    height: 43vh;
-    padding: 3px;
+    width: 32%; /* Ajustado para que quepan tres tickets por fila */
+    height: auto;
+    padding: 15px;
     background-color: #fff;
     border: 2px dashed #000;
     border-radius: 10px;
-    text-align: start;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
 }
 
-.ticket::before, 
-.ticket::after { 
-    content: ''; 
-    position: absolute; 
-    width: 10px; 
-    height: 10px; 
-    background-color: #fff; 
-    border: 2px dashed #000; 
-    border-radius: 50%; 
-} 
-.ticket::before { 
-    top: -12px; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    
-} 
-.ticket::after { 
-    bottom: -12px; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    display: none;
-} 
-.ticket h3 { 
+.ticket h3 {
     font-weight: 600;
-    color: #000; 
-    margin-bottom: 15px; 
-    font-family: 'Courier New', Courier, monospace; 
-} 
-.ticket p { 
-    margin: 2px 0; 
-    font-size: 1.0em; 
-    font-family: 'Courier New', Courier, monospace; 
-} 
-.ticket .barcode { 
-    margin-top: 15px; 
-    border-top: 1px solid #000; 
-    padding-top: 10px; 
-    font-family: 'Courier New', Courier, monospace; 
+    color: #000;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.ticket p {
+    margin: 2px 0;
+    font-size: 0.85rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.ticket .barcode {
+    margin-top: 10px;
+    border-top: 1px solid #000;
+    padding-top: 8px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
 }
 
 .container.active {
     margin-left: 240px; /* Sidebar width */
+}
+.toast-error{
+    padding: 12px;
 }

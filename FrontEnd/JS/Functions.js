@@ -25,7 +25,7 @@ document.addEventListener('click', function(event) {
 });
 
 function ValidarLogin(){
-    const $usuario = document.getElementById('Usu') ////VER
+    const $usuario = document.getElementById('email') ////VER
     const $clave = document.getElementById('i-con')
 
     if($usuario.value === ''){
@@ -69,18 +69,6 @@ function ValidarRegister(){
 }
 
 
-
-function MostrarContra(){
-    const $pass = document.getElementById("i-con");
-    $icon = document.querySelector(".bx");
-    $icon.addEventListener("click", e => {
-    if($pass.type === "password"){
-    $pass.type = "text";
-    }else{
-    $pass.type = "password";
-    }
-    })
-}
 
 
 function redireccionar() {
