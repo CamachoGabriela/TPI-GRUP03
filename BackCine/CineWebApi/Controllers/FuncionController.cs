@@ -10,7 +10,7 @@ namespace CineWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
+    
     public class FuncionController : ControllerBase
     {
         private readonly IFuncionService _service;
@@ -20,6 +20,7 @@ namespace CineWebApi.Controllers
         }
         // GET: api/<FuncionController>
         [HttpGet]
+        [Authorize(Roles = "User,Admin")]
         public async Task<IActionResult> Get()
         {
             try
@@ -32,6 +33,7 @@ namespace CineWebApi.Controllers
             }
         }
         [HttpGet("FuncionesNavi")]
+        [Authorize(Roles = "User,Admin")]
         public async Task<IActionResult> GetFuncionesNavi()
         {
             try
@@ -46,6 +48,7 @@ namespace CineWebApi.Controllers
 
         // GET api/<FuncionController>/5
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetById(int id)
         {
             try
@@ -59,6 +62,7 @@ namespace CineWebApi.Controllers
         }
 
         [HttpGet("Fecha/{fecha}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetByFecha(DateTime fecha )
         {
             try
@@ -72,6 +76,7 @@ namespace CineWebApi.Controllers
         }
 
         [HttpGet("Film/{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetByFilm(int id)
         {
             try
@@ -86,6 +91,7 @@ namespace CineWebApi.Controllers
 
         // POST api/<FuncionController>
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Post([FromBody] Funcione funcion)
         {
             try
@@ -107,6 +113,7 @@ namespace CineWebApi.Controllers
 
         // PUT api/<FuncionController>/5
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Put(int id, [FromBody] Funcione funcion)
         {
             try

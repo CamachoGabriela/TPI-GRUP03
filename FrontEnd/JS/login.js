@@ -10,7 +10,6 @@ async function realizarLogin(event) {
         showError("¡Por favor, ingresa tu email y contraseña!");
         return; // Detener la ejecución si los campos están vacíos
     }
-    console.log("Estado de respuesta:", response.status);
 
 
     const datos = {

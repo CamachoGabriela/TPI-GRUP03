@@ -47,6 +47,7 @@ namespace CineWebApi.Controllers
         }
 
         [HttpPost("login")] 
+
         public async Task<IActionResult> Login([FromBody] LogRequest request) 
         {
             try

@@ -9,7 +9,7 @@ namespace CineWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
+    
     public class PeliculaController : ControllerBase
     {
         private readonly IPeliculaService _service;
@@ -20,6 +20,7 @@ namespace CineWebApi.Controllers
         }
         // GET: api/<PeliculaController>
         [HttpGet]
+        [Authorize(Roles = "User,Admin")]
         public async Task<IActionResult> Get()
         {
             try
@@ -34,6 +35,7 @@ namespace CineWebApi.Controllers
 
         // GET api/<PeliculaController>/5
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetById(int id)
         {
             try
@@ -47,6 +49,7 @@ namespace CineWebApi.Controllers
         }
 
         [HttpGet("Titulo/{titulo}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetByTitle(string titulo)
         {
             try
@@ -60,6 +63,7 @@ namespace CineWebApi.Controllers
         }
 
         [HttpGet("Genero/{genero}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetByFecha(string genero)
         {
             try
@@ -74,6 +78,7 @@ namespace CineWebApi.Controllers
 
         // POST api/<PeliculaController>
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Post([FromBody] Pelicula pelicula)
         {
             try
@@ -95,6 +100,7 @@ namespace CineWebApi.Controllers
 
         // PUT api/<PeliculaController>/5
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Put(int id, [FromBody] Pelicula pelicula)
         {
             try
@@ -117,6 +123,7 @@ namespace CineWebApi.Controllers
 
         // DELETE api/<PeliculaController>/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             try
