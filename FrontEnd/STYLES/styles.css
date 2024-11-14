@@ -89,10 +89,9 @@ p{
 #sidebar.active {
     left: 0;
 }
-.sidebar-nav{
+.sidebar-nav, #logout-item{
     padding-left: 0.5px;
 }
-    
 .sidebar-link{
     color: #fff;
     text-decoration: none;
@@ -154,6 +153,13 @@ i{
 
 .dropdown-menu .dropdown-item:hover {
     color: #ffcc00 !important; 
+}
+#logout-button:hover{
+    color: #ffcc00 !important; 
+}
+#logout-button{
+    background: transparent !important;
+    border: none;
 }
 
 

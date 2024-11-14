@@ -3,28 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9727F002-3CC3-465E-9544-306944ADB4E6}|BackCine\\BackCine.csproj|c:\\users\\gabri\\desktop\\tpi-grupo3\\backcine\\backcine\\data\\entities\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9727F002-3CC3-465E-9544-306944ADB4E6}|BackCine\\BackCine.csproj|solutionrelative:backcine\\data\\entities\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|c:\\users\\gabri\\desktop\\tpi-grupo3\\backcine\\cinewebapi\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|solutionrelative:cinewebapi\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9727F002-3CC3-465E-9544-306944ADB4E6}|BackCine\\BackCine.csproj|c:\\users\\gabri\\desktop\\tpi-grupo3\\backcine\\backcine\\data\\entities\\tiposdocumento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9727F002-3CC3-465E-9544-306944ADB4E6}|BackCine\\BackCine.csproj|solutionrelative:backcine\\data\\entities\\tiposdocumento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9727F002-3CC3-465E-9544-306944ADB4E6}|BackCine\\BackCine.csproj|c:\\users\\gabri\\desktop\\tpi-grupo3\\backcine\\backcine\\data\\entities\\cinemaxcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9727F002-3CC3-465E-9544-306944ADB4E6}|BackCine\\BackCine.csproj|solutionrelative:backcine\\data\\entities\\cinemaxcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9727F002-3CC3-465E-9544-306944ADB4E6}|BackCine\\BackCine.csproj|c:\\users\\gabri\\desktop\\tpi-grupo3\\backcine\\backcine\\data\\entities\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9727F002-3CC3-465E-9544-306944ADB4E6}|BackCine\\BackCine.csproj|solutionrelative:backcine\\data\\entities\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|c:\\users\\gabri\\desktop\\tpi-grupo3\\backcine\\cinewebapi\\controllers\\funcioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|solutionrelative:cinewebapi\\controllers\\funcioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9727F002-3CC3-465E-9544-306944ADB4E6}|BackCine\\BackCine.csproj|c:\\users\\gabri\\desktop\\tpi-grupo3\\backcine\\backcine\\data\\repositories\\reservarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9727F002-3CC3-465E-9544-306944ADB4E6}|BackCine\\BackCine.csproj|solutionrelative:backcine\\data\\repositories\\reservarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|c:\\users\\gabri\\desktop\\tpi-grupo3\\backcine\\cinewebapi\\controllers\\butacacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|solutionrelative:cinewebapi\\controllers\\butacacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,80 +34,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TiposDocumento.cs",
-              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\BackCine\\Data\\Entities\\TiposDocumento.cs",
-              "RelativeDocumentMoniker": "BackCine\\Data\\Entities\\TiposDocumento.cs",
-              "ToolTip": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\BackCine\\Data\\Entities\\TiposDocumento.cs",
-              "RelativeToolTip": "BackCine\\Data\\Entities\\TiposDocumento.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T10:15:50.87Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CineMaxContext.cs",
-              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\BackCine\\Data\\Entities\\CineMaxContext.cs",
-              "RelativeDocumentMoniker": "BackCine\\Data\\Entities\\CineMaxContext.cs",
-              "ToolTip": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\BackCine\\Data\\Entities\\CineMaxContext.cs",
-              "RelativeToolTip": "BackCine\\Data\\Entities\\CineMaxContext.cs",
-              "ViewState": "AgIAAN4BAAAAAAAAAAAkwOIBAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T10:12:44.012Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\BackCine\\Data\\Entities\\Usuario.cs",
-              "RelativeDocumentMoniker": "BackCine\\Data\\Entities\\Usuario.cs",
-              "ToolTip": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\BackCine\\Data\\Entities\\Usuario.cs",
-              "RelativeToolTip": "BackCine\\Data\\Entities\\Usuario.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T10:12:05.84Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Cliente.cs",
-              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\BackCine\\Data\\Entities\\Cliente.cs",
-              "RelativeDocumentMoniker": "BackCine\\Data\\Entities\\Cliente.cs",
-              "ToolTip": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\BackCine\\Data\\Entities\\Cliente.cs",
-              "RelativeToolTip": "BackCine\\Data\\Entities\\Cliente.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAA1wBYAAAAlAAAAAAAAAA==",
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "CineWebApi\\Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "CineWebApi\\Controllers\\UsuarioController.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAEwEwAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T10:11:33.007Z",
+              "WhenOpened": "2024-11-14T11:12:24.989Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "FuncionController.cs",
-              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\FuncionController.cs",
-              "RelativeDocumentMoniker": "CineWebApi\\Controllers\\FuncionController.cs",
-              "ToolTip": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\FuncionController.cs",
-              "RelativeToolTip": "CineWebApi\\Controllers\\FuncionController.cs",
-              "ViewState": "AgIAAGQAAAAAAAAAAAAwwGcAAABQAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "ButacaController.cs",
+              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\ButacaController.cs",
+              "RelativeDocumentMoniker": "CineWebApi\\Controllers\\ButacaController.cs",
+              "ToolTip": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\ButacaController.cs",
+              "RelativeToolTip": "CineWebApi\\Controllers\\ButacaController.cs",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAswAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T09:56:16.331Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ReservaRepository.cs",
-              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\BackCine\\Data\\Repositories\\ReservaRepository.cs",
-              "RelativeDocumentMoniker": "BackCine\\Data\\Repositories\\ReservaRepository.cs",
-              "ToolTip": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\BackCine\\Data\\Repositories\\ReservaRepository.cs",
-              "RelativeToolTip": "BackCine\\Data\\Repositories\\ReservaRepository.cs",
-              "ViewState": "AgIAAL4AAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T09:44:53.661Z",
+              "WhenOpened": "2024-11-14T11:01:10.645Z",
               "EditorCaption": ""
             }
           ]

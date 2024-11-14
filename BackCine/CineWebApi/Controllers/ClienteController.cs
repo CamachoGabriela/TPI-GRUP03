@@ -19,7 +19,7 @@ namespace CineWebApi.Controllers
         }
         // GET: api/<ClienteController>
         [HttpGet]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Get()
         {
             try
@@ -34,7 +34,7 @@ namespace CineWebApi.Controllers
 
         // GET api/<ClienteController>/5
         [HttpGet("{id}")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetById(int id)
         {
             try
@@ -48,7 +48,7 @@ namespace CineWebApi.Controllers
         }
 
         [HttpGet("Filtrar/")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetByName([FromQuery] string nombre, [FromQuery] string apellido)
         {
             try
@@ -77,7 +77,7 @@ namespace CineWebApi.Controllers
 
         // POST api/<ClienteController>
         [HttpPost]
-        //[Authorize(Roles = "User,Admin")]
+        [Authorize(Roles = "User,Admin")]
         public async Task<IActionResult> Post([FromBody] Cliente cliente)
         {
             try
@@ -99,7 +99,7 @@ namespace CineWebApi.Controllers
 
         // PUT api/<ClienteController>/5
         [HttpPut("{id}")]
-        //[Authorize(Roles = "User,Admin")]
+        [Authorize(Roles = "User,Admin")]
         public async Task<IActionResult> Put(int id, [FromBody] Cliente cliente)
         {
             try
@@ -122,7 +122,7 @@ namespace CineWebApi.Controllers
 
         // DELETE api/<ClienteController>/5
         [HttpDelete("{id}")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             try

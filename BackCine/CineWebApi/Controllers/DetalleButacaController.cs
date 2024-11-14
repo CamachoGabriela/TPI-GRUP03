@@ -9,7 +9,7 @@ namespace CineWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class DetalleButacaController : ControllerBase
     {
         private readonly IDetalleButacaService _service;

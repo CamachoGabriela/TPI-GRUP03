@@ -19,7 +19,7 @@ namespace CineWebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetById(int id)
         {
             try
@@ -33,7 +33,7 @@ namespace CineWebApi.Controllers
         }
 
         [HttpGet("email/{id}")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetByEmail(string email)
         {
             try
@@ -102,7 +102,7 @@ namespace CineWebApi.Controllers
 
 
         [HttpDelete("{id}")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             try

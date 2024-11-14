@@ -9,7 +9,7 @@ namespace CineWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class PeliculaController : ControllerBase
     {
         private readonly IPeliculaService _service;

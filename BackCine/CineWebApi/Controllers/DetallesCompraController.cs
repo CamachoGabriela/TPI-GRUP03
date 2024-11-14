@@ -8,7 +8,7 @@ namespace CineWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class DetallesCompraController : ControllerBase
     {
         private IDetallesCompraService _service;

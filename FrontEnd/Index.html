@@ -29,6 +29,22 @@
             <li class="nav-item">
               <a href="/PAGES/login.html" class="nav-link text-light">Login</a>
             </li>
+            <li class="nav-item" id="register-link">
+              <a  href="/PAGES/register.html" class="nav-link text-light">Registrarse</a>
+            </li>
+            <li class="nav-item" id="reserva-link">
+              <a href="/PAGES/consulta_butacas.html" class="nav-link text-light">Reservar</a>
+            </li>
+            <li class="sidebar-item dropdown" id="report-link">
+              <a href="#" class="nav-link text-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Reportes</a>
+              <ul class="dropdown-menu bg-dark">
+                  <li id="reportV-link"><a href="/PAGES/reporte_venta.html" class="dropdown-item text-light bg-dark">Reporte de Ventas</a></li>
+                  <li id="analisis-link"><a href="/PAGES/analisis_ocupacion.html" class="dropdown-item text-light bg-dark">Análisis de Ocupación</a></li>
+              </ul>
+            </li>
+            <li class="nav-item" id="logout-item">
+              <button id="logout-btn" class="nav-link text-light">Cerrar sesión</button>
+            </li>
           </ul>
         </nav>
       </div>
@@ -47,6 +63,19 @@
               </li>
               <li class="sidebar-item">
                 <a href="/PAGES/register.html" class="register sidebar-link"><i class="bi bi-person-plus"></i><span>Registrarse</span></a>
+            </li>
+            <li class="sidebar-item" id="reserva-sidebar-link">
+              <a href="/PAGES/consulta_butacas.html" class="sidebar-link "><i class="bi bi-camera-reels"></i><span>Reservar</span></a>
+            </li>
+            <li class="sidebar-item dropdown" id="report-sidebar-link">
+              <a href="/PAGES/reporte_venta.html" class="reportes sidebar-link"><i class="bi bi-book"></i><span>Reportes</span></a>
+              <ul class="dropdown-menu">
+                <li id="reportv-sidebar-link"><a href="/PAGES/reporte_venta.html" class="dropdown-item text-light bg-dark"></a>Reporte de Ventas</li>
+                <li id="analisis-sidebar-link"><a href="/PAGES/analisis_ocupacion.html" class="dropdown-item text-light bg-dark"></a>Análisis de Ocupación</li>
+              </ul>
+            </li>
+            <li class="sidebar-item" id="logout-item">
+              <button id="logout-button" class="text-light"><i class="bi bi-box-arrow-left"></i><span>Cerrar sesión</span> </button>
             </li>
             </ul>
           </div>

@@ -19,7 +19,7 @@ namespace CineWebApi.Controllers
         }
         // GET: api/<ReservaController>
         [HttpGet]
-        //[Authorize(Roles = "User,Admin")]
+        [Authorize(Roles = "User,Admin")]
         public async Task<IActionResult> Get()
         {
             try
@@ -34,7 +34,7 @@ namespace CineWebApi.Controllers
 
         // GET api/<ReservaController>/5
         [HttpGet("{id}")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetReservaById(int id)
         {
             try
@@ -48,7 +48,7 @@ namespace CineWebApi.Controllers
         }
 
         [HttpGet("Cliente/{id}")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetReservaByCliente(int id)
         {
             try
@@ -63,7 +63,7 @@ namespace CineWebApi.Controllers
 
         // POST api/<ReservaController>
         [HttpPost]
-        //[Authorize(Roles = "User,Admin")]
+        [Authorize(Roles = "User,Admin")]
         public async Task<IActionResult> Post([FromBody] ReservaRequestDTO request)
         {
             try
@@ -90,7 +90,7 @@ namespace CineWebApi.Controllers
 
         // PUT api/<ReservaController>/5
         [HttpPut("actualizar-estado/{idButaca}")]
-        //[Authorize(Roles = "User,Admin")]
+        [Authorize(Roles = "User,Admin")]
         public async Task<IActionResult> PutState(int idButaca, [FromQuery] int estado, [FromQuery] int idFuncion)
         {
             try
@@ -115,7 +115,7 @@ namespace CineWebApi.Controllers
         }
 
         [HttpPut("cambiar-butacas/{idReserva}")]
-        //[Authorize(Roles = "User,Admin")]
+        [Authorize(Roles = "User,Admin")]
         public async Task<IActionResult> PutButaca(int idReserva, [FromBody] List<int> nuevasButacasIds)
         {
             try
@@ -141,7 +141,7 @@ namespace CineWebApi.Controllers
 
         // DELETE api/<ReservaController>/5
         [HttpDelete("{id}")]
-        //[Authorize(Roles = "User,Admin")]
+        [Authorize(Roles = "User,Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             try

@@ -24,11 +24,7 @@ document.addEventListener('click', function(event) {
 });
 
 function ValidarLogin(){
-    const login={
-        usu: 'PEpe',
-        clave: 'clave123'
-    }
-    const $usuario = document.getElementById('Usu')
+    const $usuario = document.getElementById('Usu') ////VER
     const $clave = document.getElementById('i-con')
 
     if($usuario.value === ''){
@@ -37,10 +33,6 @@ function ValidarLogin(){
     }
     if($clave.value === ''){
         alert('¡Debe ingresar un contraseña!')
-        return false
-    }
-    if($usuario.value != login.usu || $clave.value != login.clave){
-        alert('¡Usuario o contraseña incorrectas!')
         return false
     }
 
@@ -93,4 +85,51 @@ function MostrarContra(){
 function redireccionar() {
     
     window.location.href="/Index.html";
+}
+
+// Función de logout
+function realizarLogout() {
+    // Eliminar el token del localStorage
+    localStorage.removeItem("jwt");
+
+    // Verificar que el token se haya eliminado
+    console.log('Token eliminado', localStorage.getItem('jwt'));  // Esto debería mostrar 'null' después del logout
+
+    // Llamar a la función que oculta las opciones según el rol
+    mostrarContenidoSegunRol(null);  // `null` indica que el usuario no está autenticado
+
+    // Redirigir al login (o cualquier otra página que quieras después del logout)
+    window.location.href = '/PAGES/login.html';  // O la URL que desees redirigir
+}
+
+// Esperar el clic en el botón de logout
+document.getElementById("logout-btn").addEventListener("click", function() {
+    realizarLogout();  // Llamamos a la función de logout
+});
+
+
+
+// Función para decodificar el token JWT y mostrar el payload en consola
+function decodificarToken(token) {
+    try {
+        // Separar el token en sus tres partes
+        const partes = token.split('.');
+
+        // Decodificar la segunda parte del JWT (Payload)
+        const payloadBase64 = partes[1];
+
+        // Decodificar de Base64Url a Base64 (porque JWT usa Base64Url, que es un poco diferente)
+        const payloadBase64Decoded = payloadBase64.replace(/-/g, '+').replace(/_/g, '/');
+
+        // Convertir de Base64 a texto
+        const decodedPayload = atob(payloadBase64Decoded);
+
+        // Convertir el texto JSON a objeto
+        const payload = JSON.parse(decodedPayload);
+
+        return payload;  // Devolver el payload decodificado
+    } catch (error) {
+        console.error('Error al decodificar el token:', error);
+        return null;
+    }
 }

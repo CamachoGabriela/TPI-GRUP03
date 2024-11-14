@@ -7,7 +7,7 @@ namespace CineWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class AnalisisOcupacionController : ControllerBase
     {
         private readonly IAnalisisOcupacionService _service;

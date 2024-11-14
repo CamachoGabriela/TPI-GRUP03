@@ -36,18 +36,31 @@
     <div class="contenido d-flex justify-content-center align-items-center">
       <div class="loginU p-4 rounded-4">
           <h1 class="log_in texte-center mb-4">Ingresar a tu cuenta</h1>
-            <form class="form rounded-2">
+            <!-- <form class="form rounded-2">
               <div class="mb-3">
                 <label class="labels form-label" for="Usu" >Usuario</label>
-                <input class="inputs form-control" type="text" id="Usu" placeholder="Ingrese su usuario">
+                <input class="inputs form-control" type="text" id="Usu" placeholder="Ingrese su usuario" autocomplete="username">
               </div>
               <div class="mb-3 position-relative">
                 <label class="labels form-label" for="i-con" id="">Contraseña</label>
-                <input class="pass form-control" type="password" id="i-con" placeholder="Ingrese su contraseña">
+                <input class="pass form-control" type="password" id="i-con" placeholder="Ingrese su contraseña" autocomplete="current-password">
                 <i onclick="MostrarContra();" class="bx bx-show-alt position-absolute me-3 top-50 end-0"></i>
               </div>
                 <button class="acceder btn btn-dark w-100" type="button" onclick="ValidarLogin();">Entrar</button>
-            </form>        
+            </form>   -->      
+            <form class="form rounded-2" id="login-form">
+              <div class="mb-3">
+                <label class="labels form-label" for="email">Usuario</label>
+                <input class="inputs form-control" type="text" id="email" placeholder="Ingrese su usuario" autocomplete="username">
+              </div>
+              <div class="mb-3 position-relative">
+                <label class="labels form-label" for="i-con">Contraseña</label>
+                <input class="pass form-control" type="password" id="i-con" placeholder="Ingrese su contraseña" autocomplete="current-password">
+                <i onclick="MostrarContra();" class="bx bx-show-alt position-absolute me-3 top-50 end-0"></i>
+              </div>
+              <button class="acceder btn btn-dark w-100" type="submit">Entrar</button>
+            </form>
+            <div id="error-message" class="d-none text-danger"></div>
         </div>
     </div>
 

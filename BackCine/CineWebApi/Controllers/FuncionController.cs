@@ -10,7 +10,7 @@ namespace CineWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class FuncionController : ControllerBase
     {
         private readonly IFuncionService _service;

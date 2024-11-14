@@ -7,7 +7,7 @@ namespace CineWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class VistaDetallesCompraController : ControllerBase
     {
         private readonly IVistaDetallesCompraService _service;
