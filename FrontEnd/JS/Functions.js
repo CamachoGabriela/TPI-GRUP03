@@ -15,11 +15,12 @@ function updateContentWidth() {
 document.addEventListener('click', function(event) {
     const sidebar = document.getElementById('sidebar');
     const botonMenu = document.querySelector('.boton-menu');
+    const container = document.querySelector('.container');
 
     // Verifica si el clic fue fuera del menú y el botón
     if (!sidebar.contains(event.target) && !botonMenu.contains(event.target)) {
         sidebar.classList.remove('active');
-        updateContentWidth();
+        container.classList.remove('active');
     }
 });
 

@@ -162,6 +162,48 @@ i{
     border: none;
 }
 
+/* Estilo de la lista de nombres */
+.lista-aparicion {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;  /* Asegura que los elementos de la lista no estén centrados */
+}
+
+.lista-aparicion li {
+    font-size: 1.1em;  /* Tamaño de texto para los nombres */
+    color: #fff;  /* Color dorado para los nombres */
+    opacity: 0;  /* Animación de aparición */
+    visibility: hidden;  /* Inicialmente invisibles */
+    animation: aparecer 2s ease-in-out forwards;
+    padding: 5px 0;  /* Un poco de espacio entre los elementos */
+}
+
+/* Animación para que los elementos aparezcan uno por uno */
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* Establecer un retraso para cada <li> */
+ul.lista-aparicion li:nth-child(1) {
+    animation-delay: 0s; /* Primer elemento */
+}
+ul.lista-aparicion li:nth-child(2) {
+    animation-delay: 2s; /* Segundo elemento */
+}
+ul.lista-aparicion li:nth-child(3) {
+    animation-delay: 4s; /* Tercer elemento */
+}
+ul.lista-aparicion li:nth-child(4) {
+    animation-delay: 6s; /* Cuarto elemento */
+}
 
 
 /* BOTONES LOGIN/REGISTER */
@@ -195,9 +237,19 @@ i{
         font-size: 0.7em;
     }
     
-.container.active .group{
-    display: block;
-    width: 80%;
-    margin: 1% 40% 0 34% !important;
-}
+    .container.active .group{
+        display: block;
+        width: 80%;
+        margin: 1% 40% 0 34% !important;
+    }
+    #sidebar {
+        width: 100%;
+        left: -100%;
+    }
+    #sidebar.active {
+        left: 0;
+    }
+    .container.active {
+        margin-left: 0; 
+    }
 }

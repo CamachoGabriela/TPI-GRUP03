@@ -56,3 +56,7 @@ body{
     color: #ffd700;
     border: #ffd700 1px solid;
 }
+
+.container.active {
+    margin-left: 240px; /* Sidebar width */
+}

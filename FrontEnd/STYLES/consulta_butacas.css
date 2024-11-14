@@ -183,3 +183,7 @@ body{
     padding-top: 10px; 
     font-family: 'Courier New', Courier, monospace; 
 }
+
+.container.active {
+    margin-left: 240px; /* Sidebar width */
+}

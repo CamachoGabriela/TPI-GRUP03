@@ -22,3 +22,12 @@ body{
     position: relative;
     margin: auto;
 }
+
+.container {
+    margin-left: 0;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.container.active {
+    margin-left: 240px; /* Sidebar width */
+}
