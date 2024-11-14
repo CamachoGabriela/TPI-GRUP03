@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace BackCine.Data.Entities;
 
@@ -10,6 +11,6 @@ public partial class TiposDocumento
     public int IdTipoDoc { get; set; }
 
     public string TipoDoc { get; set; }
-
+    [JsonIgnore]
     public virtual ICollection<Cliente> Clientes { get; set; } = new List<Cliente>();
 }

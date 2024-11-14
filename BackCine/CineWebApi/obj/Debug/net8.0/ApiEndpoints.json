@@ -616,6 +616,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "CineWebApi.Controllers.FuncionController",
+    "Method": "GetFuncionesNavi",
+    "RelativePath": "api/Funcion/FuncionesNavi",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "CineWebApi.Controllers.PeliculaController",
     "Method": "Get",
     "RelativePath": "api/Pelicula",

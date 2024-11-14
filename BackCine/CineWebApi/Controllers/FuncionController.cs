@@ -31,6 +31,18 @@ namespace CineWebApi.Controllers
                 return StatusCode(500, $"Ha ocurrido un error interno: {ex.Message}");
             }
         }
+        [HttpGet("FuncionesNavi")]
+        public async Task<IActionResult> GetFuncionesNavi()
+        {
+            try
+            {
+                return Ok(await _service.GetFuncionesSalasPeliculas());
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Ha ocurrido un error interno: {ex.Message}");
+            }
+        }
 
         // GET api/<FuncionController>/5
         [HttpGet("{id}")]

@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,7 +14,7 @@ public partial class CineMaxContext : DbContext
         : base(options)
     {
     }
-
+    public virtual DbSet<Barrio> Barrios { get; set; }
     public virtual DbSet<Butaca> Butacas { get; set; }
 
     public virtual DbSet<ButacaConEstado> ButacaConEstados{ get; set; }
@@ -76,6 +77,21 @@ public partial class CineMaxContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Barrio>(entity =>
+        {
+            entity.HasKey(e => e.IdBarrio);
+
+            entity.ToTable("BARRIOS");
+
+            entity.Property(e => e.IdBarrio).HasColumnName("ID_BARRIO");
+            entity.Property(e => e.Barrio1)
+                .IsRequired()
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("BARRIO");
+            entity.Property(e => e.IdCiudad).HasColumnName("ID_CIUDAD");
+        });
+
         modelBuilder.Entity<ButacaConEstado>().HasNoKey();
         modelBuilder.Entity<AnalisisOcupacionResult>().HasNoKey();
         base.OnModelCreating(modelBuilder);
@@ -157,6 +173,13 @@ public partial class CineMaxContext : DbContext
                 .HasForeignKey(d => d.IdTipoDoc)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_CLIENTES_TIPOS_DOCUMENTO");
+            entity.HasOne(d => d.IdBarrioNavigation).WithMany(p => p.Clientes)
+               .HasForeignKey(d => d.IdBarrio)
+               .OnDelete(DeleteBehavior.ClientSetNull)
+               .HasConstraintName("FK_CLIENTES_BARRIOS");
+            entity.Navigation(d => d.IdTipoDocNavigation).AutoInclude();
+            entity.Navigation(d => d.Usuarios).AutoInclude();
+            entity.Navigation(d => d.IdBarrioNavigation).AutoInclude();
         });
 
         modelBuilder.Entity<Compra>(entity =>

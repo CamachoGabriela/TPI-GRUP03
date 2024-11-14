@@ -21,6 +21,7 @@ public partial class Cliente
     public DateTime FechaNac { get; set; }
 
     public int IdBarrio { get; set; }
+    public virtual Barrio IdBarrioNavigation { get; set; }
 
     public string Calle { get; set; }
 
@@ -29,7 +30,7 @@ public partial class Cliente
     public bool? Estado { get; set; }
 
     public virtual ICollection<Compra> Compras { get; set; } = new List<Compra>();
-    [JsonIgnore]
+   
     public virtual TiposDocumento IdTipoDocNavigation { get; set; }
 
     public virtual ICollection<Reserva> Reservas { get; set; } = new List<Reserva>();

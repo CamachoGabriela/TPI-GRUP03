@@ -107,7 +107,7 @@ namespace CineWebApi.Controllers
         {
             try
             {
-                if (id == null)
+                if (id <= 0)
                     return BadRequest("Ingrese valores válidos");
                 else
                 {

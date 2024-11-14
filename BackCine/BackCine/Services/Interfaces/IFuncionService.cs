@@ -16,5 +16,6 @@ namespace BackCine.Services.Interfaces
         Task<List<Funcione>> GetFuncionByFilm(int idPeli);
         Task<bool> RegistrarFuncion (Funcione funcion);
         Task<bool> EditarFuncion(int id, Funcione funcion);
+        Task<List<FuncionWithNavigation>> GetFuncionesSalasPeliculas();
     }
 }

@@ -48,5 +48,9 @@ namespace BackCine.Services.Implementations
             return await _repository.Create(funcion);
         }
 
+        public async Task<List<FuncionWithNavigation>> GetFuncionesSalasPeliculas()
+        {
+            return await _repository.GetFuncionesSalasPeliculas();
+        }
     }
 }

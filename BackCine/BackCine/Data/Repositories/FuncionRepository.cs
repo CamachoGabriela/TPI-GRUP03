@@ -56,5 +56,30 @@ namespace BackCine.Data.Repositories
 
             return await _context.SaveChangesAsync() > 0;
         }
+        public async Task<List<FuncionWithNavigation>> GetFuncionesSalasPeliculas()
+        {
+            var funciones = await _context.Funciones.ToListAsync();
+            var peliculas = await _context.Peliculas.ToListAsync();
+            var salas = await _context.Salas.ToListAsync();
+            var result = (from f in funciones
+                          join p in peliculas on f.IdPelicula equals p.IdPelicula into pGroup
+                          from p in pGroup.DefaultIfEmpty()
+                          join s in salas on f.IdSala equals s.IdSala into sGroup
+                          from s in sGroup.DefaultIfEmpty()
+                          select new FuncionWithNavigation
+                          {
+                              IdFuncion = f.IdFuncion,
+                              IdPelicula = f.IdPelicula,
+                              IdSala = f.IdSala,
+                              FechaFuncion = f.FechaFuncion,
+                              HsInicio = f.HsInicio,
+                              PrecioBase = f.PrecioBase,
+                              IdPromocion = f.IdPromocion,
+                              Descripcion = f.FechaFuncion.ToShortDateString() + " - " + f.HsInicio.ToString(),
+                              PeliculaDescripcion = p.Titulo,
+                              SalaDescripcion = s.Descripcion
+                          }).ToList();
+            return result;
+        }
     }
 }

@@ -1,0 +1,138 @@
+/**********GENERAL*************/
+body{
+    background-image: none;
+}
+.fondo{
+    background: #cccccc;
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.contenido{
+    padding: 20px;
+    background: #fff2f2;
+    height: 100vh;
+    overflow-y: auto;
+    font-family: 'Poppins', sans-serif;
+}
+.contenido button {
+    justify-self: flex-end;
+    align-self: flex-end;
+}
+
+/**********RESERVAS************/
+.reservas {
+    max-height: 25%;
+    overflow-y: auto;
+    margin: 20px auto;
+}
+.reserva {
+    display: flex;
+    align-items: center;
+}
+.reserva button{
+    margin: 10px;
+    width: 42px;
+    height: 42px;
+}
+.item {
+    padding: 10px;
+}
+
+/**********MODIFICACION/CANCELACION************/
+.cancelar-reserva{
+    display: flex;
+    flex-direction: column;
+    background-color: #e7e7e7;
+    margin: 40px;
+    padding: 20px;
+}
+.cancelar-reserva div{
+    display: flex;
+}
+.cancelar-botones{
+    margin-left: 6%;
+}
+.cancelar-botones button{
+    margin-left: 20px;
+}
+.cancelar-botones h5{
+    padding-bottom: 20px;
+}
+.detalles-reservas{
+    max-height: 45%;
+    overflow-y: auto;
+    margin: 20px auto;
+}
+
+/**********DATOS DEL USUARIO************/
+.datos_usuario {
+    margin-top: 20px;
+    padding-left: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 180px;
+}
+
+/**********UPDATE************/
+.form-update form{
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/**********EXTRA************/
+button i{ /*centrar iconos*/
+    display: flex;
+    position: relative;
+    bottom: 2px;
+    justify-content: center;
+}
+
+#toast {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #0fb926;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+#toast.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
