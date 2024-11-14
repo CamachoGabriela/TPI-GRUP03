@@ -57,7 +57,7 @@
               </div>
               <div class="d-flex align-items-center me-5">
                   <label for="funcion_select" class="form-label me-2">Función:</label>
-                  <select name="funcion" id="funcion_select" class="form-select"></select>
+                  <select name="funcion" id="funcion_select" class="form-select" disabled></select>
               </div>
               <div class="contenedor-btn d-flex justify-content-center">
                 <button id="boton_reservar" class="btn btn-secondary ms-5" >Reservar</button>
@@ -173,7 +173,9 @@
                     $contenedor.innerHTML = ''; // Limpiar el contenido del contenedor 
                     $funcion.innerHTML = '';
                     limpiarTicket();
+                    document.getElementById('funcion_select').disabled = false;
                   } else { 
+                    document.getElementById('funcion_select').disabled = true;                                ////////VER SI ANDA
                     limpiarTicket();
                     cargar_funciones(); // Cargar funciones si se selecciona una película 
                   } 
