@@ -3,7 +3,6 @@
 
 body{
     background-image: none;
-    overflow: hidden;
 }
 .contenido{
     display: flex;
@@ -11,40 +10,38 @@ body{
     align-items: center;
     padding: 20px;
     background:  #1C1C1C;
-    height: 100vh;
-    /* overflow-y: auto; */
+    height: 110vh;;
 }
 .form-label{
     color: #ffd700;
     font-weight: 500;
 }
 .form-select {
-    max-width: 100%;
+    max-width: 90%;
     min-width: 150px;
     flex-grow: 1;
-}
-#datos_butaca{
-    flex: 1;
-/*     height: 270px;
-    overflow-y: auto;
-    background-color: rgb(53, 53, 53); */
 }
 #datos_butaca div p{
     color: #ffd700;
     text-align: start;
     padding-left: 20%;
 }
-/* .datos-div {
-    border: 2px solid rgba(0, 0, 0, 0.2);
-    margin-bottom: 10px;
-    padding-top: 10px;
-} */
-.contenedor-btn{
-    /* direction: flex;
-    justify-content: center; */
-    width: 80%;
-    margin-left: 5%;
+.contenedor-btn {
+    display: flex;                        
+    gap: 10px;                           
+    align-items: center;                 
 }
+
+.contenedor-btn input {
+    width: 150px;                         
+    font-size: 17px;
+    padding: 10px;
+}
+#contenedor_butacas{
+    flex-direction: row;
+}
+#contenedor_reserva { display: flex; justify-content: space-between; width: 70%;}
+#contenedor_tickets {  width: 45%; }
 #datos_butaca div div input{
     flex-direction: row;
     margin-right: 4%;
@@ -52,34 +49,41 @@ body{
     font-size: 17px;
     padding: 10px;
 }
-#datos_butaca, .consultar{
+
+.consultar{
     border-radius: 8px;
     padding: 1.5rem;
-    width: 100vw;
+    width: 100%;
     color: #ffd700;
     text-align: center;
     font-family: 'monserrat', sans-serif;
-    margin: 0 -20px;
 }
 #boton_consultar{
     color: #ffd700;
     border: #ffd700 1px solid;
 }
-.contenedor-butacas {
-    margin: 0 10% 0 16%;
+#carga_dinamica .form-label {
+    color: #ffd700;
+    font-weight: 500;
 }
+#carga_dinamica .form-select {
+    min-width: 150px;
+    flex-grow: 1;
+}
+
+
 #butacas_cargadas {
+    display: flex;
+    justify-content: flex-start;
     flex-wrap: wrap;
-    flex: 2;
-    justify-content: center;
-    align-items: flex-start;
+    position: absolute;
+    width: 25%;
     gap: 1px;
     padding: 10px;
     background-color: #ffffffd6;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-    max-width: 55%;
-    margin: 20px auto ;
+    margin: 20px 5% ;
     height: max-content;
 }
 .butaca {
@@ -127,23 +131,16 @@ body{
     text-align: center;
     margin: 0;
 }
-.ticktets-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #1C1C1C;
-    padding: 20px;
-    border-radius: 10px;
-}
 
 .ticket {
-    width: 300px;
-    padding: 20px;
+    margin-top: 4%;
+    width: 99%;
+    height: 43vh;
+    padding: 3px;
     background-color: #fff;
     border: 2px dashed #000;
     border-radius: 10px;
-    margin-bottom: 20px;
-    text-align: center;
+    text-align: start;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -161,11 +158,13 @@ body{
     top: -12px; 
     left: 50%; 
     transform: translateX(-50%); 
+    
 } 
 .ticket::after { 
     bottom: -12px; 
     left: 50%; 
     transform: translateX(-50%); 
+    display: none;
 } 
 .ticket h3 { 
     font-weight: 600;
@@ -174,8 +173,8 @@ body{
     font-family: 'Courier New', Courier, monospace; 
 } 
 .ticket p { 
-    margin: 5px 0; 
-    font-size: 1.1em; 
+    margin: 2px 0; 
+    font-size: 1.0em; 
     font-family: 'Courier New', Courier, monospace; 
 } 
 .ticket .barcode { 

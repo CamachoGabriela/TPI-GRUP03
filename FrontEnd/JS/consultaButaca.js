@@ -117,7 +117,6 @@ function handleButacaClick(element) {
 
     if (datosArray.length > 0) {
         datos_butaca(datosArray); // Mostrar los datos de las butacas seleccionadas
-        document.getElementById('datos_butaca').style.display = 'block'; // Mostrar el contenedor de datos
     } else {
         datos_butaca(null); // Limpiar los datos si se deselecciona
         document.getElementById('datos_butaca').style.display = 'none'; // Ocultar el contenedor de datos
@@ -180,117 +179,76 @@ async function cargar_funciones(){
     }
 }
 
-async function datos_butaca(datosArray = []){ //opcion de ser nulo para que si no se le pasa ningún parametro limpie los datos
-    const $div = document.getElementById('datos_butaca')
-    if (!$div) { 
-        console.error('No se encontró el elemento "datos_butaca" en el DOM.'); 
-        return; 
-    }
-
-    $div.innerHTML = '';
-
-    if(Array.isArray(datosArray) && datosArray.length > 0) {
-        try {
-            //const bpartes = datosArray.split(','); //separando los datos recibidos desde un string
-            const res = await fetch('https://localhost:7170/api/Butaca/Salas')
-            if(!res.ok) {
-                alert('error al cargar las salas');
-                return
-            }
-            const data = await res.json();
-            //let sala = data.find(s => s.idSala == bpartes[1]) //obteniendo el nombre de las salas
-            datosArray.forEach((datos) => {
-                const bpartes = datos.split(','); // Separar los datos de la butaca
-                const sala = data.find(s => s.idSala == bpartes[1]); // Encontrar la sala correspondiente
-                const precio = bpartes[4];
-                const numeroButaca = bpartes[0];
-                const pelicula = bpartes[2];
+    async function datos_butaca(datosArray = []) {
+        // Se obtiene el div que podría contener datos, pero en este caso ya no se usará para mostrar información
+        const $div = document.getElementById('datos_butaca');
+        if (!$div) { 
+            console.error('No se encontró el elemento "datos_butaca" en el DOM.'); 
+            return; 
+        }
     
-                $div.innerHTML += 
-                `
-                    <div>
-                    <p>N° Butaca: <span style="color: white;">${numeroButaca}</span></p>        <!--el span es para poner los datos en color blanco-->
-                    <p>Película: <span style="color: white;">${pelicula}</span></p>
-                    <p>Sala: <span style="color: white;">${sala.descripcion}</span></p>
-                    <p>Precio: <span style="color: white;">$${precio}</span></p>
-                    </div>
-                    `;
-            })
-            $div.innerHTML += 
-            `
-                <div class="contenedor-btn d-flex justify-content-center">
-                    <input id="boton_reservar" type="button" class="btn btn-secondary button" value="Reservar">
-                    <input id="boton_cancelar" type="button" class="btn btn-dark button" value="Cancelar">
-                </div>
-            `;
+        // Limpiamos el contenido del div para no mostrar detalles de butacas
+        $div.innerHTML = '';
+    
+        // Si hay datos en datosArray, procederemos con la lógica de reserva
+        if (Array.isArray(datosArray) && datosArray.length > 0) {
+            try {
+                const res = await fetch('https://localhost:7170/api/Butaca/Salas');
+                if (!res.ok) {
+                    alert('Error al cargar las salas');
+                    return;
+                }
+                const data = await res.json();
+                
+                const botonReservar = document.getElementById('boton_reservar');
+            /* const botonCancelar = document.getElementById('boton_cancelar'); */
 
-            $div.addEventListener('click', function (event) {
-                if (event.target.id === 'boton_cancelar') {
-                    const confirmCancelToastElement = document.getElementById('confirmCancelToast');
-                    const confirmCancelToast = new bootstrap.Toast(confirmCancelToastElement);
-                    confirmCancelToast.show();
-                } 
-                else if (event.target.id === 'boton_reservar') {
-                    const idCliente = 1  //document.getElementById('clienteId').value  agregar idCliente
+            if (botonReservar) {
+                botonReservar.addEventListener('click', function () {
+                    // Datos de reserva
+                    const idCliente = 1;  // Puedes actualizar con el ID del cliente real si es necesario
                     const idFuncion = document.getElementById('funcion_select').value.split(',')[0];
                     const fechaReserva = new Date().toISOString();
                     const butacasSeleccionadas = document.querySelectorAll('.butaca.selected');
-                    const cantidadEntradas =butacasSeleccionadas.length;
+                    const cantidadEntradas = butacasSeleccionadas.length;
                     const idEstado = 2;
                     const idCompra = null;
                     let nombreSala = '';
-                    let Precio = '';
+                    let precio = '';
 
+                    // Extraer datos de sala y precio de cada butaca
                     datosArray.forEach((datos) => {
-                        const bpartes = datos.split(','); // Separar los datos de la butaca
-                        nombreSala = data.find(s => s.idSala == bpartes[1]); // Encontrar la sala correspondiente
-                        Precio = bpartes[3];
+                        const bpartes = datos.split(',');
+                        nombreSala = data.find(s => s.idSala == bpartes[1]);
+                        precio = bpartes[4];
                     });
 
+                    // Datos de reserva que serán enviados
                     const reservarData = {
-                        idCliente: idCliente,
-                        idFuncion: idFuncion,
-                        fechaReserva: fechaReserva,
-                        cantidadEntradas: cantidadEntradas,
-                        idEstado: idEstado,
-                        idCompra: idCompra,
+                        idCliente,
+                        idFuncion,
+                        fechaReserva,
+                        cantidadEntradas,
+                        idEstado,
+                        idCompra,
                         pelicula: document.getElementById('pelicula_select').selectedOptions[0]?.text,
                         sala: nombreSala.descripcion,
                         funcion: document.getElementById('funcion_select').selectedOptions[0]?.text,
-                        precio: Precio,  // Ajusta según la lógica de cálculo de precios
+                        precio,
                     };
-                    //obtener ids butacas seleccionadas
-                    const butacasIds = Array.from(butacasSeleccionadas).map(b => b.getAttribute('data-id'));
-                    //reservar
-                    realizarReserva(butacasIds, reservarData);
-                }
-            });
-        
-            // Delegación de eventos para los botones del toast
-            document.body.addEventListener('click', function (event) {
-                if (event.target.id === 'confirmYes') {
-                    const confirmCancelToastElement = document.getElementById('confirmCancelToast');
-                    const confirmCancelToast = new bootstrap.Toast(confirmCancelToastElement);
-                    confirmCancelToast.hide();
-        
-                    const cancelToastElement = document.getElementById('cancelToast');
-                    const cancelToast = new bootstrap.Toast(cancelToastElement);
-                    cancelToast.show();
 
-                    document.getElementById('main-content').style.display = 'none';
-                    
-                } 
-                else if (event.target.id === 'confirmNo') {
-                    const confirmCancelToastElement = document.getElementById('confirmCancelToast');
-                    const confirmCancelToast = new bootstrap.Toast(confirmCancelToastElement);
-                    confirmCancelToast.hide();
-                }
-            });
-        } catch (error) {
-            console.error("Error al cargar los datos:", error);
-        }
-    }           
-}
+                    // IDs de las butacas seleccionadas
+                    const butacasIds = Array.from(butacasSeleccionadas).map(b => b.getAttribute('data-id'));
+
+                    // Llamar a realizarReserva
+                    realizarReserva(butacasIds, reservarData);
+                });
+            }
+            } catch (error) {
+                console.error("Error al cargar los datos:", error);
+            }
+        }           
+    }
 
 async function realizarReserva(butacasIds, reservaData) {
     try {
@@ -323,6 +281,17 @@ async function realizarReserva(butacasIds, reservaData) {
             }
 
             mostrarTickets(butacasIds, reservaData);
+            // Cambiar el estado de las butacas seleccionadas
+            for (const idButaca of butacasIds) {
+                const butacaElement = document.querySelector(`[data-id="${idButaca}"]`);
+                if (butacaElement) {
+                    // Cambiar imagen y clase a "reservado"
+                    butacaElement.querySelector('.butaca_img').src = '/IMAGES/Reservado.png';
+                    butacaElement.classList.remove('butaca');
+                    butacaElement.classList.add('butaca_ocupada');
+                    butacaElement.setAttribute('onclick', ''); // Deshabilitar clic en la butaca
+                }
+            }
         }   else {
                 throw new Error('No se pudo realizar la reserva');
         }
@@ -336,24 +305,12 @@ async function realizarReserva(butacasIds, reservaData) {
     }
 }
 function mostrarTickets(butacasIds, reservaData) {
-    const mainContent = document.getElementById('main-content');
-    const $hideDiv = document.getElementById('hide');
-    const $contenedor = document.getElementById('contenedor-butacas');
-    if ($hideDiv) {
-        $hideDiv.style.display = 'none';
-    } else {
-        console.warn("Elemento 'hide' no encontrado");
-    }
-
-    if ($contenedor) {
-        $contenedor.style.display = 'none';
-    } else {
-        console.warn("Elemento 'contenedor-butacas' no encontrado");
-    }
+    
+    const mainContent = document.getElementById('contenedor_tickets');
+    
      
     if (mainContent) {
-        const ticktetsContainer = document.createElement('div');
-        ticktetsContainer.className = 'ticktets-container p-4 rounded mb-4';
+        
 
         butacasIds.forEach((id) => {
             const ticket = document.createElement('div');
@@ -365,13 +322,25 @@ function mostrarTickets(butacasIds, reservaData) {
                 <p><strong>Sala:</strong> ${reservaData.sala}</p>
                 <p><strong>Función:</strong> ${reservaData.funcion}</p>
                 <p><strong>Precio:</strong> $${reservaData.precio}</p>
-                <p class="barcode">|||||||||||||||||||||||||||||||||||||||</p>
-            `;
-            ticktetsContainer.appendChild(ticket);
+                <p class="barcode">|||||||||||||||||||||||||||||||||||</p>
+                `;
+            mainContent.appendChild(ticket);
         });
-        mainContent.appendChild(ticktetsContainer);
+        //mainContent.appendChild(ticktetsContainer);
     } else {
         console.error("Elemento 'main-content' no encontrado en el DOM");
     }
+}
+function limpiarTicket() {
+    // Ocultar el contenedor del ticket
+    const tickets = document.querySelectorAll('.ticket'); // Selecciona todos los elementos con la clase 'ticket'
+  tickets.forEach(ticket => {
+    ticket.remove(); // Elimina cada ticket del DOM
+    console.log('Limpiando tickets...');
+    const contenedorTickets = document.getElementById('contenedor_tickets'); 
+    if (contenedorTickets) { 
+        contenedorTickets.innerHTML = ''; 
+    }
+  });
 }
 
