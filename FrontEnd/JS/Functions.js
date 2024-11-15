@@ -20,7 +20,7 @@ document.addEventListener('click', function(event) {
     // Verifica si el clic fue fuera del menú y el botón
     if (!sidebar.contains(event.target) && !botonMenu.contains(event.target)) {
         sidebar.classList.remove('active');
-        container.classList.remove('active');
+        updateContentWidth();
     }
 });
 
@@ -76,28 +76,6 @@ function redireccionar() {
     window.location.href="/Index.html";
 }
 
-// Función de logout
-function realizarLogout() {
-    // Eliminar el token del localStorage
-    localStorage.removeItem("jwt");
-
-    // Verificar que el token se haya eliminado
-    console.log('Token eliminado', localStorage.getItem('jwt'));  // Esto debería mostrar 'null' después del logout
-
-    // Llamar a la función que oculta las opciones según el rol
-    mostrarContenidoSegunRol(null);  // `null` indica que el usuario no está autenticado
-
-    // Redirigir al login (o cualquier otra página que quieras después del logout)
-    window.location.href = '/PAGES/login.html';  // O la URL que desees redirigir
-}
-
-// Esperar el clic en el botón de logout
-document.getElementById("logout-btn").addEventListener("click", function() {
-    realizarLogout();  // Llamamos a la función de logout
-});
-
-
-
 // Función para decodificar el token JWT y mostrar el payload en consola
 function decodificarToken(token) {
     try {
@@ -122,3 +100,45 @@ function decodificarToken(token) {
         return null;
     }
 }
+
+// Ejemplo de función para verificar si la sesión está activa
+function isSessionActive() {
+    return localStorage.getItem('sessionToken') !== null;
+  }
+  
+  // Ejemplo de función para obtener el rol del usuario
+  function getUserRole() {
+    // Aquí debes implementar tu lógica para obtener el rol del usuario
+    // Por ejemplo, podrías obtener el rol del usuario desde localStorage
+    return localStorage.getItem('userRole');
+  }
+  
+  // Función para mostrar u ocultar los elementos del menú de navegación y la barra lateral
+  function updateMenuVisibility() {
+    const reservaLink = document.getElementById('reserva-link');
+    const reportLink = document.getElementById('report-link');
+    const logoutItem = document.getElementById('logout-item');
+  
+    const reservaSidebarLink = document.getElementById('reserva-sidebar-link');
+    const reportSidebarLink = document.getElementById('report-sidebar-link');
+    const logoutButton = document.getElementById('logout-button');
+  
+    if (!isSessionActive()) {
+      reservaLink.style.display = 'none';
+      reportLink.style.display = 'none';
+      logoutItem.style.display = 'none';
+  
+      reservaSidebarLink.style.display = 'none';
+      reportSidebarLink.style.display = 'none';
+      logoutButton.style.display = 'none';
+    }
+  
+    if (getUserRole() !== 'Admin') {
+      reportLink.style.display = 'none';
+      reportSidebarLink.style.display = 'none';
+    }
+  }
+  
+  // Llamar a la función cuando se cargue la página
+  document.addEventListener('DOMContentLoaded', updateMenuVisibility);
+  

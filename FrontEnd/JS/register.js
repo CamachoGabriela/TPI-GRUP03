@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('clienteForm').addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -101,5 +102,94 @@ async function confirmarDatos() {
     } catch (error) {
         console.error('Error:', error);
         alert('Ocurrió un error al procesar la solicitud.');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', async () => { 
+    try {
+        await cargar_tipos_doc();
+    } catch (error) {
+        console.error('Ha ocurrido un error al cargar los tipos de documento:', error);
+    }
+});
+
+async function cargar_tipos_doc() {
+    const $docSelect = document.getElementById('idTipoDoc');
+
+    try {
+        // Añadir una opción en blanco al principio
+        const emptyOption = document.createElement('option');
+        emptyOption.value = '';
+        emptyOption.text = 'Seleccione el tipo de documento';
+        $docSelect.appendChild(emptyOption);
+
+        // Obtener tipos de documento sin necesidad de token
+        const responseDoc = await fetch('https://localhost:7170/api/Cliente/TipoDoc', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!responseDoc.ok) {
+            throw new Error('Error al cargar los tipos de documento: ' + responseDoc.statusText);
+        }
+
+        // Verifica la estructura de los datos recibidos
+        const tiposDocData = await responseDoc.json();
+    
+
+        // Usar las propiedades correctas (idTipoDoc y tipoDoc)
+        tiposDocData.forEach(tipo => {
+            const option = document.createElement('option');
+            option.value = tipo.idTipoDoc;       // Usa idTipoDoc como el valor
+            option.text = tipo.tipoDoc;          // Usa tipoDoc como el texto visible
+            $docSelect.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Error cargando los tipos de documento:', error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', async () => { 
+    try {
+        await cargar_barrios();
+    } catch (error) {
+        console.error('Ha ocurrido un error al cargar los barrios:', error);
+    }
+});
+
+async function cargar_barrios() {
+    const $barriosSelect = document.getElementById('idBarrio');  // Cambié el nombre de la variable para reflejar que es para barrios
+
+    try {
+        // Añadir una opción en blanco al principio
+        const emptyOption = document.createElement('option');
+        emptyOption.value = '';
+        emptyOption.text = 'Seleccione el barrio';
+        $barriosSelect.appendChild(emptyOption);
+
+        // Haciendo la solicitud a la API para cargar los barrios
+        const responseBarrios = await fetch('https://localhost:7170/api/Cliente/Barrio', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!responseBarrios.ok) {
+            throw new Error('Error al cargar los barrios: ' + responseBarrios.statusText);
+        }
+
+        const barriosData = await responseBarrios.json();
+        // Itera sobre los barrios y agrega las opciones al select
+        barriosData.forEach(bar => {
+            const option = document.createElement('option');
+            option.value = bar.idBarrio;   // Usa idBarrio como valor
+            option.text = bar.barrio1;     // Usa barrio1 como nombre visible
+            $barriosSelect.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Error cargando los barrios:', error);
     }
 }

@@ -47,7 +47,6 @@ namespace CineWebApi.Controllers
             }
         }
         [HttpGet("Barrios")]
-        [Authorize(Roles = "User,Admin")]
         public async Task<IActionResult> GetBarrios()
         {
             try

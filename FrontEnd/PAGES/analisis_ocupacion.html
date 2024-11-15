@@ -26,26 +26,26 @@
         <button class="boton-menu" type="button" onclick="toggleMenu()">
           <i class="bi bi-list"></i>
         </button>
-        <nav class="menu me-auto" id="menu">
+        <nav class="menu me-auto " id="menu">
           <ul class="nav">
-            <li class="nav-item">
+            <li class="nav-item" id="index-link">
               <a href="/Index.html" class="nav-link text-light">Home</a>
             </li>
             <li class="nav-item" id="login-link" >
               <a  href="/PAGES/login.html" class="nav-link text-light">Login</a>
             </li>
             <li class="nav-item" id="register-link">
-              <a  href="/PAGES/register.html" class="nav-link text-light">Registrar</a>
+              <a  href="/PAGES/register.html" class="nav-link text-light">Register</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" id="reserva-link">
               <a href="/PAGES/consulta_butacas.html" class="nav-link text-light">Reservar</a>
             </li>
-            <li class="sidebar-item dropdown">
-                <a href="#" class="nav-link text-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Reportes</a>
-                <ul class="dropdown-menu bg-dark">
-                    <li><a href="/PAGES/reporte_venta.html" class="dropdown-item text-light bg-dark">Reporte de Ventas</a></li>
-                    <li><a href="/PAGES/analisis_ocupacion.html" class="dropdown-item text-light bg-dark">Análisis de Ocupación</a></li>
-                </ul>
+            <li class="sidebar-item dropdown" id="report-link">
+              <a href="#" class="nav-link text-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Reportes</a>
+              <ul class="dropdown-menu bg-dark">
+                  <li id="reportV-link"><a href="/PAGES/reporte_venta.html" class="dropdown-item text-light bg-dark">Reporte de Ventas</a></li>
+                  <li id="analisis-link"><a href="/PAGES/analisis_ocupacion.html" class="dropdown-item text-light bg-dark">Análisis de Ocupación</a></li>
+              </ul>
             </li>
             <li class="nav-item" id="logout-item">
               <button id="logout-btn" class="nav-link text-light">Cerrar sesión</button>
@@ -58,7 +58,7 @@
         <div id="sidebar" class="sidebar position-fixed" >
             <button onclick="toggleMenu()" class="cerrar-btn d-flex"><i class="bi bi-x"></i></button>
       
-            < <ul class="sidebar-nav">
+             <ul class="sidebar-nav">
               <li class="sidebar-item" id="index-sidebar-link">
                 <a href="/Index.html" class="sidebar-link "><i class="bi bi-house"></i><span>Home</span></a>
               </li>
@@ -135,5 +135,6 @@
     ></script>
     <script src="/JS/reportes.js"></script>
     <script src="/JS/optionsForRole.js"></script>
+    <script src="/JS/logout.js"></script>
   </body>
 </html>

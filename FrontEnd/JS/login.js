@@ -79,33 +79,6 @@ function showError(message) {
     errorMessageElement.innerText = message;
 }
 
-// Función para decodificar el token JWT y mostrar el payload en consola
-function decodificarToken(token) {
-    try {
-        // Separar el token en sus tres partes
-        const partes = token.split('.');
-
-        // Decodificar la segunda parte del JWT (Payload)
-        const payloadBase64 = partes[1];
-
-        // Decodificar de Base64Url a Base64 (porque JWT usa Base64Url, que es un poco diferente)
-        const payloadBase64Decoded = payloadBase64.replace(/-/g, '+').replace(/_/g, '/');
-
-        // Convertir de Base64 a texto
-        const decodedPayload = atob(payloadBase64Decoded);
-
-        // Convertir el texto JSON a objeto
-        const payload = JSON.parse(decodedPayload);
-
-        return payload;  // Devolver el payload decodificado
-    } catch (error) {
-        console.error('Error al decodificar el token:', error);
-        return null;
-    }
-}
-
-
-
 
 // Función para mostrar los mensajes de error
 function showError(message) {
@@ -113,7 +86,6 @@ function showError(message) {
     errorMessageElement.classList.remove("d-none");
     errorMessageElement.innerText = message;
 }
-
 
 
 // Asociar la función al evento de submit del formulario

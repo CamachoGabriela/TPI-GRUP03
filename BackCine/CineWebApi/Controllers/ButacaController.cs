@@ -9,7 +9,7 @@ namespace CineWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
+    
     public class ButacaController : ControllerBase
     {
         private readonly IButacaService _service;
@@ -20,6 +20,7 @@ namespace CineWebApi.Controllers
 
         // GET api/<ButacaController>/5
         [HttpGet("SalaFuncion")]
+        [Authorize(Roles = "User,Admin")]
         public async Task<IActionResult> GetSalaFuncion([FromQuery]int idSala, [FromQuery]int idFuncion)
         {
             try
@@ -34,6 +35,7 @@ namespace CineWebApi.Controllers
 
 
         [HttpGet("Funcion/{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetFuncion(int id)
         {
             try
@@ -47,6 +49,7 @@ namespace CineWebApi.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetButacas([FromQuery] int idButaca, [FromQuery] int idSala, [FromQuery] int idFuncion)
         {
             try
@@ -60,6 +63,7 @@ namespace CineWebApi.Controllers
         }
 
         [HttpGet("EstaDisponible/")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetDisponible([FromQuery] int idSala, [FromQuery] int idFuncion, [FromQuery] int idButaca)
         {
             try
@@ -77,6 +81,7 @@ namespace CineWebApi.Controllers
         }
 
         [HttpGet("DisponibilidadPeliFecha/")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> VerificarDisponibilidad([FromQuery] string titulo, [FromQuery] DateTime fecha)
         {
             try
@@ -99,6 +104,7 @@ namespace CineWebApi.Controllers
             }
         }
         [HttpGet("Salas")]
+        [Authorize(Roles = "User,Admin")]
         public async Task<IActionResult> GetSalas()
         {
             try

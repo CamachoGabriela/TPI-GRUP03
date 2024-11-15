@@ -405,7 +405,12 @@ function mostrarTickets(butacasIds, reservaData) {
                 `;
             mainContent.appendChild(ticket);
         });
-        //mainContent.appendChild(ticktetsContainer);
+        // Después de mostrar los tickets, deshabilitar la selección de butacas 
+        const butacas = document.querySelectorAll('.butaca, .butaca_ocupada');  
+        butacas.forEach((butaca) => { 
+            butaca.classList.add('no-click'); 
+            butaca.removeAttribute('onclick'); 
+        });
     } else {
         console.error("Elemento 'main-content' no encontrado en el DOM");
     }
