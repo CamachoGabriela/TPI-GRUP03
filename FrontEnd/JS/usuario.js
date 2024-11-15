@@ -1,4 +1,4 @@
-let clienteId = 1; //usuario logeado
+let clienteId = 6; //usuario logeado
 const token = localStorage.getItem('jwt');
 async function cargar_pagina() {
   const $contenido = document.getElementById('contenido');
@@ -99,8 +99,10 @@ async function cargar_pagina() {
     <h2><b>Datos del Usuario</b></h2>
     <div class="datos-usuario">${datosUsuario}</div>
   </div>
+  <div d-flex p-4>
   <button class="btn btn-danger" type="button" onclick="editar_usuario('delete')">Eliminar Usuario</button>
   <button class="btn btn-warning" type="button" onclick="editar_usuario('update')">Editar Perfil</button>
+  </div>
   <div id="toast">exaple</div>
   `
 }
@@ -192,6 +194,7 @@ function showToast(result,texto) {
 
 async function confirmar_delete(id) {
   let idReserva = Number(id);
+  
   const res = await fetch(`https://localhost:7170/api/Reserva/${idReserva}`, {
     method: 'DELETE',
     headers: {

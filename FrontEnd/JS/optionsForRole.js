@@ -18,6 +18,7 @@ function mostrarContenidoSegunRol(role) {
         $reportSidebar: document.getElementById("report-sidebar-link"),
         $reportvSidebar: document.getElementById("reportv-sidebar-link"),
         $analisisSidebar: document.getElementById("analisis-sidebar-link"),
+        $userlink: document.getElementById("user-link")
     };
 
     // Comprobar si los elementos existen
@@ -46,6 +47,7 @@ function mostrarContenidoSegunRol(role) {
         elements.$reservarLink.style.display = 'block';
         elements.$indexSidebar.style.display = 'block';
         elements.$reservarSidebar.style.display = 'block';
+        elements.$userlink.style.display = 'block';
     } else if (role === 'Admin') {
         elements.$indexLink.style.display = 'block';
         elements.$reservarLink.style.display = 'block';
@@ -57,6 +59,7 @@ function mostrarContenidoSegunRol(role) {
         elements.$reportSidebar.style.display = 'block';
         elements.$reportvSidebar.style.display = 'block';
         elements.$analisisSidebar.style.display = 'block';
+        elements.$userlink.style.display = 'block';
     }
 
     // Mostrar el botón de cerrar sesión solo si el usuario está autenticado

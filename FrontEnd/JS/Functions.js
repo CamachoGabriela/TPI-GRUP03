@@ -101,46 +101,46 @@ function decodificarToken(token) {
     }
 }
 
-// Ejemplo de función para verificar si la sesión está activa
-function isSessionActive() {
-    return localStorage.getItem('sessionToken') !== null;
-  }
+// // Ejemplo de función para verificar si la sesión está activa
+// function isSessionActive() {
+//     return localStorage.getItem('sessionToken') !== null;
+//   }
   
-  // Ejemplo de función para obtener el rol del usuario
-  function getUserRole() {
-    // Aquí debes implementar tu lógica para obtener el rol del usuario
-    // Por ejemplo, podrías obtener el rol del usuario desde localStorage
-    return localStorage.getItem('userRole');
-  }
+//   // Ejemplo de función para obtener el rol del usuario
+//   function getUserRole() {
+//     // Aquí debes implementar tu lógica para obtener el rol del usuario
+//     // Por ejemplo, podrías obtener el rol del usuario desde localStorage
+//     return localStorage.getItem('userRole');
+//   }
   
-  // Función para mostrar u ocultar los elementos del menú de navegación y la barra lateral
-  function updateMenuVisibility() {
-    const reservaLink = document.getElementById('reserva-link');
-    const reportLink = document.getElementById('report-link');
-    const logoutItem = document.getElementById('logout-item');
-    const userLink = document.getElementById('user-link');
+//   // Función para mostrar u ocultar los elementos del menú de navegación y la barra lateral
+//   function updateMenuVisibility() {
+//     const reservaLink = document.getElementById('reserva-link');
+//     const reportLink = document.getElementById('report-link');
+//     const logoutItem = document.getElementById('logout-item');
+//     //const userLink = document.getElementById('user-link');
   
-    const reservaSidebarLink = document.getElementById('reserva-sidebar-link');
-    const reportSidebarLink = document.getElementById('report-sidebar-link');
-    const logoutButton = document.getElementById('logout-button');
+//     const reservaSidebarLink = document.getElementById('reserva-sidebar-link');
+//     const reportSidebarLink = document.getElementById('report-sidebar-link');
+//     const logoutButton = document.getElementById('logout-button');
   
-    if (!isSessionActive()) {
-      reservaLink.style.display = 'none';
-      reportLink.style.display = 'none';
-      logoutItem.style.display = 'none';
-      userLink.style.display = 'none';
+//     if (!isSessionActive()) {
+//       reservaLink.style.display = 'none';
+//       reportLink.style.display = 'none';
+//       logoutItem.style.display = 'none';
+//       //userLink.style.display = 'none';
   
-      reservaSidebarLink.style.display = 'none';
-      reportSidebarLink.style.display = 'none';
-      logoutButton.style.display = 'none';
-    }
+//       reservaSidebarLink.style.display = 'none';
+//       reportSidebarLink.style.display = 'none';
+//       logoutButton.style.display = 'none';
+//     }
   
-    if (getUserRole() !== 'Admin') {
-      reportLink.style.display = 'none';
-      reportSidebarLink.style.display = 'none';
-    }
-  }
+//     if (getUserRole() !== 'Admin') {
+//       reportLink.style.display = 'none';
+//       reportSidebarLink.style.display = 'none';
+//     }
+//   }
   
-  // Llamar a la función cuando se cargue la página
-  document.addEventListener('DOMContentLoaded', updateMenuVisibility);
+//   // Llamar a la función cuando se cargue la página
+//   document.addEventListener('DOMContentLoaded', updateMenuVisibility);
   
