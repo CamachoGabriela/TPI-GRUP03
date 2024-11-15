@@ -26,8 +26,8 @@ async function cargar_butacas() {
                 console.error('Ha ocurrido un error al cargar los datos: ' + res.statusText);
                 return;
             }
-        const data = await res.json();
-        console.log('Datos cargados con éxito. cant: ' + data.length);
+            const data = await res.json();
+            console.log('Datos cargados con éxito. cant: ' + data.length);
         let cont = 0;
         for (let i = 0; i < data.length/10; i++) {
             for (let j = 0; j < 10; j++) {
@@ -47,7 +47,8 @@ async function cargar_butacas() {
                         case 3: 
                             butaca_img = 'Libre.png'; clase = 'butaca'; onclick = `actualizarEstadoButaca(${data[cont].idButaca}, ${fpartes[1]}, 2)`;
                             break; 
-                        default: butaca_img = 'Libre.png'; clase = 'butaca'; onclick = 'handleButacaClick(this)'; 
+                        case null:
+                             butaca_img = 'Libre.png'; clase = 'butaca'; onclick = 'handleButacaClick(this)'; 
                     } 
                 }
                 console.log(`Butaca ${data[cont]?.idButaca}: Estado ${data[cont]?.estado}, Imagen ${butaca_img}, Clase ${clase}`);
@@ -81,16 +82,16 @@ async function cargar_butacas() {
        <div id="descripciones_butacas">
            <div class="rows d-flex">
                <div class="butaca-descripcion">
-                   <img src="/IMAGES/Libre.png" alt="Butaca Libre" class="img-fluid">
+                   <img src="/IMAGES/Libre.png" alt="Butaca Libre" class="img">
                    <p>Disponible</p>
                </div>
                <div class="butaca-descripcion">
-                   <img src="/IMAGES/Ocupado.png" alt="Butaca Ocupada" class="img-fluid">
-                   <p>Confirmada</p>
+                   <img src="/IMAGES/Ocupado.png" alt="Butaca Ocupada" class="img">
+                   <p>Comprada</p>
                </div>
                <div class="butaca-descripcion">
-                   <img src="/IMAGES/Reservado.png" alt="Butaca Reservada" class="img-fluid">
-                   <p>Pendiente</p>
+                   <img src="/IMAGES/Reservado.png" alt="Butaca Reservada" class="img">
+                   <p>Reservada</p>
                </div>
            </div>
        </div>

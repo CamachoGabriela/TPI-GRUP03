@@ -386,6 +386,8 @@ public partial class CineMaxContext : DbContext
                 .HasForeignKey(d => d.IdFuncion)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_RESERVAS_FUNCIONES");
+            entity.Navigation(d => d.ButacasReservada).AutoInclude();
+
         });
 
         modelBuilder.Entity<Sala>(entity =>

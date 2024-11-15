@@ -118,7 +118,7 @@ namespace BackCine.Data.Repositories
 
         public async Task<List<Reserva>> GetByCliente(int id)
         {
-            return await _context.Reservas.Where(r => r.IdCliente == id).ToListAsync();
+            return await _context.Reservas.Where(r => r.IdCliente == id && r.IdEstado != 3).ToListAsync();
         }
 
         public async Task<Reserva?> GetById(int id)

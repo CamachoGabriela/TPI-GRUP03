@@ -31,7 +31,7 @@ async function cargar_pagina() {
   }
   const reservas = await resR.json();
 
-  if(resR != null)
+  if(reservas != null)
   {
     await reservas.forEach(r => {
 
@@ -40,7 +40,7 @@ async function cargar_pagina() {
         const funcDesc = funcion.descripcion
         const peli = funcion.peliculaDescripcion
         const sala = funcion.salaDescripcion
-        
+        console.log('esto no se muestra')
         let butacaR = funcDesc+','+peli+','+funcion.precioBase+','+br.idButaca+','+sala+','+funcion.idFuncion+','+funcion.idSala+'|'
 
         butacasReservadas += butacaR;
@@ -99,8 +99,8 @@ async function cargar_pagina() {
     <h2><b>Datos del Usuario</b></h2>
     <div class="datos-usuario">${datosUsuario}</div>
   </div>
-  <button class="btn btn-danger" type="button" onclick="confirmar_delete_usuario()">Eliminar Usuario</button>
-  <button class="btn btn-warning" type="button" onclick="editar_usuario()">Editar Perfil</button>
+  <button class="btn btn-danger" type="button" onclick="editar_usuario('delete')">Eliminar Usuario</button>
+  <button class="btn btn-warning" type="button" onclick="editar_usuario('update')">Editar Perfil</button>
   <div id="toast">exaple</div>
   `
 }
@@ -282,7 +282,7 @@ async function confirmar_update(id) {
 
 }
 
-async function editar_usuario() {
+async function editar_usuario(evento) {
   const $contenido = document.getElementById('contenido');
   const resU = await fetch(`https://localhost:7170/api/Cliente/${clienteId}`,{
     method: 'GET',
@@ -299,46 +299,82 @@ async function editar_usuario() {
 
   const partes = cliente.fechaNac.split('-');
   const fechaNac = `${partes[2].substring(0, 2)}/${partes[1]}/${partes[0]}`;
+  let modif;
+  let buttons;
+  let tittle;
+  if(evento == 'update')
+  {
+    tittle = '<h2><b>Editar Perfil</b></h2>'
+    modif =
+    `
+      <div class="item-update">
+          <label for="barrios"><b>Barrio: </b>${cliente.idBarrioNavigation.barrio1}</label>
+          <select class="form-control" id="barrios"></select>
+        </div>
+        <div class="item-update">
+          <label for="calle"><b>Calle: </b>${cliente.calle}<label>
+          <input class="form-control" type="text" name="calle" id="calle">
+        </div>
+        <div class="item-update">
+          <label for="altura"><b>Altura: </b>${cliente.altura}</label>
+          <input class="form-control" type="number" name="altura" id="altura">
+      </div>
+    `
+    buttons =
+    `
+      <h4><b>¿Está seguro de actualizar los datos?</b></h4>
+      <button onclick="confirmar_usuario_update()" class="btn btn-success">Confirmar</button>
+      <button onclick="cargar_pagina()" class="btn btn-danger">Cancelar</button>
+    `
+  } else {
+    tittle = '<h2><b>Eliminar Perfil</b></h2>'
+    modif =
+    `
+      <div class="item-update">
+          <p>Barrio: ${cliente.idBarrioNavigation.barrio1}</p>
+        </div>
+        <div class="item-update">
+          <p>Calle: ${cliente.calle}</p>
+        </div>
+        <div class="item-update">
+          <p>Altura: ${cliente.altura}</p>
+      </div>
+    `
+    buttons =
+    `
+      <h4><b>¿Está seguro de eliminar su perfil?</b></h4>
+      <button onclick="confirmar_delete_usuario()" class="btn btn-success">Confirmar</button>
+      <button onclick="cargar_pagina()" class="btn btn-danger">Cancelar</button>
+    `
+  }
 
   $contenido.innerHTML =
   `
-  <h2><b>Editar Perfil</b></h2>
-  <div class="usuario-update">
-    <form id="formulario-update" class="form">
-      <div class="item-update">
-        <p>Usuario: ${cliente.nombre+' '+cliente.apellido}</p>
+    ${tittle}
+    <div class="usuario-update">
+      <form id="formulario-update" class="form">
+        <div class="item-update">
+          <p>Usuario: ${cliente.nombre+' '+cliente.apellido}</p>
+        </div>
+        <div class="item-update">
+          <p>Email: ${cliente.usuarios[0].email}</p>
+        </div>
+        <div class="item-update">
+          <p>Rol: ${cliente.usuarios[0].rol}</p>
+        </div>
+        <div class="item-update">
+          <p>Documento: ${cliente.idTipoDocNavigation.tipoDoc+' - '+cliente.nroDoc}</p>
+        </div>
+        <div class="item-update">
+          <p>Fecha de nacimiento: ${fechaNac}</p>
+        </div>
+        ${modif}
+      </form>
+      <div class="botones-update">
+        ${buttons}
       </div>
-      <div class="item-update">
-        <p>Email: ${cliente.usuarios[0].email}</p>
-      </div>
-      <div class="item-update">
-        <p>Rol: ${cliente.usuarios[0].rol}</p>
-      </div>
-      <div class="item-update">
-        <p>Documento: ${cliente.idTipoDocNavigation.tipoDoc+' - '+cliente.nroDoc}</p>
-      </div>
-      <div class="item-update">
-        <p>Fecha de nacimiento: ${fechaNac}</p>
-      </div>
-      <div class="item-update">
-        <label for="barrios"><b>Barrio: </b>${cliente.idBarrioNavigation.barrio1}</label>
-        <select class="form-control" id="barrios"></select>
-      </div>
-      <div class="item-update">
-        <label for="calle"><b>Calle: </b>${cliente.calle}<label>
-        <input class="form-control" type="text" name="calle" id="calle">
-      </div>
-      <div class="item-update">
-        <label for="altura"><b>Altura: </b>${cliente.altura}</label>
-        <input class="form-control" type="number" name="altura" id="altura">
-      </div>
-    </form>
-    <div class="botones-update">
-      <button onclick="confirmar_usuario_update()" class="btn btn-success">Confirmar</button>
-      <button onclick="cargar_pagina()" class="btn btn-danger">Cancelar</button>
     </div>
-  </div>
-  <div id="toast">exaple</div>
+    <div id="toast">exaple</div>
   `
   const $selectB = document.getElementById('barrios')
   const resB = await fetch(`https://localhost:7170/api/Cliente/Barrios`,{
@@ -439,6 +475,6 @@ async function confirmar_delete_usuario() {
   if (res.ok) {
     window.location.href = '/index.html';
   } else {
-    showToast('error', 'Error al cancelar la reserva');
+    showToast('error', 'Error al eliminar el usuario');
   }
 }
