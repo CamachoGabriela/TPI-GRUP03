@@ -10,23 +10,61 @@ function isJson(response) {
     const contentType = response.headers.get('content-type'); 
     return contentType && contentType.indexOf('application/json') !== -1; 
 }
-
+function calcularEdad(fechaNac) { 
+    const hoy = new Date(); 
+    const fechaNacimiento = new Date(fechaNac); 
+    let edad = hoy.getFullYear() - fechaNacimiento.getFullYear(); 
+    const mes = hoy.getMonth() - fechaNacimiento.getMonth(); 
+    if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNacimiento.getDate())) { 
+        edad--; 
+    } 
+    return edad; 
+}
+// Función para mostrar toast 
+function mostrarToast(mensaje, tipo = 'info') { 
+    const toastContainer = document.getElementById('toastContainer'); 
+    const toastEl = document.createElement('div'); 
+    toastEl.classList.add('toast', 'align-items-center', 'text-bg-' + tipo, 'border-0'); 
+    toastEl.setAttribute('role', 'alert'); 
+    toastEl.setAttribute('aria-live', 'assertive'); 
+    toastEl.setAttribute('aria-atomic', 'true'); 
+    toastEl.innerHTML = 
+        ` <div class="d-flex">
+            <div class="toast-body"> ${mensaje} </div> 
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button> 
+          </div> 
+        `; 
+    toastContainer.appendChild(toastEl); 
+    const toast = new bootstrap.Toast(toastEl); 
+    toast.show(); 
+}
 async function confirmarDatos() {
-    const nombre = document.getElementById('nombre').value;
-    const apellido = document.getElementById('apellido').value;
+    const nombre = document.getElementById('nombre').value.trim();
+    const apellido = document.getElementById('apellido').value.trim();
     const idTipoDoc = document.getElementById('idTipoDoc').value;
-    const nroDoc = document.getElementById('nroDoc').value;
+    const nroDoc = document.getElementById('nroDoc').value.trim();
     const fechaNac = document.getElementById('fechaNac').value;
     const idBarrio = document.getElementById('idBarrio').value;
-    const calle = document.getElementById('calle').value;
-    const altura = document.getElementById('altura').value;
-    const email = document.getElementById('email').value;
+    const calle = document.getElementById('calle').value.trim();
+    const altura = document.getElementById('altura').value.trim();
+    const email = document.getElementById('email').value.trim();
     const contrasenha = document.getElementById('contrasenha').value;
     const confirmarContrasenha = document.getElementById('confirmarContrasenha').value; 
     const rol = 'User'; // Asignación del rol por defecto
     
+    // Validar que el documento tenga entre 8 y 10 números 
+    if (!/^\d{8,10}$/.test(nroDoc)) { 
+        mostrarToast('El número de documento debe tener entre 8 y 10 dígitos.', 'warning');
+        return; 
+    } 
+    // Validar que la edad mínima sea de 16 años  
+    const edad = calcularEdad(fechaNac); 
+    if (edad < 16) { 
+       mostrarToast('Debe tener al menos 16 años para registrarse.', 'warning');
+        return;
+    }
     if (contrasenha !== confirmarContrasenha) { 
-        alert('Las contraseñas no coinciden.'); 
+        mostrarToast('Las contraseñas no coinciden.', 'warning'); 
         return; 
     }
 
@@ -98,10 +136,16 @@ async function confirmarDatos() {
             throw new Error('Error al crear usuario: ' + errorText);
         }
 
-        alert('Cliente y usuario creados exitosamente');
+        mostrarToast('Cliente y usuario creados exitosamente', 'success');
+        // Mostrar toast de redirección 
+        mostrarToast('Redirigiendo a la página de consulta de butacas...', 'info');
+        // Redireccionar después de un breve retraso 
+        setTimeout(() => { 
+            window.location.href = 'consulta_butacas.html'; 
+        }, 3000); // 3 segundos de retraso
     } catch (error) {
         console.error('Error:', error);
-        alert('Ocurrió un error al procesar la solicitud.');
+        mostrarToast('Ocurrió un error al procesar la solicitud.', 'danger');
     }
 }
 
@@ -163,14 +207,9 @@ async function cargar_barrios() {
     const $barriosSelect = document.getElementById('idBarrio');  // Cambié el nombre de la variable para reflejar que es para barrios
 
     try {
-        // Añadir una opción en blanco al principio
-        const emptyOption = document.createElement('option');
-        emptyOption.value = '';
-        emptyOption.text = 'Seleccione el barrio';
-        $barriosSelect.appendChild(emptyOption);
 
         // Haciendo la solicitud a la API para cargar los barrios
-        const responseBarrios = await fetch('https://localhost:7170/api/Cliente/Barrio', {
+        const responseBarrios = await fetch('https://localhost:7170/api/Cliente/Barrios', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

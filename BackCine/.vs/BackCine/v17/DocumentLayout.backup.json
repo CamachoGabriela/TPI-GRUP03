@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|c:\\users\\gabri\\desktop\\tpi-grupo3\\backcine\\cinewebapi\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|solutionrelative:cinewebapi\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|c:\\users\\gabri\\desktop\\tpi-grupo3\\backcine\\cinewebapi\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|solutionrelative:cinewebapi\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9727F002-3CC3-465E-9544-306944ADB4E6}|BackCine\\BackCine.csproj|c:\\users\\gabri\\desktop\\tpi-grupo3\\backcine\\backcine\\data\\repositories\\clienterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9727F002-3CC3-465E-9544-306944ADB4E6}|BackCine\\BackCine.csproj|solutionrelative:backcine\\data\\repositories\\clienterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|c:\\users\\gabri\\desktop\\tpi-grupo3\\backcine\\cinewebapi\\controllers\\butacacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|solutionrelative:cinewebapi\\controllers\\butacacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -26,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,20 +54,58 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ButacaController.cs",
-              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\ButacaController.cs",
-              "RelativeDocumentMoniker": "CineWebApi\\Controllers\\ButacaController.cs",
-              "ToolTip": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\ButacaController.cs*",
-              "RelativeToolTip": "CineWebApi\\Controllers\\ButacaController.cs*",
-              "ViewState": "AgIAAF8AAAAAAAAAAAAswGoAAAAhAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "CineWebApi\\Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "CineWebApi\\Controllers\\UsuarioController.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-15T10:18:54.651Z",
+              "WhenOpened": "2024-11-15T11:17:13.565Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "ClienteRepository.cs",
+              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\BackCine\\Data\\Repositories\\ClienteRepository.cs",
+              "RelativeDocumentMoniker": "BackCine\\Data\\Repositories\\ClienteRepository.cs",
+              "ToolTip": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\BackCine\\Data\\Repositories\\ClienteRepository.cs",
+              "RelativeToolTip": "BackCine\\Data\\Repositories\\ClienteRepository.cs",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAwwFIAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-15T10:39:00.116Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ClienteController.cs",
+              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\ClienteController.cs",
+              "RelativeDocumentMoniker": "CineWebApi\\Controllers\\ClienteController.cs",
+              "ToolTip": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\ClienteController.cs*",
+              "RelativeToolTip": "CineWebApi\\Controllers\\ClienteController.cs*",
+              "ViewState": "AgIAACkAAAAAAAAAAAAgwD0AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-15T10:30:22.428Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ButacaController.cs",
+              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\ButacaController.cs",
+              "RelativeDocumentMoniker": "CineWebApi\\Controllers\\ButacaController.cs",
+              "ToolTip": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\ButacaController.cs",
+              "RelativeToolTip": "CineWebApi\\Controllers\\ButacaController.cs",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAswGoAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-15T10:18:54.651Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\appsettings.json",
               "RelativeDocumentMoniker": "CineWebApi\\appsettings.json",
@@ -63,12 +113,11 @@
               "RelativeToolTip": "CineWebApi\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-11-15T10:14:38.843Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-15T10:14:38.843Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "FuncionController.cs",
               "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\FuncionController.cs",
               "RelativeDocumentMoniker": "CineWebApi\\Controllers\\FuncionController.cs",
@@ -76,12 +125,11 @@
               "RelativeToolTip": "CineWebApi\\Controllers\\FuncionController.cs",
               "ViewState": "AgIAABgAAAAAAAAAAAAYwC0AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-15T04:31:52.264Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-15T04:31:52.264Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "CineMaxContext.cs",
               "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\BackCine\\Data\\Entities\\CineMaxContext.cs",
               "RelativeDocumentMoniker": "BackCine\\Data\\Entities\\CineMaxContext.cs",

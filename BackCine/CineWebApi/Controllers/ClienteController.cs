@@ -60,7 +60,6 @@ namespace CineWebApi.Controllers
         }
 
         [HttpGet("Filtrar/")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetByName([FromQuery] string nombre, [FromQuery] string apellido)
         {
             try
@@ -89,7 +88,6 @@ namespace CineWebApi.Controllers
 
         // POST api/<ClienteController>
         [HttpPost]
-        [Authorize(Roles = "User,Admin")]
         public async Task<IActionResult> Post([FromBody] Cliente cliente)
         {
             try

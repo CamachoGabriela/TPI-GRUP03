@@ -84,7 +84,7 @@ namespace BackCine.Data.Repositories
         }
         public async Task<List<Barrio>> GetBarrios()
         {
-            return await _context.Barrios.ToListAsync();
+            return await _context.Barrios.Where(x => x.IdCiudad==1).ToListAsync();
         }
     }
 }

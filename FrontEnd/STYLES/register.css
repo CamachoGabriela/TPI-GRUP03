@@ -60,3 +60,6 @@ body{
 .container.active {
     margin-left: 240px; /* Sidebar width */
 }
+.toast-container {
+    z-index: 1055;
+}
