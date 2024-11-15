@@ -71,7 +71,35 @@ async function cargar_butacas() {
                 cont++;
             }
         }
-        $div.innerHTML = images
+      // Limpiar descripciones previas si ya existen
+      const existingDescriptions = document.getElementById('descripciones_butacas');
+      if (existingDescriptions) {
+          existingDescriptions.remove();
+      }
+
+       const estadosDescripcion = `
+       <div id="descripciones_butacas">
+           <div class="rows d-flex">
+               <div class="butaca-descripcion">
+                   <img src="/IMAGES/Libre.png" alt="Butaca Libre" class="img-fluid">
+                   <p>Disponible</p>
+               </div>
+               <div class="butaca-descripcion">
+                   <img src="/IMAGES/Ocupado.png" alt="Butaca Ocupada" class="img-fluid">
+                   <p>Confirmada</p>
+               </div>
+               <div class="butaca-descripcion">
+                   <img src="/IMAGES/Reservado.png" alt="Butaca Reservada" class="img-fluid">
+                   <p>Pendiente</p>
+               </div>
+           </div>
+       </div>
+       `;
+
+       // Concatenar las descripciones fuera del contenedor de las butacas
+       $div.innerHTML = images;
+       document.getElementById('contenedor-butacas').insertAdjacentHTML('beforeend', estadosDescripcion); // Añadir descripciones
+
     }catch(error){
         console.error('error al cargar las butacas',error);
     }

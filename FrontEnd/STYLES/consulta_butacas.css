@@ -189,3 +189,29 @@ body{
 .toast-error{
     padding: 12px;
 }
+#descripciones_butacas{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    width: 100%;
+    gap: 10px; 
+    margin-left: 4%;
+}
+.butaca-descripcion{
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 80vh;
+    padding: 15px 11px 20px 20px;
+    height: 77px; 
+    gap: 5px;
+}
+.butaca-descripcion img{
+    width: 100%; 
+    height: 100%;
+}
+.butaca-descripcion p {
+    color: #fff; 
+    font-size: 0.8em;
+    margin: 0;
+}
