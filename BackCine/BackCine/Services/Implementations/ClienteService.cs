@@ -18,7 +18,7 @@ namespace BackCine.Services.Implementations
         {
             _repository = repository;
         }
-        public async Task<bool> EditarCliente(int id, Cliente cliente)
+        public async Task<bool> EditarCliente(int id, ClienteUpdate cliente)
         {
             return await _repository.Update(id, cliente);
         }
@@ -46,6 +46,10 @@ namespace BackCine.Services.Implementations
         public async Task<List<TiposDocumento>> GetTiposDocumento()
         {
             return await _repository.GetTiposDocumento();
+        }
+        public async Task<List<Barrio>> GetBarrios()
+        {
+            return await _repository.GetBarrios();
         }
 
         public async Task<bool> RegistrarCliente(Cliente cliente)

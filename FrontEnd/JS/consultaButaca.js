@@ -186,7 +186,8 @@ async function cargar_funciones(){
             headers: {
                 'Authorization': `Bearer ${token}`
             }
-        });if (!responseFunciones.ok) {
+        });
+        if (!responseFunciones.ok) {
             throw new Error('Error al cargar las funciones: ' + responseFunciones.statusText);
         }
         const funcionesData = await responseFunciones.json();

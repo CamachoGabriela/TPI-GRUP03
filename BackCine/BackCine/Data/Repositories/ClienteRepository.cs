@@ -26,10 +26,13 @@ namespace BackCine.Data.Repositories
         public async Task<bool> Delete(int id)
         {
             var clienteEliminado = await _context.Clientes.FindAsync(id);
-            if(clienteEliminado!=null)
+            var usuarioEliminado = await _context.Usuarios.Where(x => x.IdCliente == id).FirstOrDefaultAsync();
+            if (clienteEliminado != null && usuarioEliminado != null)
             {
                 clienteEliminado.Estado = false;
+                usuarioEliminado.Estado = false;
                 _context.Clientes.Update(clienteEliminado);
+                _context.Usuarios.Update(usuarioEliminado);
                 return await _context.SaveChangesAsync() > 0;
             }
 
@@ -52,14 +55,24 @@ namespace BackCine.Data.Repositories
                     x.Apellido.Equals(apellido)).FirstOrDefaultAsync();
         }
 
-        public async Task<bool> Update(int id, Cliente cliente)
+        public async Task<bool> Update(int id, ClienteUpdate cliente)
         {
             var clienteExistente = await _context.Clientes.FindAsync(id);
             if (clienteExistente == null) return false;
 
-            clienteExistente.Calle = cliente.Calle;
-            clienteExistente.Altura = cliente.Altura;
-            
+            if (cliente.IdBarrio != -1)
+            {
+                clienteExistente.IdBarrio = Convert.ToInt32(cliente.IdBarrio);
+            }
+            if (cliente.Calle != "nulo")
+            {
+                clienteExistente.Calle = cliente.Calle;
+            }
+            if (cliente.Altura != -1)
+            {
+                clienteExistente.Altura = Convert.ToInt32(cliente.Altura);
+            }
+
             _context.Update(clienteExistente);
 
             return await _context.SaveChangesAsync() > 0;
@@ -69,6 +82,9 @@ namespace BackCine.Data.Repositories
         {
             return await _context.TiposDocumentos.ToListAsync();
         }
-
+        public async Task<List<Barrio>> GetBarrios()
+        {
+            return await _context.Barrios.ToListAsync();
+        }
     }
 }

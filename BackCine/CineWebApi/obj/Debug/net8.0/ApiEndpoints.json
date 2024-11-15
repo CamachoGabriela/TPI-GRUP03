@@ -197,7 +197,7 @@
       },
       {
         "Name": "cliente",
-        "Type": "BackCine.Data.Entities.Cliente",
+        "Type": "BackCine.Data.Entities.ClienteUpdate",
         "IsRequired": true
       }
     ],
@@ -217,6 +217,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CineWebApi.Controllers.ClienteController",
+    "Method": "GetBarrios",
+    "RelativePath": "api/Cliente/Barrios",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

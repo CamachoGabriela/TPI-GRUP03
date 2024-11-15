@@ -46,6 +46,19 @@ namespace CineWebApi.Controllers
                 return StatusCode(500, $"Ha ocurrido un error interno: {ex.Message}");
             }
         }
+        [HttpGet("Barrios")]
+        [Authorize(Roles = "User,Admin")]
+        public async Task<IActionResult> GetBarrios()
+        {
+            try
+            {
+                return Ok(await _service.GetBarrios());
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Ha ocurrido un error interno: {ex.Message}");
+            }
+        }
 
         [HttpGet("Filtrar/")]
         [Authorize(Roles = "Admin")]
@@ -100,7 +113,7 @@ namespace CineWebApi.Controllers
         // PUT api/<ClienteController>/5
         [HttpPut("{id}")]
         [Authorize(Roles = "User,Admin")]
-        public async Task<IActionResult> Put(int id, [FromBody] Cliente cliente)
+        public async Task<IActionResult> Put(int id, [FromBody] ClienteUpdate cliente)
         {
             try
             {

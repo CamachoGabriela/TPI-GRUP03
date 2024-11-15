@@ -3,20 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|c:\\users\\gabri\\desktop\\tpi-grupo3\\backcine\\cinewebapi\\controllers\\vistadetallescompracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|solutionrelative:cinewebapi\\controllers\\vistadetallescompracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|c:\\users\\gabri\\desktop\\tpi-grupo3\\backcine\\cinewebapi\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|solutionrelative:cinewebapi\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|c:\\users\\gabri\\desktop\\tpi-grupo3\\backcine\\cinewebapi\\controllers\\reservacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|solutionrelative:cinewebapi\\controllers\\reservacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|c:\\users\\gabri\\desktop\\tpi-grupo3\\backcine\\cinewebapi\\controllers\\peliculacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{546BC9F9-33A4-41FF-94B7-3958CFAC25D8}|CineWebApi\\CineWebApi.csproj|solutionrelative:cinewebapi\\controllers\\peliculacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9727F002-3CC3-465E-9544-306944ADB4E6}|BackCine\\BackCine.csproj|c:\\users\\gabri\\desktop\\tpi-grupo3\\backcine\\backcine\\data\\entities\\cinemaxcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9727F002-3CC3-465E-9544-306944ADB4E6}|BackCine\\BackCine.csproj|solutionrelative:backcine\\data\\entities\\cinemaxcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -43,53 +31,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "VistaDetallesCompraController.cs",
-              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\VistaDetallesCompraController.cs",
-              "RelativeDocumentMoniker": "CineWebApi\\Controllers\\VistaDetallesCompraController.cs",
-              "ToolTip": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\VistaDetallesCompraController.cs",
-              "RelativeToolTip": "CineWebApi\\Controllers\\VistaDetallesCompraController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "CineMaxContext.cs",
+              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\BackCine\\Data\\Entities\\CineMaxContext.cs",
+              "RelativeDocumentMoniker": "BackCine\\Data\\Entities\\CineMaxContext.cs",
+              "ToolTip": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\BackCine\\Data\\Entities\\CineMaxContext.cs",
+              "RelativeToolTip": "BackCine\\Data\\Entities\\CineMaxContext.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T19:35:24.128Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ReservaController.cs",
-              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\ReservaController.cs",
-              "RelativeDocumentMoniker": "CineWebApi\\Controllers\\ReservaController.cs",
-              "ToolTip": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\ReservaController.cs",
-              "RelativeToolTip": "CineWebApi\\Controllers\\ReservaController.cs",
-              "ViewState": "AgIAAIsAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T19:34:06.109Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PeliculaController.cs",
-              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\PeliculaController.cs",
-              "RelativeDocumentMoniker": "CineWebApi\\Controllers\\PeliculaController.cs",
-              "ToolTip": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\PeliculaController.cs",
-              "RelativeToolTip": "CineWebApi\\Controllers\\PeliculaController.cs",
-              "ViewState": "AgIAAHQAAAAAAAAAAAAkwBYAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T17:07:29.176Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UsuarioController.cs",
-              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\UsuarioController.cs",
-              "RelativeDocumentMoniker": "CineWebApi\\Controllers\\UsuarioController.cs",
-              "ToolTip": "C:\\Users\\gabri\\Desktop\\TPI-Grupo3\\BackCine\\CineWebApi\\Controllers\\UsuarioController.cs",
-              "RelativeToolTip": "CineWebApi\\Controllers\\UsuarioController.cs",
-              "ViewState": "AgIAAGMAAAAAAAAAAAAowDEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T11:12:24.989Z",
+              "WhenOpened": "2024-11-15T04:23:40.66Z",
               "EditorCaption": ""
             }
           ]
