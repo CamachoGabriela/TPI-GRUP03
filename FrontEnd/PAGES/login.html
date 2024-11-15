@@ -26,7 +26,7 @@
                 <a href="/Index.html" class="nav-link text-light">Home</a>
               </li>
               <li class="nav-item">
-                <a href="/PAGES/login.html" class="nav-link text-light">Login</a>
+                <a href="/PAGES/login.html" class="nav-link text-light">Iniciar Sesión</a>
               </li>
             </ul>
           </nav>
@@ -46,10 +46,12 @@
               <input class="pass form-control" type="password" id="i-con" placeholder="Ingrese su contraseña" autocomplete="current-password">
               <i onclick="MostrarContra();" class="bx bx-show-alt position-absolute me-3 top-50 end-0"></i>
             </div>
-            <button class="acceder btn btn-dark w-100" type="submit">Entrar</button>
-            <!--<button class="acceder btn btn-dark w-100" type="button" onclick="ValidarLogin();">Entrar</button>-->      
+            <button class="acceder btn btn-dark w-100" type="submit">Entrar</button>  
             </form>
             <div id="error-message" class="d-none text-danger" role="alert"></div>
+            <!-- Toast Container -->
+            <div class="toast-container position-fixed bottom-0 end-0 p-3" id="toastContainer"></div>
+
         </div>
     </div>
 

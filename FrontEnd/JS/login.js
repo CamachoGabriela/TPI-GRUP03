@@ -7,7 +7,7 @@ async function realizarLogin(event) {
 
     // Validar si los campos están vacíos
     if (!$email || !$password) {
-        showError("¡Por favor, ingresa tu email y contraseña!");
+        mostrarToast("¡Por favor, ingresa tu email y contraseña!", 'warning');
         return; // Detener la ejecución si los campos están vacíos
     }
 
@@ -31,7 +31,7 @@ async function realizarLogin(event) {
         if (!response.ok) {
             const errorData = await response.json();  // Obtener el cuerpo de la respuesta
             console.log('Error en la respuesta del servidor:', errorData);
-            showError('Credenciales incorrectas');
+            mostrarToast('Datos incorrectos', 'danger');
             return; // Evitar continuar si la respuesta no es correcta
         }
 
@@ -41,7 +41,7 @@ async function realizarLogin(event) {
             data = await response.json();
             console.log("Respuesta del servidor:", data); // Imprimir la respuesta del servidor para ver si contiene el token
         } catch (jsonError) {
-            showError('La respuesta no es un JSON válido');
+            console.error('La respuesta no es un JSON válido');
             return;
         }
 
@@ -62,31 +62,39 @@ async function realizarLogin(event) {
             }
 
             // Después de mostrar el rol, redirigimos a la página principal (o realizamos otras acciones)
-            window.location.href = "/PAGES/consulta_butacas.html";  // Redirigir a la página principal después del login exitoso
+            mostrarToast('Inicio de sesión exitoso, redirigiendo...', 'success'); 
+            setTimeout(() => { 
+                window.location.href = "/PAGES/consulta_butacas.html"; 
+            }, 2000); // 2 segundos de retraso
         } else {
-            showError('No se recibió un token válido');
+            console.Error('No se recibió un token válido');
         }
     } catch (error) {
-        console.error('Error al iniciar sesión: ', error);
-        showError(error.message);
+        mostrarToast('Contraseña o usuario incorrectos', 'danger');
     }
 }
-
+// Función para mostrar toast 
+function mostrarToast(mensaje, tipo = 'info') { 
+    const toastContainer = document.getElementById('toastContainer'); 
+    const toastEl = document.createElement('div'); 
+    toastEl.classList.add('toast', 'align-items-center', 'text-bg-' + tipo, 'border-0'); 
+    toastEl.setAttribute('role', 'alert'); 
+    toastEl.setAttribute('aria-live', 'assertive'); 
+    toastEl.setAttribute('aria-atomic', 'true'); 
+    toastEl.innerHTML = 
+        ` <div class="d-flex"> 
+            <div class="toast-body"> ${mensaje} </div> 
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button> 
+          </div> 
+        `; 
+    toastContainer.appendChild(toastEl); const toast = new bootstrap.Toast(toastEl); toast.show();
+}
 // Función para mostrar los mensajes de error
 function showError(message) {
     const errorMessageElement = document.getElementById("error-message");
     errorMessageElement.classList.remove("d-none");
     errorMessageElement.innerText = message;
 }
-
-
-// Función para mostrar los mensajes de error
-function showError(message) {
-    const errorMessageElement = document.getElementById("error-message");
-    errorMessageElement.classList.remove("d-none");
-    errorMessageElement.innerText = message;
-}
-
 
 // Asociar la función al evento de submit del formulario
 document.addEventListener("DOMContentLoaded", function() {

@@ -141,7 +141,7 @@ async function confirmarDatos() {
         mostrarToast('Redirigiendo a la página de consulta de butacas...', 'info');
         // Redireccionar después de un breve retraso 
         setTimeout(() => { 
-            window.location.href = 'consulta_butacas.html'; 
+            window.location.href = 'login.html'; 
         }, 3000); // 3 segundos de retraso
     } catch (error) {
         console.error('Error:', error);

@@ -118,6 +118,7 @@ function isSessionActive() {
     const reservaLink = document.getElementById('reserva-link');
     const reportLink = document.getElementById('report-link');
     const logoutItem = document.getElementById('logout-item');
+    const userLink = document.getElementById('user-link');
   
     const reservaSidebarLink = document.getElementById('reserva-sidebar-link');
     const reportSidebarLink = document.getElementById('report-sidebar-link');
@@ -127,6 +128,7 @@ function isSessionActive() {
       reservaLink.style.display = 'none';
       reportLink.style.display = 'none';
       logoutItem.style.display = 'none';
+      userLink.style.display = 'none';
   
       reservaSidebarLink.style.display = 'none';
       reportSidebarLink.style.display = 'none';

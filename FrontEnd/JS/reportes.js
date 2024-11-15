@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const compraForm = document.getElementById('compraForm');
     const ocupacionForm = document.getElementById('ocupacionForm');
+    
 
     if (compraForm) {
         compraForm.addEventListener('submit', async (event) => {
@@ -21,7 +22,11 @@ async function buscarDetallesCompras() {
     const fechaInicio = document.getElementById('fechaInicioCompra').value;
     const fechaFin = document.getElementById('fechaFinCompra').value;
     const token = localStorage.getItem('jwt');
+
+    if (!validarFechas(fechaInicio, fechaFin)) { return; }
+
     try {
+        const token = localStorage.getItem('jwt');
         const response = await fetch(`https://localhost:7170/api/VistaDetallesCompra/detalles-por-fecha?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`,{
                 method: 'GET',
                 headers: {
@@ -35,6 +40,7 @@ async function buscarDetallesCompras() {
         llenarTablaDetallesCompras(data);
     } catch (error) {
         console.error('Error al buscar reportes de venta:', error);
+        mostrarToast('Ocurrió un error al buscar los reportes de venta', 'danger');
     }
 }
 
@@ -43,6 +49,10 @@ function llenarTablaDetallesCompras(data) {
     if (!tbody) return;  // Verificar si el elemento existe antes de intentar usarlo
     
     tbody.innerHTML = '';
+    if (data.length === 0) { 
+        tbody.innerHTML = '<tr><td colspan="5" class="text-center">No hay registros disponibles</td></tr>'; 
+        return; 
+    }
     data.forEach(compra => {
         tbody.innerHTML += `
             <tr>
@@ -59,7 +69,11 @@ function llenarTablaDetallesCompras(data) {
 async function buscarAnalisisOcupacion() {
     const fechaInicio = document.getElementById('fechaInicioOcupacion').value;
     const fechaFin = document.getElementById('fechaFinOcupacion').value;
+    const token = localStorage.getItem('jwt');
+   
     
+    if (!validarFechas(fechaInicio, fechaFin)) { return;}
+
     try {
         const response = await fetch(`https://localhost:7170/api/AnalisisOcupacion/ocupacion?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`,{
             method: 'GET',
@@ -76,6 +90,7 @@ async function buscarAnalisisOcupacion() {
         generarGraficoOcupacion(data);
     } catch (error) {
         console.error('Error al buscar análisis de ocupación:', error);
+        mostrarToast('Ocurrió un error al buscar el análisis de ocupación', 'danger');
     }
 }
 
@@ -84,6 +99,10 @@ function llenarTablaAnalisisOcupacion(data) {
     if (!tbody) return;  // Verificar si el elemento existe antes de intentar usarlo
 
     tbody.innerHTML = '';
+    if (data.length === 0) { 
+        tbody.innerHTML = '<tr><td colspan="5" class="text-center">No hay registros disponibles</td></tr>'; 
+        return; 
+    }
         data.forEach(ocupacion => { 
             tbody.innerHTML += ` 
             <tr> 
@@ -94,6 +113,33 @@ function llenarTablaAnalisisOcupacion(data) {
                 <td>${ocupacion.peliculaMasVista}</td> 
             </tr> `; 
         });
+}
+function validarFechas(fechaInicio, fechaFin) { 
+    if (new Date(fechaInicio) > new Date(fechaFin)) { 
+        mostrarToast('La fecha de inicio debe ser inferior a la fecha de fin', 'warning'); 
+        return false;
+    } 
+    return true; 
+}
+
+// Función para mostrar toast 
+function mostrarToast(mensaje, tipo = 'info') { 
+    const toastContainer = document.getElementById('toastContainer'); 
+    const toastEl = document.createElement('div'); 
+    toastEl.classList.add('toast', 'align-items-center', 'text-bg-' + tipo, 'border-0'); 
+    toastEl.setAttribute('role', 'alert'); 
+    toastEl.setAttribute('aria-live', 'assertive'); 
+    toastEl.setAttribute('aria-atomic', 'true'); 
+    toastEl.innerHTML = 
+        ` 
+            <div class="d-flex"> 
+                <div class="toast-body"> ${mensaje} </div> 
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div> 
+        `;
+    toastContainer.appendChild(toastEl); 
+    const toast = new bootstrap.Toast(toastEl); 
+    toast.show(); 
 }
 function generarGraficoOcupacion(data) { 
     const ctx = document.getElementById('ocupacionChart').getContext('2d'); 
